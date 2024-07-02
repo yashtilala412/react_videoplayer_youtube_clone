@@ -2,7 +2,7 @@
 
 This is a basic YouTube clone app built using React. It displays a list of YouTube videos embedded using `iframe`.
 
-![YouTube Clone App]([https://freeimage.host/i/dKdfQdG](https://snipboard.io/vYrySn.jpg))
+![YouTube Clone App](https://snipboard.io/vYrySn.jpg)
 
 ## Features
 
