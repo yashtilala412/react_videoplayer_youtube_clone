@@ -1,0 +1,38 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+.video-item {
+  border-radius: 20px;
+  overflow: hidden;
+}
+.video-info {
+  padding: 10px;
+  text-align: left;
+}
+
+.video-info h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.video-info p {
+  margin: 0;
+}
