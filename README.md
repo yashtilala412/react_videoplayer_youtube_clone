@@ -1,8 +1,31 @@
-# React + Vite
+# YouTube Clone App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a basic YouTube clone app built using React. It displays a list of YouTube videos embedded using `iframe`.
 
-Currently, two official plugins are available:
+![YouTube Clone App](https://freeimage.host/i/dKdfQdG)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- Displays a list of embedded YouTube videos.
+- Responsive video list layout.
+
+## Installation
+
+To get started with the app, follow these steps:
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yashtilala412/react_videoplayer_youtube_clone/.git
+    cd youtube-clone
+    ```
+
+2. Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+## Usage
+
+To run the app locally, use the following command:
+```bash
+npm start
