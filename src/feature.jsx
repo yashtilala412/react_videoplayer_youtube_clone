@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import React, { useEffect, useState } from 'react';
 const videos = [
-    { url: "https://youtu.be/OzI9M74IfR0?si=N9Pjj_C0k4ZLi_5g", title: "Video 1", thumbnail: "https://img.youtube.com/vi/OzI9M74IfR0/0.jpg" },
+    { url: "https://youtu.be/OzI9M74IfR0?si=N9Pjj_C0k4ZLi_5g", title: "Video 1", views: 100 },
     // Add more videos
 ];
 
@@ -11,12 +11,13 @@ return (
         {videos.map((video, index) => (
             <div key={index} className="video">
                 <h3>{video.title}</h3>
-                <img src={video.thumbnail} alt="Video Thumbnail" />
+                <p>Views: {video.views}</p>
                 <iframe width="300" height="200" src={video.url} title="YouTube Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
         ))}
     </div>
 );
+
 
 
 
