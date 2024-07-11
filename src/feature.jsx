@@ -18,8 +18,30 @@ return (
             <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
             <button onClick={() => setCurrentPage(currentPage + 1)} disabled={indexOfLastVideo >= videos.length}>Next</button>
         </div>
+        .video-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.video {
+    flex: 1 1 calc(33.333% - 10px);
+    margin: 5px;
+}
+
+@media (max-width: 768px) {
+    .video {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .video {
+        flex: 1 1 100%;
+    }
+}
     </div>
 );
+
 
 
 
