@@ -13,7 +13,7 @@ useEffect(() => {
 return (
     <div className="video-list">
         <h3>{videos[currentVideo].title}</h3>
-        <iframe width="300" height="200" src={videos[currentVideo].url} title="YouTube Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <iframe width="400" height="600" src={videos[currentVideo].url} title="YouTube Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
     </div>
 );
 
