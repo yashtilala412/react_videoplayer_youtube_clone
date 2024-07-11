@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 import React, { useEffect, useState } from 'react';
-const relatedVideos = [
-    // List of related videos
+const videos = [
+    { url: "https://youtu.be/OzI9M74IfR0?si=N9Pjj_C0k4ZLi_5g", title: "Video 1", thumbnail: "https://img.youtube.com/vi/OzI9M74IfR0/0.jpg" },
+    // Add more videos
 ];
 
 return (
@@ -10,16 +11,8 @@ return (
         {videos.map((video, index) => (
             <div key={index} className="video">
                 <h3>{video.title}</h3>
+                <img src={video.thumbnail} alt="Video Thumbnail" />
                 <iframe width="300" height="200" src={video.url} title="YouTube Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                <h4>Related Videos</h4>
-                <div className="related-videos">
-                    {relatedVideos.map((relatedVideo, i) => (
-                        <div key={i} className="video">
-                            <h5>{relatedVideo.title}</h5>
-                            <iframe width="150" height="100" src={relatedVideo.url} title="Related YouTube Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                        </div>
-                    ))}
-                </div>
             </div>
         ))}
     </div>
