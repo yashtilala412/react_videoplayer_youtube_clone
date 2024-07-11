@@ -1,39 +1,35 @@
 import React, { useState } from 'react';
 
 import React, { useEffect, useState } from 'react';
-const [ratings, setRatings] = useState({});
+const [sortType, setSortType] = useState("title");
 
-const handleRating = (index, rating) => {
-    setRatings({ ...ratings, [index]: rating });
-};
+const sortedVideos = [...videos].sort((a, b) => {
+    if (sortType === "title") {
+        return a.title.localeCompare(b.title);
+    } else if (sortType === "date") {
+        return new Date(b.date) - new Date(a.date);
+    } else if (sortType === "popularity") {
+        return b.views - a.views;
+    }
+    return 0;
+});
 
 return (
     <div className="video-list">
-        {videos.map((video, index) => (
+        <select onChange={(e) => setSortType(e.target.value)}>
+            <option value="title">Title</option>
+            <option value="date">Date</option>
+            <option value="popularity">Popularity</option>
+        </select>
+        {sortedVideos.map((video, index) => (
             <div key={index} className="video">
                 <h3>{video.title}</h3>
                 <iframe width="300" height="200" src={video.url} title="YouTube Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                <div>
-                    <label>
-                        <input type="radio" name={`rating-${index}`} value="1" onClick={() => handleRating(index, 1)} /> 1
-                    </label>
-                    <label>
-                        <input type="radio" name={`rating-${index}`} value="2" onClick={() => handleRating(index, 2)} /> 2
-                    </label>
-                    <label>
-                        <input type="radio" name={`rating-${index}`} value="3" onClick={() => handleRating(index, 3)} /> 3
-                    </label>
-                    <label>
-                        <input type="radio" name={`rating-${index}`} value="4" onClick={() => handleRating(index, 4)} /> 4
-                    </label>
-                    <label>
-                        <input type="radio" name={`rating-${index}`} value="5" onClick={() => handleRating(index, 5)} /> 5
-                    </label>
-                </div>
             </div>
         ))}
     </div>
 );
+
 
 
 
