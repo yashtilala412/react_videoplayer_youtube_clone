@@ -1,27 +1,22 @@
 import React, { useState } from 'react';
 
 import React, { useEffect, useState } from 'react';
-
 const VideoList = () => {
-    const [durations, setDurations] = useState({});
+    const [videos, setVideos] = useState([
+        // Initial videos
+    ]);
 
-    useEffect(() => {
-        videos.forEach((video, index) => {
-            fetch(`https://www.googleapis.com/youtube/v3/videos?id=${video.id}&part=contentDetails&key=YOUR_API_KEY`)
-                .then(response => response.json())
-                .then(data => {
-                    const duration = data.items[0].contentDetails.duration;
-                    setDurations(prev => ({ ...prev, [index]: duration }));
-                });
-        });
-    }, []);
+    const handleUpload = (event) => {
+        const newVideo = URL.createObjectURL(event.target.files[0]);
+        setVideos([...videos, { url: newVideo, title: 'New Video', description: 'New Description' }]);
+    };
 
     return (
         <div className="video-list">
+            <input type="file" onChange={handleUpload} />
             {videos.map((video, index) => (
                 <div key={index} className="video">
                     <h3>{video.title}</h3>
-                    <p>Duration: {durations[index]}</p>
                     <iframe width="300" height="200" src={video.url} title="YouTube Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
             ))}
@@ -29,7 +24,8 @@ const VideoList = () => {
     );
 };
 
-);
+
+
 
 
 
