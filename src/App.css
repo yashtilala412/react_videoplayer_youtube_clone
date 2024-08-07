@@ -107,29 +107,13 @@ body {
   transition: box-shadow 0.3s, background-color 0.3s;
 }
 
-.video-item:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background-color: #f0f0f0;
-}
 body {
+  font-family: 'Playfair Display', serif;
   background-color: #ffffff;
-  color: #000;
-  font-family: 'Lato', sans-serif;
+  color: #222;
 }
 
-.video-item {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+.video-info h3 {
+  font-family: 'Merriweather', serif;
 }
 
-.video-info {
-  background-color: #f1f1f1;
-}
-.video-item {
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-}
-
-.video-item:hover {
-  border-color: #03a9f4;
-}
