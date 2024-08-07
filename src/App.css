@@ -97,3 +97,10 @@ body {
   background-color: #ffffff;
   border: 1px solid #bbdefb;
 }
+.video-item {
+  transition: transform 0.3s;
+}
+
+.video-item:hover {
+  transform: scale(1.05);
+}
