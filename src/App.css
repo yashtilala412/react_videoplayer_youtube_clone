@@ -97,17 +97,18 @@ body {
   background-color: #ffffff;
   border: 1px solid #bbdefb;
 }
-.video-item {
-  transition: transform 0.3s;
+body {
+  background: linear-gradient(to right, #ff6f00, #ff9100);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.video-item:hover {
-  transform: scale(1.05);
-}
 .video-item {
-  transition: transform 0.3s;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.video-item:hover {
-  transform: scale(1.05);
+.video-info {
+  background: rgba(0, 0, 0, 0.6);
 }
+
