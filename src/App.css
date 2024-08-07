@@ -104,3 +104,10 @@ body {
 .video-item:hover {
   transform: scale(1.05);
 }
+.video-item {
+  transition: transform 0.3s;
+}
+
+.video-item:hover {
+  transform: scale(1.05);
+}
