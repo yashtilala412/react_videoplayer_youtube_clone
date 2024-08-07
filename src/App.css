@@ -125,3 +125,11 @@ body {
 .video-info {
   background-color: #f1f1f1;
 }
+.video-item {
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.video-item:hover {
+  border-color: #03a9f4;
+}
