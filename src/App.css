@@ -121,4 +121,12 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
 }
+.video-item {
+  background-color: #333;
+  color: #fff;
+}
+
+.video-info h3 {
+  color: #f1c40f;
+}
 
