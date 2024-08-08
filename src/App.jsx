@@ -1,6 +1,29 @@
 import React from 'react';
 import './App.css';
 import ReactPlayer from 'react-player';
+import React, { useState } from 'react';
+
+const SearchBar = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = () => {
+    onSearch(searchTerm);
+  };
+
+  return (
+    <div className="search-bar">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search videos..."
+      />
+      <button onClick={handleSearch}>Search</button>
+    </div>
+  );
+};
+
+
 
 
 const videoData = [
