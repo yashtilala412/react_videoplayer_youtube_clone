@@ -5,11 +5,12 @@ const VideoList = () => {
     const [selectedTag, setSelectedTag] = useState('All');
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrder, setSortOrder] = useState('Title');
+    const [selectedVideo, setSelectedVideo] = useState(null);
     const videosPerPage = 5;
 
     const videos = [
-        { url: "https://youtu.be/OzI9M74IfR0?si=N9Pjj_C0k4ZLi_5g", title: "Video 1", description: "This is a music video.", tags: ["Music"], date: "2021-01-01" },
-        { url: "https://youtu.be/sLykke8q2ls?si=k3s9G7qwYjmZO6ln", title: "Video 2", description: "A comprehensive tutorial.", tags: ["Tutorial"], date: "2021-02-15" },
+        { url: "https://youtu.be/OzI9M74IfR0?si=N9Pjj_C0k4ZLi_5g", title: "Video 1", description: "This is a music video.", tags: ["Music"], thumbnail: "https://img.youtube.com/vi/OzI9M74IfR0/0.jpg", date: "2021-01-01" },
+        { url: "https://youtu.be/sLykke8q2ls?si=k3s9G7qwYjmZO6ln", title: "Video 2", description: "A comprehensive tutorial.", tags: ["Tutorial"], thumbnail: "https://img.youtube.com/vi/sLykke8q2ls/0.jpg", date: "2021-02-15" },
         // ... (add more videos)
     ];
 
@@ -23,6 +24,10 @@ const VideoList = () => {
 
     const handleSortChange = (e) => {
         setSortOrder(e.target.value);
+    };
+
+    const handleVideoSelect = (video) => {
+        setSelectedVideo(video);
     };
 
     const sortedVideos = [...videos].sort((a, b) => {
@@ -66,9 +71,13 @@ const VideoList = () => {
             </select>
             {currentVideos.map((video, index) => (
                 <div key={index} className="video">
-                    <iframe width="300" height="200" src={video.url} title={video.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen></iframe>
-                    <p>{video.description}</p>
+                    <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        onClick={() => handleVideoSelect(video)}
+                        style={{ cursor: 'pointer' }}
+                    />
+                    <p>{video.title}</p>
                 </div>
             ))}
             <div className="pagination">
@@ -78,6 +87,12 @@ const VideoList = () => {
                     </button>
                 ))}
             </div>
+            {selectedVideo && (
+                <div className="video-modal" onClick={() => setSelectedVideo(null)}>
+                    <iframe width="560" height="315" src={selectedVideo.url} title={selectedVideo.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen></iframe>
+                </div>
+            )}
         </div>
     );
 };
