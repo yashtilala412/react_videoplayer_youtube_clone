@@ -132,6 +132,17 @@ const VideoList = () => {
                             onChange={(e) => setComment(e.target.value)}
                         />
                         <button onClick={handleCommentSubmit}>Submit</button>
+                        // Pagination logic inside return block
+<div className="pagination">
+    {Array.from({ length: Math.ceil(filteredVideos.length / videosPerPage) }, (_, i) => (
+        (i + 1 === currentPage || i + 1 === currentPage - 1 || i + 1 === currentPage + 1) && (
+            <button key={i + 1} onClick={() => paginate(i + 1)}>
+                {i + 1}
+            </button>
+        )
+    ))}
+</div>
+
                     </div>
                 </div>
             )}
