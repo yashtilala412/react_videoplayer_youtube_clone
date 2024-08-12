@@ -11,7 +11,7 @@ const VideoList = () => {
     const videos = [
         { url: "https://youtu.be/OzI9M74IfR0?si=N9Pjj_C0k4ZLi_5g", title: "Video 1", description: "This is a music video.", tags: ["Music"], thumbnail: "https://img.youtube.com/vi/OzI9M74IfR0/0.jpg", date: "2021-01-01", likes: 0, dislikes: 0 },
         { url: "https://youtu.be/sLykke8q2ls?si=k3s9G7qwYjmZO6ln", title: "Video 2", description: "A comprehensive tutorial.", tags: ["Tutorial"], thumbnail: "https://img.youtube.com/vi/sLykke8q2ls/0.jpg", date: "2021-02-15", likes: 0, dislikes: 0 },
-        // ... (add more videos)
+        
     ];
 
     const handleSearch = (e) => {
