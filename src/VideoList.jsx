@@ -12,7 +12,7 @@ const VideoList = () => {
     const videos = [
         { url: "https://youtu.be/OzI9M74IfR0?si=N9Pjj_C0k4ZLi_5g", title: "Video 1", description: "This is a music video.", tags: ["Music"], thumbnail: "https://img.youtube.com/vi/OzI9M74IfR0/0.jpg", date: "2021-01-01", likes: 0, dislikes: 0, comments: [] },
         { url: "https://youtu.be/sLykke8q2ls?si=k3s9G7qwYjmZO6ln", title: "Video 2", description: "A comprehensive tutorial.", tags: ["Tutorial"], thumbnail: "https://img.youtube.com/vi/sLykke8q2ls/0.jpg", date: "2021-02-15", likes: 0, dislikes: 0, comments: [] },
-        // ... (add more videos)
+        
     ];
 
     const handleSearch = (e) => {
@@ -132,17 +132,7 @@ const VideoList = () => {
                             onChange={(e) => setComment(e.target.value)}
                         />
                         <button onClick={handleCommentSubmit}>Submit</button>
-                        // Pagination logic inside return block
-<div className="pagination">
-    {Array.from({ length: Math.ceil(filteredVideos.length / videosPerPage) }, (_, i) => (
-        (i + 1 === currentPage || i + 1 === currentPage - 1 || i + 1 === currentPage + 1) && (
-            <button key={i + 1} onClick={() => paginate(i + 1)}>
-                {i + 1}
-            </button>
-        )
-    ))}
-</div>
-
+                        
                     </div>
                 </div>
             )}
