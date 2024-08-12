@@ -6,12 +6,13 @@ const VideoList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrder, setSortOrder] = useState('Title');
     const [selectedVideo, setSelectedVideo] = useState(null);
+    const [comment, setComment] = useState('');
     const videosPerPage = 5;
 
     const videos = [
-        { url: "https://youtu.be/OzI9M74IfR0?si=N9Pjj_C0k4ZLi_5g", title: "Video 1", description: "This is a music video.", tags: ["Music"], thumbnail: "https://img.youtube.com/vi/OzI9M74IfR0/0.jpg", date: "2021-01-01", likes: 0, dislikes: 0 },
-        { url: "https://youtu.be/sLykke8q2ls?si=k3s9G7qwYjmZO6ln", title: "Video 2", description: "A comprehensive tutorial.", tags: ["Tutorial"], thumbnail: "https://img.youtube.com/vi/sLykke8q2ls/0.jpg", date: "2021-02-15", likes: 0, dislikes: 0 },
-        
+        { url: "https://youtu.be/OzI9M74IfR0?si=N9Pjj_C0k4ZLi_5g", title: "Video 1", description: "This is a music video.", tags: ["Music"], thumbnail: "https://img.youtube.com/vi/OzI9M74IfR0/0.jpg", date: "2021-01-01", likes: 0, dislikes: 0, comments: [] },
+        { url: "https://youtu.be/sLykke8q2ls?si=k3s9G7qwYjmZO6ln", title: "Video 2", description: "A comprehensive tutorial.", tags: ["Tutorial"], thumbnail: "https://img.youtube.com/vi/sLykke8q2ls/0.jpg", date: "2021-02-15", likes: 0, dislikes: 0, comments: [] },
+        // ... (add more videos)
     ];
 
     const handleSearch = (e) => {
@@ -38,6 +39,14 @@ const VideoList = () => {
     const handleDislike = (video) => {
         video.dislikes += 1;
         setSelectedVideo({ ...video });
+    };
+
+    const handleCommentSubmit = () => {
+        if (comment.trim()) {
+            selectedVideo.comments.push(comment);
+            setComment('');
+            setSelectedVideo({ ...selectedVideo });
+        }
     };
 
     const sortedVideos = [...videos].sort((a, b) => {
@@ -106,6 +115,19 @@ const VideoList = () => {
                     <p>{selectedVideo.description}</p>
                     <button onClick={() => handleLike(selectedVideo)}>Like ({selectedVideo.likes})</button>
                     <button onClick={() => handleDislike(selectedVideo)}>Dislike ({selectedVideo.dislikes})</button>
+                    <div className="comments">
+                        <h3>Comments</h3>
+                        {selectedVideo.comments.map((comment, index) => (
+                            <p key={index}>{comment}</p>
+                        ))}
+                        <input
+                            type="text"
+                            placeholder="Add a comment..."
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                        />
+                        <button onClick={handleCommentSubmit}>Submit</button>
+                    </div>
                 </div>
             )}
         </div>
