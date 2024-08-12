@@ -6,7 +6,7 @@ const VideoList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrder, setSortOrder] = useState('Title');
     const [selectedVideo, setSelectedVideo] = useState(null);
-    const [comment, setComment] = useState('');
+    const [favorites, setFavorites] = useState([]);
     const videosPerPage = 5;
 
     const videos = [
@@ -47,6 +47,10 @@ const VideoList = () => {
             setComment('');
             setSelectedVideo({ ...selectedVideo });
         }
+    };
+
+    const handleFavorite = (video) => {
+        setFavorites(prevFavorites => [...prevFavorites, video]);
     };
 
     const sortedVideos = [...videos].sort((a, b) => {
@@ -99,6 +103,7 @@ const VideoList = () => {
                     <p>{video.title}</p>
                     <button onClick={() => handleLike(video)}>Like ({video.likes})</button>
                     <button onClick={() => handleDislike(video)}>Dislike ({video.dislikes})</button>
+                    <button onClick={() => handleFavorite(video)}>Add to Favorites</button>
                 </div>
             ))}
             <div className="pagination">
