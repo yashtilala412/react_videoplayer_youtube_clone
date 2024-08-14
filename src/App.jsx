@@ -1,8 +1,8 @@
-// VRSupport.js
+// CollaborationTools.js
 import React from 'react';
 
-const VRSupport = () => {
-  return <div className="vr-support">VR Support Coming Soon!</div>;
+const CollaborationTools = () => {
+  return <div className="collaboration-tools">Collaboration Tools Coming Soon!</div>;
 };
 
-export default VRSupport;
+export default CollaborationTools;
