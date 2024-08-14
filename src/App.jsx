@@ -1,12 +1,8 @@
-// VideoPolls.js
+// VRSupport.js
 import React from 'react';
 
-const VideoPolls = ({ video }) => {
-  return (
-    <div className="video-polls">
-      {/* Implement interactive polls */}
-    </div>
-  );
+const VRSupport = () => {
+  return <div className="vr-support">VR Support Coming Soon!</div>;
 };
 
-export default VideoPolls;
+export default VRSupport;
