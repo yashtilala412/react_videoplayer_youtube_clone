@@ -1,14 +1,12 @@
-// LanguageSelector.js
+// EngagementMetrics.js
 import React from 'react';
 
-const LanguageSelector = ({ onLanguageChange }) => {
+const EngagementMetrics = ({ video }) => {
   return (
-    <select onChange={(e) => onLanguageChange(e.target.value)}>
-      <option value="en">English</option>
-      <option value="es">Spanish</option>
-      {/* Add more language options */}
-    </select>
+    <div className="engagement-metrics">
+      {/* Implement metrics display */}
+    </div>
   );
 };
 
-export default LanguageSelector;
+export default EngagementMetrics;
