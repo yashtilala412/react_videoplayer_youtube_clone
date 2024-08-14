@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ThemeToggle = ({ toggleTheme, currentTheme }) => {
-  return (
-    <button onClick={toggleTheme}>
-      Switch to {currentTheme === 'light' ? 'Dark' : 'Light'} Mode
-    </button>
-  );
+const ShareButton = ({ video }) => {
+  const shareVideo = () => {
+    // Implement sharing functionality
+  };
+
+  return <button onClick={shareVideo}>Share</button>;
 };
 
-export default ThemeToggle;
+export default ShareButton;
