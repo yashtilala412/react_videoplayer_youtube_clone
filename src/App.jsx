@@ -1,8 +1,8 @@
-// AudioDescription.js
+// ClosedCaptioning.js
 import React from 'react';
 
-const AudioDescription = ({ video }) => {
-  return <button>Audio Description Available</button>;
+const ClosedCaptioning = ({ video }) => {
+  return <button>Closed Captioning Available</button>;
 };
 
-export default AudioDescription;
+export default ClosedCaptioning;
