@@ -1,12 +1,8 @@
-// AIRecommendations.js
+// AudioDescription.js
 import React from 'react';
 
-const AIRecommendations = ({ video }) => {
-  return (
-    <div className="ai-recommendations">
-      {/* AI Recommendations */}
-    </div>
-  );
+const AudioDescription = ({ video }) => {
+  return <button>Audio Description Available</button>;
 };
 
-export default AIRecommendations;
+export default AudioDescription;
