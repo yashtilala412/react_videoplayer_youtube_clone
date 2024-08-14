@@ -1,12 +1,14 @@
-// VideoDownload.js
+// LanguageSelector.js
 import React from 'react';
 
-const VideoDownload = ({ video }) => {
-  const downloadVideo = () => {
-    // Implement download functionality
-  };
-
-  return <button onClick={downloadVideo}>Download</button>;
+const LanguageSelector = ({ onLanguageChange }) => {
+  return (
+    <select onChange={(e) => onLanguageChange(e.target.value)}>
+      <option value="en">English</option>
+      <option value="es">Spanish</option>
+      {/* Add more language options */}
+    </select>
+  );
 };
 
-export default VideoDownload;
+export default LanguageSelector;
