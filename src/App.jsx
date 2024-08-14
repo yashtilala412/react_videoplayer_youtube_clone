@@ -1,12 +1,8 @@
-// VideoPreview.js
+// CrossPlatformSync.js
 import React from 'react';
 
-const VideoPreview = ({ video }) => {
-  return (
-    <div className="video-preview">
-      {/* Implement video preview */}
-    </div>
-  );
+const CrossPlatformSync = () => {
+  return <div className="cross-platform-sync">Cross-Platform Sync Coming Soon!</div>;
 };
 
-export default VideoPreview;
+export default CrossPlatformSync;
