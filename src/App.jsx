@@ -1,12 +1,12 @@
-// EngagementMetrics.js
+// VideoPolls.js
 import React from 'react';
 
-const EngagementMetrics = ({ video }) => {
+const VideoPolls = ({ video }) => {
   return (
-    <div className="engagement-metrics">
-      {/* Implement metrics display */}
+    <div className="video-polls">
+      {/* Implement interactive polls */}
     </div>
   );
 };
 
-export default EngagementMetrics;
+export default VideoPolls;
