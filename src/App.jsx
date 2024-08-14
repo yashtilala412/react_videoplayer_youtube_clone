@@ -1,8 +1,8 @@
-// AnalyticsDashboard.js
+// Notifications.js
 import React from 'react';
 
-const AnalyticsDashboard = () => {
-  return <div className="analytics-dashboard">Analytics Dashboard Coming Soon!</div>;
+const Notifications = () => {
+  return <div className="notifications">User Notifications Coming Soon!</div>;
 };
 
-export default AnalyticsDashboard;
+export default Notifications;
