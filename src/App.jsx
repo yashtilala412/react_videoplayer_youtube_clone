@@ -1,8 +1,12 @@
-// Notifications.js
+// VideoDownload.js
 import React from 'react';
 
-const Notifications = () => {
-  return <div className="notifications">User Notifications Coming Soon!</div>;
+const VideoDownload = ({ video }) => {
+  const downloadVideo = () => {
+    // Implement download functionality
+  };
+
+  return <button onClick={downloadVideo}>Download</button>;
 };
 
-export default Notifications;
+export default VideoDownload;
