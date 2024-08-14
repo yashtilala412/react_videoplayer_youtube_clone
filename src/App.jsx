@@ -1,11 +1,9 @@
 import React from 'react';
 
-const ShareButton = ({ video }) => {
-  const shareVideo = () => {
-    // Implement sharing functionality
-  };
+const VideoEditingTools = () => {
+  // Implement video editing tools here
 
-  return <button onClick={shareVideo}>Share</button>;
+  return <div className="video-editing-tools">Video Editing Tools</div>;
 };
 
-export default ShareButton;
+export default VideoEditingTools;
