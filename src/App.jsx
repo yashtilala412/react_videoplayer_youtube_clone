@@ -1,12 +1,8 @@
-// AdvancedSearch.js
+// AnalyticsDashboard.js
 import React from 'react';
 
-const AdvancedSearch = ({ onFilter }) => {
-  return (
-    <div className="advanced-search">
-      {/* Implement advanced search filtering options */}
-    </div>
-  );
+const AnalyticsDashboard = () => {
+  return <div className="analytics-dashboard">Analytics Dashboard Coming Soon!</div>;
 };
 
-export default AdvancedSearch;
+export default AnalyticsDashboard;
