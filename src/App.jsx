@@ -49,8 +49,21 @@ const CommentsSection = ({ video }) => {
     </div>
   );
 };
+import React from 'react';
 
-export default CommentsSection;
+const Playlist = ({ videos }) => {
+  // Implement playlist functionality here
+
+  return (
+    <div className="playlist">
+      <h4>Your Playlist</h4>
+      {/* Display playlist videos */}
+    </div>
+  );
+};
+
+
+
 
 const App = () => {
   const [videos, setVideos] = useState(videoData);
