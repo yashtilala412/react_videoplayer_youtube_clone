@@ -1,8 +1,12 @@
-// ClosedCaptioning.js
+// VideoPreview.js
 import React from 'react';
 
-const ClosedCaptioning = ({ video }) => {
-  return <button>Closed Captioning Available</button>;
+const VideoPreview = ({ video }) => {
+  return (
+    <div className="video-preview">
+      {/* Implement video preview */}
+    </div>
+  );
 };
 
-export default ClosedCaptioning;
+export default VideoPreview;
