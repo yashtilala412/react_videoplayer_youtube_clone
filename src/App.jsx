@@ -1,8 +1,12 @@
-// CollaborationTools.js
+// AIRecommendations.js
 import React from 'react';
 
-const CollaborationTools = () => {
-  return <div className="collaboration-tools">Collaboration Tools Coming Soon!</div>;
+const AIRecommendations = ({ video }) => {
+  return (
+    <div className="ai-recommendations">
+      {/* AI Recommendations */}
+    </div>
+  );
 };
 
-export default CollaborationTools;
+export default AIRecommendations;
