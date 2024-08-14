@@ -1,17 +1,8 @@
-// WatchedHistory.js
-import React, { useState } from 'react';
+// LiveStream.js
+import React from 'react';
 
-const WatchedHistory = ({ history }) => {
-  return (
-    <div className="watched-history">
-      <h4>History</h4>
-      <ul>
-        {history.map((video, index) => (
-          <li key={index}>{video.title}</li>
-        ))}
-      </ul>
-    </div>
-  );
+const LiveStream = () => {
+  return <div className="live-stream">Live Streaming Coming Soon!</div>;
 };
 
-export default WatchedHistory;
+export default LiveStream;
