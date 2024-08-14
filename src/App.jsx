@@ -1,8 +1,12 @@
-// LiveStream.js
+// AdvancedSearch.js
 import React from 'react';
 
-const LiveStream = () => {
-  return <div className="live-stream">Live Streaming Coming Soon!</div>;
+const AdvancedSearch = ({ onFilter }) => {
+  return (
+    <div className="advanced-search">
+      {/* Implement advanced search filtering options */}
+    </div>
+  );
 };
 
-export default LiveStream;
+export default AdvancedSearch;
