@@ -92,7 +92,15 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-                     
+  const toggleFullscreen = () => {
+    const videoElement = document.getElementById('video-player');
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      videoElement.requestFullscreen();
+    }
+  };
+                       
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
