@@ -190,7 +190,14 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-                                                    
+  const handleDownload = (videoId) => {
+    const video = videos.find((video) => video.id === videoId);
+    const link = document.createElement('a');
+    link.href = video.url;
+    link.download = `${video.title}.mp4`;
+    link.click();
+  };
+                                             
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
