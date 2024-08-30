@@ -166,7 +166,13 @@ const App = () => {
     const track = videoElement.textTracks[0]; // Assuming the first track is the subtitles track
     track.mode = track.mode === 'showing' ? 'hidden' : 'showing';
   };
-                                                 
+  const toggleCommentsVisibility = (videoId) => {
+    const updatedVideos = videos.map((video) =>
+      video.id === videoId ? { ...video, commentsVisible: !video.commentsVisible } : video
+    );
+    setVideos(updatedVideos);
+  };
+                                                   
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
