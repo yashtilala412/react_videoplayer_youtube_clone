@@ -140,7 +140,10 @@ const App = () => {
     const recentlyWatched = videos.filter((video) => watchHistory.includes(video.id));
     setRecentlyWatchedVideos(recentlyWatched); // Assuming setRecentlyWatchedVideos is a state setter
   };
-                                       
+  const handleSpeedChange = (newSpeed) => {
+    videoRef.current.playbackRate = newSpeed; // Assuming videoRef is a ref to the video element
+  };
+                                         
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
