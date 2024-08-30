@@ -68,7 +68,15 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-              
+  const handleSearch = (searchTerm) => {
+    const filteredVideos = videoData.filter(
+      (video) =>
+        video.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        video.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+    setVideos(filteredVideos);
+  };
+                
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
