@@ -113,7 +113,15 @@ const App = () => {
   const addToWatchHistory = (videoId) => {
     setWatchHistory([...watchHistory, videoId]); // Assuming setWatchHistory is a state setter
   };
-                             
+  const filterRecentUploads = () => {
+    const filteredVideos = videos.filter((video) => {
+      const uploadDate = new Date(video.uploadDate);
+      const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+      return uploadDate >= sevenDaysAgo;
+    });
+    setVideos(filteredVideos);
+  };
+                               
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
