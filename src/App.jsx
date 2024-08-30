@@ -136,7 +136,11 @@ const App = () => {
     );
     setPlaylists(updatedPlaylists);
   };
-                                     
+  const addRecentlyWatchedSection = () => {
+    const recentlyWatched = videos.filter((video) => watchHistory.includes(video.id));
+    setRecentlyWatchedVideos(recentlyWatched); // Assuming setRecentlyWatchedVideos is a state setter
+  };
+                                       
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
