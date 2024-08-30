@@ -41,7 +41,13 @@ const App = () => {
     const sortedVideos = [...videos].sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate));
     setVideos(sortedVideos);
   };
-    
+  const handleLike = (videoId) => {
+    const updatedVideos = videos.map((video) =>
+      video.id === videoId ? { ...video, likes: video.likes + 1 } : video
+    );
+    setVideos(updatedVideos);
+  };
+      
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
