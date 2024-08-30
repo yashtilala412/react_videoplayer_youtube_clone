@@ -62,7 +62,13 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-            
+  const handleBookmark = (videoId) => {
+    const updatedVideos = videos.map((video) =>
+      video.id === videoId ? { ...video, bookmarked: !video.bookmarked } : video
+    );
+    setVideos(updatedVideos);
+  };
+              
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
