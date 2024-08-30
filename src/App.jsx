@@ -181,7 +181,10 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-                                                       
+  const handleVolumeChange = (volume) => {
+    videoRef.current.volume = volume; // Assuming videoRef is a ref to the video element
+  };
+                                                         
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
