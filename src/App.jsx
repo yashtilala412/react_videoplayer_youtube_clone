@@ -184,7 +184,14 @@ const App = () => {
   const handleVolumeChange = (volume) => {
     videoRef.current.volume = volume; // Assuming videoRef is a ref to the video element
   };
-                                                         
+  const handleUpload = (newVideo) => {
+    if (videos.length < uploadLimit) {
+      setVideos([newVideo, ...videos]);
+    } else {
+      alert("Upload limit reached");
+    }
+  };
+                                                           
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
