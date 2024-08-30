@@ -53,7 +53,10 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-        
+  const setPlaybackSpeed = (speed) => {
+    setVideoPlaybackSpeed(speed); // Assuming setVideoPlaybackSpeed is a state setter
+  };
+          
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
