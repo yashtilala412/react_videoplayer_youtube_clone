@@ -110,7 +110,10 @@ const App = () => {
     const sortedVideos = [...videos].sort((a, b) => b.likes - a.likes);
     setVideos(sortedVideos);
   };
-                           
+  const addToWatchHistory = (videoId) => {
+    setWatchHistory([...watchHistory, videoId]); // Assuming setWatchHistory is a state setter
+  };
+                             
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
