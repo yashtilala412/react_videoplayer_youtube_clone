@@ -175,29 +175,13 @@ const App = () => {
   const toggleMute = () => {
     videoRef.current.muted = !videoRef.current.muted; // Assuming videoRef is a ref to the video element
   };
-  const toggleLoop = (videoId) => {
+  const incrementViewCount = (videoId) => {
     const updatedVideos = videos.map((video) =>
-      video.id === videoId ? { ...video, loop: !video.loop } : video
+      video.id === videoId ? { ...video, views: video.views + 1 } : video
     );
     setVideos(updatedVideos);
   };
-  const handleVolumeChange = (volume) => {
-    videoRef.current.volume = volume; // Assuming videoRef is a ref to the video element
-  };
-  const editVideoDetails = (videoId, newDetails) => {
-    const updatedVideos = videos.map((video) =>
-      video.id === videoId ? { ...video, ...newDetails } : video
-    );
-    setVideos(updatedVideos);
-  };
-  const handleDownload = (videoId) => {
-    const video = videos.find((video) => video.id === videoId);
-    const link = document.createElement('a');
-    link.href = video.url;
-    link.download = `${video.title}.mp4`;
-    link.click();
-  };
-                                             
+                                          
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
