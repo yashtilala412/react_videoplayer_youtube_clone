@@ -83,7 +83,10 @@ const App = () => {
     const video = videos.find((video) => video.id === videoId);
     navigator.share({ title: video.title, url: video.url });
   };
-                 
+  const selectQuality = (quality) => {
+    setVideoQuality(quality); // Assuming setVideoQuality is a state setter
+  };
+                   
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
