@@ -130,7 +130,13 @@ const App = () => {
     );
     setPlaylists(updatedPlaylists);
   };
-                                   
+  const removeFromPlaylist = (playlistName, videoId) => {
+    const updatedPlaylists = playlists.map((playlist) =>
+      playlist.name === playlistName ? { ...playlist, videos: playlist.videos.filter((id) => id !== videoId) } : playlist
+    );
+    setPlaylists(updatedPlaylists);
+  };
+                                     
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
