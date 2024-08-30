@@ -143,7 +143,13 @@ const App = () => {
   const handleSpeedChange = (newSpeed) => {
     videoRef.current.playbackRate = newSpeed; // Assuming videoRef is a ref to the video element
   };
-                                         
+  const toggleDescription = (videoId) => {
+    const updatedVideos = videos.map((video) =>
+      video.id === videoId ? { ...video, isDescriptionExpanded: !video.isDescriptionExpanded } : video
+    );
+    setVideos(updatedVideos);
+  };
+                                           
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
