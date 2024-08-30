@@ -124,7 +124,13 @@ const App = () => {
   const createPlaylist = (playlistName) => {
     setPlaylists([...playlists, { name: playlistName, videos: [] }]);
   };
-                                 
+  const addToPlaylist = (playlistName, videoId) => {
+    const updatedPlaylists = playlists.map((playlist) =>
+      playlist.name === playlistName ? { ...playlist, videos: [...playlist.videos, videoId] } : playlist
+    );
+    setPlaylists(updatedPlaylists);
+  };
+                                   
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
