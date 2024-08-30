@@ -73,7 +73,13 @@ const App = () => {
       setTheme(theme === 'light' ? 'dark' : 'light');
     }
   };
-             
+  const addComment = (videoId, comment) => {
+    const updatedVideos = videos.map((video) =>
+      video.id === videoId ? { ...video, comments: [...video.comments, comment] } : video
+    );
+    setVideos(updatedVideos);
+  };
+               
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
