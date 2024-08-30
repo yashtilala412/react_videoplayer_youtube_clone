@@ -56,7 +56,13 @@ const App = () => {
   const setPlaybackSpeed = (speed) => {
     setVideoPlaybackSpeed(speed); // Assuming setVideoPlaybackSpeed is a state setter
   };
-          
+  const handleRating = (videoId, rating) => {
+    const updatedVideos = videos.map((video) =>
+      video.id === videoId ? { ...video, rating } : video
+    );
+    setVideos(updatedVideos);
+  };
+            
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
