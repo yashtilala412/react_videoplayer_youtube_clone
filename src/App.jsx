@@ -153,7 +153,15 @@ const App = () => {
     // Send report to server or handle it locally
     console.log(`Video ${videoId} reported for: ${reason}`);
   };
-                                             
+  const enablePictureInPicture = () => {
+    const videoElement = document.getElementById('video-player');
+    if (document.pictureInPictureElement) {
+      document.exitPictureInPicture();
+    } else {
+      videoElement.requestPictureInPicture();
+    }
+  };
+                                               
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
