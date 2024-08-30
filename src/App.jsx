@@ -121,7 +121,10 @@ const App = () => {
     });
     setVideos(filteredVideos);
   };
-                               
+  const createPlaylist = (playlistName) => {
+    setPlaylists([...playlists, { name: playlistName, videos: [] }]);
+  };
+                                 
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
