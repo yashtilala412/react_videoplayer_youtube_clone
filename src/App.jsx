@@ -37,7 +37,11 @@ const App = () => {
     const filteredVideos = videos.filter((video) => video.duration <= maxDuration);
     setVideos(filteredVideos);
   };
-  
+  const sortByUploadDate = () => {
+    const sortedVideos = [...videos].sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate));
+    setVideos(sortedVideos);
+  };
+    
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
