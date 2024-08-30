@@ -68,15 +68,12 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-  const handleSearch = (searchTerm) => {
-    const filteredVideos = videoData.filter(
-      (video) =>
-        video.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        video.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-    );
-    setVideos(filteredVideos);
+  const toggleTheme = () => {
+    if (window.confirm("Are you sure you want to change the theme?")) {
+      setTheme(theme === 'light' ? 'dark' : 'light');
+    }
   };
-                
+             
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
