@@ -3,20 +3,6 @@ import './App.css';
 import ReactPlayer from 'react-player';
 import SearchBar from './SearchBar';
 import VideoUpload from './VideoUpload';
-import LikeButton from './LikeButton';
-import CommentsSection from './CommentsSection';
-import Playlist from './Playlist';
-import VideoCategories from './VideoCategories';
-import ShareButton from './ShareButton';
-import RatingSystem from './RatingSystem';
-import WatchLater from './WatchLater';
-import VideoRecommendations from './VideoRecommendations';
-import UserProfile from './UserProfile';
-import ThemeToggle from './ThemeToggle';
-import VideoEditingTools from './VideoEditingTools';
-import SubtitleSupport from './SubtitleSupport';
-import PlaybackSpeedControl from './PlaybackSpeedControl';
-import ParentalControls from './ParentalControls';
 
 const videoData = [
   {
