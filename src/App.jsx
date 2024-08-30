@@ -100,7 +100,13 @@ const App = () => {
       videoElement.requestFullscreen();
     }
   };
-                       
+  const handleVideoEnd = () => {
+    const currentIndex = videos.findIndex((video) => video.id === currentVideoId);
+    if (currentIndex < videos.length - 1) {
+      setCurrentVideoId(videos[currentIndex + 1].id);
+    }
+  };
+                         
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
