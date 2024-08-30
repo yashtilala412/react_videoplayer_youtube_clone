@@ -161,7 +161,12 @@ const App = () => {
       videoElement.requestPictureInPicture();
     }
   };
-                                               
+  const toggleSubtitles = () => {
+    const videoElement = document.getElementById('video-player');
+    const track = videoElement.textTracks[0]; // Assuming the first track is the subtitles track
+    track.mode = track.mode === 'showing' ? 'hidden' : 'showing';
+  };
+                                                 
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
