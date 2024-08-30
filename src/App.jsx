@@ -149,7 +149,11 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-                                           
+  const reportVideo = (videoId, reason) => {
+    // Send report to server or handle it locally
+    console.log(`Video ${videoId} reported for: ${reason}`);
+  };
+                                             
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
