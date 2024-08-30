@@ -86,7 +86,13 @@ const App = () => {
   const selectQuality = (quality) => {
     setVideoQuality(quality); // Assuming setVideoQuality is a state setter
   };
-                   
+  const savePlaybackPosition = (videoId, position) => {
+    const updatedVideos = videos.map((video) =>
+      video.id === videoId ? { ...video, playbackPosition: position } : video
+    );
+    setVideos(updatedVideos);
+  };
+                     
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
