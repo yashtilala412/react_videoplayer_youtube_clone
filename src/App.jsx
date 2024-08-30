@@ -175,7 +175,13 @@ const App = () => {
   const toggleMute = () => {
     videoRef.current.muted = !videoRef.current.muted; // Assuming videoRef is a ref to the video element
   };
-                                                     
+  const toggleLoop = (videoId) => {
+    const updatedVideos = videos.map((video) =>
+      video.id === videoId ? { ...video, loop: !video.loop } : video
+    );
+    setVideos(updatedVideos);
+  };
+                                                       
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
