@@ -106,7 +106,11 @@ const App = () => {
       setCurrentVideoId(videos[currentIndex + 1].id);
     }
   };
-                         
+  const sortByPopularity = () => {
+    const sortedVideos = [...videos].sort((a, b) => b.likes - a.likes);
+    setVideos(sortedVideos);
+  };
+                           
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
