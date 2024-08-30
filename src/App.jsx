@@ -47,7 +47,13 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-      
+  const handleDislike = (videoId) => {
+    const updatedVideos = videos.map((video) =>
+      video.id === videoId ? { ...video, dislikes: video.dislikes + 1 } : video
+    );
+    setVideos(updatedVideos);
+  };
+        
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
