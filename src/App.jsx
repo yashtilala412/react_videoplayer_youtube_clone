@@ -79,7 +79,11 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-               
+  const handleShare = (videoId) => {
+    const video = videos.find((video) => video.id === videoId);
+    navigator.share({ title: video.title, url: video.url });
+  };
+                 
   return (
     <div className={`app ${theme}`}>
       <h1>Video Player</h1>
