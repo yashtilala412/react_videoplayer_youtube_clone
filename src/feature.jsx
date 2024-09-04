@@ -74,32 +74,7 @@ const VideoList = () => {
                 [index]: [...(comments[index] || []), { text: comment, replies: [] }],
             });
         };
-        const editComment = (videoIndex, commentIndex, newComment) => {
-            const newComments = { ...comments };
-            newComments[videoIndex][commentIndex].text = newComment;
-            setComments(newComments);
-        };
-        const deleteComment = (videoIndex, commentIndex) => {
-            const newComments = { ...comments };
-            newComments[videoIndex].splice(commentIndex, 1);
-            setComments(newComments);
-        };
-        const toggleLike = (videoIndex, commentIndex) => {
-            const newComments = { ...comments };
-            const comment = newComments[videoIndex][commentIndex];
-            comment.liked = !comment.liked;
-            setComments(newComments);
-        };
-      
-        
-    };
-    const handleComment1 = (index, comment) => {
-        const emojiSupportedComment = comment.replace(/:\)/g, '😊').replace(/:\(/g, '😢');
-        setComments({
-            ...comments,
-            [index]: [...(comments[index] || []), { text: emojiSupportedComment, replies: [] }],
-        });
-    };
+    
     const sortComments = (videoIndex) => {
         const sortedComments = [...comments[videoIndex]].sort(
             (a, b) => b.timestamp - a.timestamp
