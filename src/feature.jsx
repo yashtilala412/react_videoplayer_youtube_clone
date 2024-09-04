@@ -90,7 +90,19 @@ const VideoList = () => {
             comment.liked = !comment.liked;
             setComments(newComments);
         };
-                                
+        const handleComment = (index, comment) => {
+            const newComment = { text: comment, replies: [], isNew: true };
+            setComments({
+                ...comments,
+                [index]: [...(comments[index] || []), newComment],
+            });
+        
+            setTimeout(() => {
+                newComment.isNew = false;
+                setComments({ ...comments });
+            }, 2000);
+        };
+             
     };
 
     const handleReply = (videoIndex, commentIndex, reply) => {
