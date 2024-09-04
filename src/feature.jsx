@@ -104,7 +104,11 @@ const VideoList = () => {
         newComments[videoIndex].unshift(pinnedComment);
         setComments(newComments);
     };
-        
+    const reportComment = (videoIndex, commentIndex) => {
+        alert('This comment has been reported.');
+        // Add reporting logic here
+    };
+            
     const handleReply = (videoIndex, commentIndex, reply) => {
         const newComments = { ...comments };
         newComments[videoIndex][commentIndex].replies.push(reply);
