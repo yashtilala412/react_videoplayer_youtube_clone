@@ -79,7 +79,12 @@ const VideoList = () => {
             newComments[videoIndex][commentIndex].text = newComment;
             setComments(newComments);
         };
-                
+        const deleteComment = (videoIndex, commentIndex) => {
+            const newComments = { ...comments };
+            newComments[videoIndex].splice(commentIndex, 1);
+            setComments(newComments);
+        };
+                        
     };
 
     const handleReply = (videoIndex, commentIndex, reply) => {
