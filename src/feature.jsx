@@ -84,7 +84,13 @@ const VideoList = () => {
             newComments[videoIndex].splice(commentIndex, 1);
             setComments(newComments);
         };
-                        
+        const toggleLike = (videoIndex, commentIndex) => {
+            const newComments = { ...comments };
+            const comment = newComments[videoIndex][commentIndex];
+            comment.liked = !comment.liked;
+            setComments(newComments);
+        };
+                                
     };
 
     const handleReply = (videoIndex, commentIndex, reply) => {
