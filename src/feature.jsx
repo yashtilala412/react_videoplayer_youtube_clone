@@ -90,7 +90,15 @@ const VideoList = () => {
             comment.liked = !comment.liked;
             setComments(newComments);
         };
-
+      
+        
+    };
+    const handleComment1 = (index, comment) => {
+        const emojiSupportedComment = comment.replace(/:\)/g, '😊').replace(/:\(/g, '😢');
+        setComments({
+            ...comments,
+            [index]: [...(comments[index] || []), { text: emojiSupportedComment, replies: [] }],
+        });
     };
     const sortComments = (videoIndex) => {
         const sortedComments = [...comments[videoIndex]].sort(
