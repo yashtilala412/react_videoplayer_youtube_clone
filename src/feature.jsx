@@ -108,7 +108,18 @@ const VideoList = () => {
         alert('This comment has been reported.');
         // Add reporting logic here
     };
-            
+    const handleComment = (index, comment) => {
+        const newComment = { text: comment, replies: [], isNew: true };
+        setComments({
+            ...comments,
+            [index]: [...(comments[index] || []), newComment],
+        });
+    
+        setTimeout(() => {
+            document.getElementById(`comment-${index}`).scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    };
+                
     const handleReply = (videoIndex, commentIndex, reply) => {
         const newComments = { ...comments };
         newComments[videoIndex][commentIndex].replies.push(reply);
