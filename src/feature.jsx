@@ -63,6 +63,18 @@ const VideoList = () => {
             ...comments,
             [index]: [...(comments[index] || []), { text: comment, replies: [] }],
         });
+        const handleComment = (index, comment) => {
+            const maxLength = 200;
+            if (comment.length > maxLength) {
+                alert(`Comment cannot exceed ${maxLength} characters.`);
+                return;
+            }
+            setComments({
+                ...comments,
+                [index]: [...(comments[index] || []), { text: comment, replies: [] }],
+            });
+        };
+        
     };
 
     const handleReply = (videoIndex, commentIndex, reply) => {
