@@ -119,7 +119,13 @@ const VideoList = () => {
             document.getElementById(`comment-${index}`).scrollIntoView({ behavior: 'smooth' });
         }, 100);
     };
-                
+    const filterComments = (videoIndex, keyword) => {
+        const filteredComments = comments[videoIndex].filter(comment =>
+            comment.text.includes(keyword)
+        );
+        setFilteredComments(filteredComments); // Add a new state to handle filtered comments
+    };
+                    
     const handleReply = (videoIndex, commentIndex, reply) => {
         const newComments = { ...comments };
         newComments[videoIndex][commentIndex].replies.push(reply);
