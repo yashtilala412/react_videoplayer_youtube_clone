@@ -98,7 +98,13 @@ const VideoList = () => {
         );
         setComments({ ...comments, [videoIndex]: sortedComments });
     };
-    
+    const pinComment = (videoIndex, commentIndex) => {
+        const newComments = { ...comments };
+        const pinnedComment = newComments[videoIndex].splice(commentIndex, 1)[0];
+        newComments[videoIndex].unshift(pinnedComment);
+        setComments(newComments);
+    };
+        
     const handleReply = (videoIndex, commentIndex, reply) => {
         const newComments = { ...comments };
         newComments[videoIndex][commentIndex].replies.push(reply);
