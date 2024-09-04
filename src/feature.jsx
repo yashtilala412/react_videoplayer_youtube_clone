@@ -104,27 +104,7 @@ const VideoList = () => {
         newComments[videoIndex].unshift(pinnedComment);
         setComments(newComments);
     };
-    const reportComment = (videoIndex, commentIndex) => {
-        alert('This comment has been reported.');
-        // Add reporting logic here
-    };
-    const handleComment = (index, comment) => {
-        const newComment = { text: comment, replies: [], isNew: true };
-        setComments({
-            ...comments,
-            [index]: [...(comments[index] || []), newComment],
-        });
-    
-        setTimeout(() => {
-            document.getElementById(`comment-${index}`).scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-    };
-    const filterComments = (videoIndex, keyword) => {
-        const filteredComments = comments[videoIndex].filter(comment =>
-            comment.text.includes(keyword)
-        );
-        setFilteredComments(filteredComments); // Add a new state to handle filtered comments
-    };
+
                     
     const handleReply = (videoIndex, commentIndex, reply) => {
         const newComments = { ...comments };
@@ -135,6 +115,13 @@ const VideoList = () => {
         };
         
     };
+    const toggleReplies = (videoIndex, commentIndex) => {
+        const newComments = { ...comments };
+        const comment = newComments[videoIndex][commentIndex];
+        comment.showReplies = !comment.showReplies;
+        setComments(newComments);
+    };
+    
 
     const toggleTheme = () => {
         setTheme(theme === "light" ? "dark" : "light");
