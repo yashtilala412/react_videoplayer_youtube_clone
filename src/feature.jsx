@@ -97,6 +97,10 @@ const VideoList = () => {
         const newComments = { ...comments };
         newComments[videoIndex][commentIndex].replies.push(reply);
         setComments(newComments);
+        const getReplyCount = (videoIndex, commentIndex) => {
+            return comments[videoIndex][commentIndex].replies.length;
+        };
+        
     };
 
     const toggleTheme = () => {
