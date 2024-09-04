@@ -90,21 +90,15 @@ const VideoList = () => {
             comment.liked = !comment.liked;
             setComments(newComments);
         };
-        const handleComment = (index, comment) => {
-            const newComment = { text: comment, replies: [], isNew: true };
-            setComments({
-                ...comments,
-                [index]: [...(comments[index] || []), newComment],
-            });
-        
-            setTimeout(() => {
-                newComment.isNew = false;
-                setComments({ ...comments });
-            }, 2000);
-        };
-             
-    };
 
+    };
+    const sortComments = (videoIndex) => {
+        const sortedComments = [...comments[videoIndex]].sort(
+            (a, b) => b.timestamp - a.timestamp
+        );
+        setComments({ ...comments, [videoIndex]: sortedComments });
+    };
+    
     const handleReply = (videoIndex, commentIndex, reply) => {
         const newComments = { ...comments };
         newComments[videoIndex][commentIndex].replies.push(reply);
