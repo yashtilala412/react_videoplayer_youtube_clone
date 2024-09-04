@@ -121,11 +121,12 @@ const VideoList = () => {
         comment.showReplies = !comment.showReplies;
         setComments(newComments);
     };
-    
-
     const toggleTheme = () => {
+        document.body.classList.add('theme-transition');
+        setTimeout(() => document.body.classList.remove('theme-transition'), 1000);
         setTheme(theme === "light" ? "dark" : "light");
     };
+    
 
     const sortedVideos = [...videos].sort((a, b) => {
         if (sortType === "title") {
