@@ -74,7 +74,12 @@ const VideoList = () => {
                 [index]: [...(comments[index] || []), { text: comment, replies: [] }],
             });
         };
-        
+        const editComment = (videoIndex, commentIndex, newComment) => {
+            const newComments = { ...comments };
+            newComments[videoIndex][commentIndex].text = newComment;
+            setComments(newComments);
+        };
+                
     };
 
     const handleReply = (videoIndex, commentIndex, reply) => {
