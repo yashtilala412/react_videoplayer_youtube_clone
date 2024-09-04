@@ -105,29 +105,18 @@ const VideoList = () => {
         setComments(newComments);
     };
 
-                    
-    const handleReply = (videoIndex, commentIndex, reply) => {
-        const newComments = { ...comments };
-        newComments[videoIndex][commentIndex].replies.push(reply);
-        setComments(newComments);
-        const getReplyCount = (videoIndex, commentIndex) => {
-            return comments[videoIndex][commentIndex].replies.length;
-        };
-        
-    };
-    const toggleReplies = (videoIndex, commentIndex) => {
-        const newComments = { ...comments };
-        const comment = newComments[videoIndex][commentIndex];
-        comment.showReplies = !comment.showReplies;
-        setComments(newComments);
-    };
     const toggleTheme = () => {
-        document.body.classList.add('theme-transition');
-        setTimeout(() => document.body.classList.remove('theme-transition'), 1000);
-        setTheme(theme === "light" ? "dark" : "light");
+        const newTheme = theme === "light" ? "dark" : "light";
+        setTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
     };
     
-
+    // On component mount
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+    }, []);
+    
     const sortedVideos = [...videos].sort((a, b) => {
         if (sortType === "title") {
             return a.title.localeCompare(b.title);
