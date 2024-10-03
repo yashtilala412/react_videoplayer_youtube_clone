@@ -107,10 +107,24 @@ const VideoList = () => {
         const savedTheme = localStorage.getItem('theme') || 'light';
         setTheme(savedTheme);
     }, []);
-    useEffect(() => {
-        document.body.style.transition = "background-color 0.5s ease";
-    }, []);
+    const [customTheme, setCustomTheme] = useState({
+        backgroundColor: '#fff',
+        fontColor: '#000'
+    });
     
+    const handleCustomThemeChange = (newSettings) => {
+        setCustomTheme(newSettings);
+        localStorage.setItem('customTheme', JSON.stringify(newSettings));
+    };
+    
+    // On mount, load the custom theme
+    useEffect(() => {
+        const savedCustomTheme = JSON.parse(localStorage.getItem('customTheme')) || {
+            backgroundColor: '#fff',
+            fontColor: '#000'
+        };
+        setCustomTheme(savedCustomTheme);
+    }, []);
     
     const sortedVideos = [...videos].sort((a, b) => {
         if (sortType === "title") {
