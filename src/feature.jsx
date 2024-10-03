@@ -184,6 +184,18 @@ const sortedVideos1 = [...videos].sort((a, b) => {
     }
     // existing sort logic...
 });
+const [playbackSpeed, setPlaybackSpeed] = useState(1);
+
+useEffect(() => {
+    const savedSpeed = localStorage.getItem('playbackSpeed') || 1;
+    setPlaybackSpeed(Number(savedSpeed));
+}, []);
+
+const handleSpeedChange = (newSpeed) => {
+    setPlaybackSpeed(newSpeed);
+    localStorage.setItem('playbackSpeed', newSpeed);
+};
+
 
 
 useEffect(() => {
