@@ -63,25 +63,6 @@ const VideoList = () => {
             ...comments,
             [index]: [...(comments[index] || []), { text: comment, replies: [] }],
         });
-        const sortComments = (videoIndex) => {
-            if (!comments[videoIndex] || comments[videoIndex].length === 0) {
-                console.warn('No comments to sort');
-                return;
-            }
-            if (videoIndex < 0 || videoIndex >= comments.length) {
-                console.error('Invalid video index');
-                return;
-            }
-            const sortedComments = [...comments[videoIndex]].sort((a, b) => {
-                if (b.timestamp === a.timestamp) {
-                    return b.likes - a.likes;
-                }
-                return b.timestamp - a.timestamp;
-            });
-            setComments({ ...comments, [videoIndex]: sortedComments });
-            return sortedComments;
-        };
-        
         const pinComment = (videoIndex, commentIndex) => {
             if (!comments[videoIndex] || comments[videoIndex].length === 0) {
                 console.warn('No comments to pin');
@@ -93,10 +74,13 @@ const VideoList = () => {
             }
             const newComments = { ...comments };
             const pinnedComment = newComments[videoIndex].splice(commentIndex, 1)[0];
-            newComments[videoIndex].unshift(pinnedComment);
+            const pinnedIndex = newComments[videoIndex].findIndex(comment => comment.pinned);
+            newComments[videoIndex].splice(pinnedIndex + 1, 0, pinnedComment); // Insert after existing pinned comments
+            pinnedComment.pinned = true; // Mark as pinned
             setComments(newComments);
             return newComments[videoIndex];
         };
+        
         
 
     const toggleTheme = () => {
