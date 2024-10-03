@@ -125,26 +125,6 @@ useEffect(() => {
     };
     setCustomTheme(savedCustomTheme);
 }, []);
-const [fontSize, setFontSize] = useState('16px');
-
-const handleFontSizeChange = (newSize) => {
-    setFontSize(newSize);
-    document.documentElement.style.fontSize = newSize;
-    localStorage.setItem('fontSize', newSize);
-};
-const [category, setCategory] = useState('All');
-
-const filteredVideos = videos.filter(video => 
-    category === 'All' ? true : video.category === category
-);
-
-return (
-    <select onChange={(e) => setCategory(e.target.value)}>
-        <option value="All">All</option>
-        <option value="Tutorials">Tutorials</option>
-        <option value="Entertainment">Entertainment</option>
-    </select>
-);
 const [searchQuery, setSearchQuery] = useState('');
 
 const searchedVideos = videos.filter(video => 
