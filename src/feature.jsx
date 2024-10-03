@@ -156,10 +156,20 @@ useEffect(() => {
     setVolume(Number(savedVolume));
 }, []);
 
-const handleVolumeChange = (newVolume) => {
-    setVolume(newVolume);
-    localStorage.setItem('volume', newVolume);
+const [favorites, setFavorites] = useState([]);
+
+const toggleFavorite = (videoId) => {
+    const newFavorites = favorites.includes(videoId)
+        ? favorites.filter(id => id !== videoId)
+        : [...favorites, videoId];
+    setFavorites(newFavorites);
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
 };
+
+useEffect(() => {
+    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setFavorites(savedFavorites);
+}, []);
 
 // On mount, load the saved font size
 useEffect(() => {
