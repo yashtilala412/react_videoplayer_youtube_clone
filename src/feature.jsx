@@ -295,21 +295,12 @@ const shareVideo = (videoId) => {
     });
 };
 
-const giveThumbsUp = (videoId) => {
-    console.log(`Thumbs up for video ID: ${videoId}`);
-};
-
-const playRandomVideoWithThumbsUp = () => {
-    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-    console.log(`Playing: ${randomVideo.title}`);
-    
-    // Give thumbs up
-    giveThumbsUp(randomVideo.id);
+const skipRandomVideo = () => {
+    playRandomVideo();
+    console.log('Skipping to next random video');
 };
 
 
-
-<button onClick={playRandomVideo}>Play Random Video</button>
 
 // On mount, load the saved font size
 useEffect(() => {
