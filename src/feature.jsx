@@ -259,6 +259,17 @@ const playRandomVideoInPiP = async () => {
         }
     }
 };
+const savePlaybackProgress = (videoId, progress) => {
+    localStorage.setItem(`progress_${videoId}`, progress);
+};
+
+const playRandomVideoWithProgressTracking = () => {
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    const progress = localStorage.getItem(`progress_${randomVideo.id}`) || 0;
+    
+    // Logic to play video from saved progress...
+    console.log(`Playing: ${randomVideo.title} from ${progress}%`);
+};
 
 
 
