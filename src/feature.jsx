@@ -238,6 +238,17 @@ const playRandomVideoWithTimer = (interval) => {
         playRandomVideo();
     }, interval);
 };
+const addVideoToFavorites = (videoId) => {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    favorites.push(videoId);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+};
+
+const playRandomVideoAndFavorite = () => {
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    addVideoToFavorites(randomVideo.id);
+    console.log(`Playing: ${randomVideo.title} (Added to favorites)`);
+};
 
 <button onClick={playRandomVideo}>Play Random Video</button>
 
