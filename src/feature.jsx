@@ -218,6 +218,9 @@ useEffect(() => {
                 value={newPlaylist}
                 onChange={e => setNewPlaylist(e.target.value)}
             />
+            <div>
+        <p>{video.views} views</p>
+    </div>
             <button onClick={handleCreatePlaylist}>Create Playlist</button>
             <select onChange={(e) => setSortType(e.target.value)}>
                 <option value="title">Title</option>
