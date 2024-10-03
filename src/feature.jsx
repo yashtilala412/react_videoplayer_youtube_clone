@@ -84,6 +84,7 @@ const VideoList = () => {
                 (a, b) => b.timestamp - a.timestamp
             );
             setComments({ ...comments, [videoIndex]: sortedComments });
+            return sortedComments; // Return sorted comments
         };
         
         const pinComment = (videoIndex, commentIndex) => {
@@ -95,6 +96,7 @@ const VideoList = () => {
             const pinnedComment = newComments[videoIndex].splice(commentIndex, 1)[0];
             newComments[videoIndex].unshift(pinnedComment);
             setComments(newComments);
+            return newComments[videoIndex]; // Return updated comments
         };
         
 
