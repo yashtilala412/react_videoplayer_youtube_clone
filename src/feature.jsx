@@ -238,21 +238,20 @@ const playRandomVideoWithTimer = (interval) => {
         playRandomVideo();
     }, interval);
 };
-const playRandomVideoWithAutoplay = () => {
-    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-    console.log(`Playing: ${randomVideo.title}`);
-    
-    randomVideoElement.onended = () => {
-        playRandomVideoWithAutoplay();
-    };
+const sendNotification = (videoTitle) => {
+    if (Notification.permission === "granted") {
+        new Notification(`Now playing: ${videoTitle}`);
+    } else {
+        Notification.requestPermission();
+    }
 };
-let randomPlayCount = 0;
 
-const playRandomVideoWithCount = () => {
-    randomPlayCount += 1;
+const playRandomVideoWithNotification = () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-    console.log(`Playing: ${randomVideo.title} (Played ${randomPlayCount} times)`);
+    sendNotification(randomVideo.title);
+    console.log(`Playing: ${randomVideo.title}`);
 };
+
 
 
 <button onClick={playRandomVideo}>Play Random Video</button>
