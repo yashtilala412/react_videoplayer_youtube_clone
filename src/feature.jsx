@@ -80,7 +80,17 @@ const VideoList = () => {
             setComments(newComments);
             return newComments[videoIndex];
         };
-        
+        const unpinComment = (videoIndex, commentIndex) => {
+            if (!comments[videoIndex] || comments[videoIndex].length === 0) {
+                console.warn('No comments to unpin');
+                return;
+            }
+            const newComments = { ...comments };
+            newComments[videoIndex][commentIndex].pinned = false; // Unmark as pinned
+            setComments(newComments);
+            return newComments[videoIndex];
+        };
+                
         
 
     const toggleTheme = () => {
