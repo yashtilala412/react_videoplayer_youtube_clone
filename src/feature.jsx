@@ -75,18 +75,28 @@ const VideoList = () => {
             });
         };
     
-    const sortComments = (videoIndex) => {
-        const sortedComments = [...comments[videoIndex]].sort(
-            (a, b) => b.timestamp - a.timestamp
-        );
-        setComments({ ...comments, [videoIndex]: sortedComments });
-    };
-    const pinComment = (videoIndex, commentIndex) => {
-        const newComments = { ...comments };
-        const pinnedComment = newComments[videoIndex].splice(commentIndex, 1)[0];
-        newComments[videoIndex].unshift(pinnedComment);
-        setComments(newComments);
-    };
+        const sortComments = (videoIndex) => {
+            if (!comments[videoIndex] || comments[videoIndex].length === 0) {
+                console.warn('No comments to sort');
+                return;
+            }
+            const sortedComments = [...comments[videoIndex]].sort(
+                (a, b) => b.timestamp - a.timestamp
+            );
+            setComments({ ...comments, [videoIndex]: sortedComments });
+        };
+        
+        const pinComment = (videoIndex, commentIndex) => {
+            if (!comments[videoIndex] || comments[videoIndex].length === 0) {
+                console.warn('No comments to pin');
+                return;
+            }
+            const newComments = { ...comments };
+            const pinnedComment = newComments[videoIndex].splice(commentIndex, 1)[0];
+            newComments[videoIndex].unshift(pinnedComment);
+            setComments(newComments);
+        };
+        
 
     const toggleTheme = () => {
         const newTheme = theme === "light" ? "dark" : "light";
