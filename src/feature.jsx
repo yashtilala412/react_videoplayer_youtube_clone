@@ -228,6 +228,11 @@ const playNonRepeatingRandomVideo = () => {
     playedVideos.push(randomVideo);
     console.log(`Playing: ${randomVideo.title}`);
 };
+const playRandomVideo = () => {
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    localStorage.setItem('lastPlayedVideo', randomVideo.id);
+    console.log(`Playing: ${randomVideo.title}`);
+};
 
 
 <button onClick={playRandomVideo}>Play Random Video</button>
