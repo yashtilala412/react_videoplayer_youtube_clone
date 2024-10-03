@@ -80,16 +80,20 @@ const VideoList = () => {
             setComments(newComments);
             return newComments[videoIndex];
         };
-        const sortComments = (videoIndex) => {
-            const sortedComments = [...comments[videoIndex]].sort((a, b) => {
-                if (a.pinned && !b.pinned) return -1;
-                if (!a.pinned && b.pinned) return 1;
-                return b.timestamp - a.timestamp;
-            });
-            setComments({ ...comments, [videoIndex]: sortedComments });
-            saveToLocalStorage(comments);
-            return sortedComments;
+        const togglePinComment = (videoIndex, commentIndex) => {
+            const newComments = { ...comments };
+            const comment = newComments[videoIndex][commentIndex];
+            comment.pinned = !comment.pinned;
+            if (comment.pinned) {
+                newComments[videoIndex].unshift(newComments[videoIndex].splice(commentIndex, 1)[0]);
+            } else {
+                newComments[videoIndex].push(newComments[videoIndex].splice(commentIndex, 1)[0]);
+            }
+            setComments(newComments);
+            saveToLocalStorage(newComments);
+            return newComments[videoIndex];
         };
+        
         
 
     const toggleTheme = () => {
