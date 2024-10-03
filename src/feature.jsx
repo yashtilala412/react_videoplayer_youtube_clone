@@ -132,6 +132,20 @@ const handleFontSizeChange = (newSize) => {
     document.documentElement.style.fontSize = newSize;
     localStorage.setItem('fontSize', newSize);
 };
+const [category, setCategory] = useState('All');
+
+const filteredVideos = videos.filter(video => 
+    category === 'All' ? true : video.category === category
+);
+
+return (
+    <select onChange={(e) => setCategory(e.target.value)}>
+        <option value="All">All</option>
+        <option value="Tutorials">Tutorials</option>
+        <option value="Entertainment">Entertainment</option>
+    </select>
+);
+
 
 // On mount, load the saved font size
 useEffect(() => {
