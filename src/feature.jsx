@@ -213,6 +213,21 @@ const playRandomVideoByCategory = (category) => {
     const randomVideo = filteredVideos[Math.floor(Math.random() * filteredVideos.length)];
     console.log(`Playing: ${randomVideo.title}`);
 };
+let playedVideos = [];
+
+const playNonRepeatingRandomVideo = () => {
+    if (playedVideos.length === videos.length) {
+        playedVideos = []; // Reset if all videos have been played
+    }
+    
+    let randomVideo;
+    do {
+        randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    } while (playedVideos.includes(randomVideo));
+
+    playedVideos.push(randomVideo);
+    console.log(`Playing: ${randomVideo.title}`);
+};
 
 
 <button onClick={playRandomVideo}>Play Random Video</button>
