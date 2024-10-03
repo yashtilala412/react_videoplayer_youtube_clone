@@ -277,12 +277,15 @@ const rateVideo = (videoId, rating) => {
     localStorage.setItem('ratings', JSON.stringify(ratings));
 };
 
-const playRandomVideoWithRating = () => {
-    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-    console.log(`Playing: ${randomVideo.title}`);
+const playRandomVideoExcludingLowRated = () => {
+    let ratings = JSON.parse(localStorage.getItem('ratings')) || {};
     
-    // Allow user to rate the video
-    rateVideo(randomVideo.id, 5); // Example rating
+    const filteredVideos = videos.filter(video => 
+        !ratings[video.id] || ratings[video.id] >= 3 // Exclude videos rated below 3
+    );
+    
+    const randomVideo = filteredVideos[Math.floor(Math.random() * filteredVideos.length)];
+    console.log(`Playing: ${randomVideo.title}`);
 };
 
 
