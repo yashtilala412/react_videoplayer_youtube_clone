@@ -300,6 +300,14 @@ const skipRandomVideo = () => {
     console.log('Skipping to next random video');
 };
 
+const playRandomVideoWithDescription = () => {
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    console.log(`Playing: ${randomVideo.title}`);
+    console.log(`Description: ${randomVideo.description}`);
+};
+
+// Example usage
+playRandomVideoWithDescription();
 
 
 // On mount, load the saved font size
