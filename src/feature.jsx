@@ -195,7 +195,7 @@ const handleSpeedChange = (newSpeed) => {
     setPlaybackSpeed(newSpeed);
     localStorage.setItem('playbackSpeed', newSpeed);
 };
-const sortedVideos = [...videos].sort((a, b) => {
+const sortedVideos2 = [...videos].sort((a, b) => {
     if (sortType === "comments") {
         return b.comments.length - a.comments.length;
     }
@@ -208,11 +208,12 @@ useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(savedFavorites);
 }, []);
-const playRandomVideo = () => {
-    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-    // Logic to play the video
+const playRandomVideoByCategory = (category) => {
+    const filteredVideos = videos.filter(video => video.category === category);
+    const randomVideo = filteredVideos[Math.floor(Math.random() * filteredVideos.length)];
     console.log(`Playing: ${randomVideo.title}`);
 };
+
 
 <button onClick={playRandomVideo}>Play Random Video</button>
 
