@@ -242,6 +242,11 @@ const resumeLastPlayedVideo = () => {
         playRandomVideo();
     }
 };
+const playRandomVideoWithTimer = (interval) => {
+    setInterval(() => {
+        playRandomVideo();
+    }, interval);
+};
 
 
 <button onClick={playRandomVideo}>Play Random Video</button>
