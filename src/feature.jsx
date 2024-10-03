@@ -138,6 +138,17 @@ const sortedVideos = [...videos].sort((a, b) => {
     }
     // existing sort logic...
 });
+const handleWatchVideo = (videoId) => {
+    localStorage.setItem('lastWatched', videoId);
+};
+
+// Load last watched video on mount
+useEffect(() => {
+    const lastWatched = localStorage.getItem('lastWatched');
+    if (lastWatched) {
+        console.log(`You last watched video ID: ${lastWatched}`);
+    }
+}, []);
 
 // On mount, load the saved font size
 useEffect(() => {
