@@ -295,22 +295,16 @@ const shareVideo = (videoId) => {
     });
 };
 
-const playRandomVideoWithShare = () => {
+const giveThumbsUp = (videoId) => {
+    console.log(`Thumbs up for video ID: ${videoId}`);
+};
+
+const playRandomVideoWithThumbsUp = () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
     console.log(`Playing: ${randomVideo.title}`);
     
-    // Share video
-    shareVideo(randomVideo.id);
-};
-const playRandomVideoPlaylist = (count = 5) => {
-    const playlist = [];
-    
-    for (let i = 0; i < count; i++) {
-        const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-        playlist.push(randomVideo);
-    }
-
-    console.log('Playing Playlist:', playlist.map(video => video.title).join(', '));
+    // Give thumbs up
+    giveThumbsUp(randomVideo.id);
 };
 
 
