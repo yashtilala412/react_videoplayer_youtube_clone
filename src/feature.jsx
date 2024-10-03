@@ -195,6 +195,12 @@ const handleSpeedChange = (newSpeed) => {
     setPlaybackSpeed(newSpeed);
     localStorage.setItem('playbackSpeed', newSpeed);
 };
+const sortedVideos = [...videos].sort((a, b) => {
+    if (sortType === "comments") {
+        return b.comments.length - a.comments.length;
+    }
+    // existing sort logic...
+});
 
 
 
