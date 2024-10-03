@@ -80,12 +80,15 @@ const VideoList = () => {
             setComments(newComments);
             return newComments[videoIndex];
         };
-        const pinComment = (videoIndex, commentIndex) => {
-            // existing pin code...
-            pinnedComment.highlight = true; // Add highlight flag
-            setComments(newComments);
-            saveToLocalStorage(newComments);
-            return newComments[videoIndex];
+        const sortComments = (videoIndex) => {
+            const sortedComments = [...comments[videoIndex]].sort((a, b) => {
+                if (a.pinned && !b.pinned) return -1;
+                if (!a.pinned && b.pinned) return 1;
+                return b.timestamp - a.timestamp;
+            });
+            setComments({ ...comments, [videoIndex]: sortedComments });
+            saveToLocalStorage(comments);
+            return sortedComments;
         };
         
 
