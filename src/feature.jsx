@@ -246,6 +246,13 @@ const playRandomVideoWithAutoplay = () => {
         playRandomVideoWithAutoplay();
     };
 };
+let randomPlayCount = 0;
+
+const playRandomVideoWithCount = () => {
+    randomPlayCount += 1;
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    console.log(`Playing: ${randomVideo.title} (Played ${randomPlayCount} times)`);
+};
 
 
 <button onClick={playRandomVideo}>Play Random Video</button>
