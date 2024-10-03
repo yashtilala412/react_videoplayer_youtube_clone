@@ -80,28 +80,13 @@ const VideoList = () => {
             setComments(newComments);
             return newComments[videoIndex];
         };
-        const saveToLocalStorage = (comments) => {
-            localStorage.setItem('comments', JSON.stringify(comments));
-        };
-        
-        const sortComments = (videoIndex) => {
-            // existing sort code...
-            saveToLocalStorage(comments);
-            return sortedComments;
-        };
-        
         const pinComment = (videoIndex, commentIndex) => {
             // existing pin code...
-            saveToLocalStorage(comments);
+            pinnedComment.highlight = true; // Add highlight flag
+            setComments(newComments);
+            saveToLocalStorage(newComments);
             return newComments[videoIndex];
         };
-        
-        const unpinComment = (videoIndex, commentIndex) => {
-            // existing unpin code...
-            saveToLocalStorage(comments);
-            return newComments[videoIndex];
-        };
-        
         
 
     const toggleTheme = () => {
