@@ -246,10 +246,18 @@ const sendNotification = (videoTitle) => {
     }
 };
 
-const playRandomVideoWithNotification = () => {
+const playRandomVideoInPiP = async () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-    sendNotification(randomVideo.title);
-    console.log(`Playing: ${randomVideo.title}`);
+    const videoElement = document.querySelector(`#video-${randomVideo.id}`);
+    
+    if (videoElement) {
+        try {
+            await videoElement.requestPictureInPicture();
+            console.log(`Playing: ${randomVideo.title} in Picture-in-Picture mode`);
+        } catch (error) {
+            console.error('Failed to enter Picture-in-Picture mode');
+        }
+    }
 };
 
 
