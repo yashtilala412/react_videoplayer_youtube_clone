@@ -80,24 +80,16 @@ const VideoList = () => {
                 console.warn('No comments to sort');
                 return;
             }
-            const sortedComments = [...comments[videoIndex]].sort(
-                (a, b) => b.timestamp - a.timestamp
-            );
+            const sortedComments = [...comments[videoIndex]].sort((a, b) => {
+                if (b.timestamp === a.timestamp) {
+                    return b.likes - a.likes; // Secondary sort by likes
+                }
+                return b.timestamp - a.timestamp;
+            });
             setComments({ ...comments, [videoIndex]: sortedComments });
-            return sortedComments; // Return sorted comments
+            return sortedComments;
         };
         
-        const pinComment = (videoIndex, commentIndex) => {
-            if (!comments[videoIndex] || comments[videoIndex].length === 0) {
-                console.warn('No comments to pin');
-                return;
-            }
-            const newComments = { ...comments };
-            const pinnedComment = newComments[videoIndex].splice(commentIndex, 1)[0];
-            newComments[videoIndex].unshift(pinnedComment);
-            setComments(newComments);
-            return newComments[videoIndex]; // Return updated comments
-        };
         
 
     const toggleTheme = () => {
