@@ -63,26 +63,18 @@ const VideoList = () => {
             ...comments,
             [index]: [...(comments[index] || []), { text: comment, replies: [] }],
         });
-        const handleComment = (index, comment) => {
-            const maxLength = 200;
-            if (comment.length > maxLength) {
-                alert(`Comment cannot exceed ${maxLength} characters.`);
-                return;
-            }
-            setComments({
-                ...comments,
-                [index]: [...(comments[index] || []), { text: comment, replies: [] }],
-            });
-        };
-    
         const sortComments = (videoIndex) => {
             if (!comments[videoIndex] || comments[videoIndex].length === 0) {
                 console.warn('No comments to sort');
                 return;
             }
+            if (videoIndex < 0 || videoIndex >= comments.length) {
+                console.error('Invalid video index');
+                return;
+            }
             const sortedComments = [...comments[videoIndex]].sort((a, b) => {
                 if (b.timestamp === a.timestamp) {
-                    return b.likes - a.likes; // Secondary sort by likes
+                    return b.likes - a.likes;
                 }
                 return b.timestamp - a.timestamp;
             });
@@ -90,6 +82,21 @@ const VideoList = () => {
             return sortedComments;
         };
         
+        const pinComment = (videoIndex, commentIndex) => {
+            if (!comments[videoIndex] || comments[videoIndex].length === 0) {
+                console.warn('No comments to pin');
+                return;
+            }
+            if (videoIndex < 0 || videoIndex >= comments.length || commentIndex < 0 || commentIndex >= comments[videoIndex].length) {
+                console.error('Invalid index');
+                return;
+            }
+            const newComments = { ...comments };
+            const pinnedComment = newComments[videoIndex].splice(commentIndex, 1)[0];
+            newComments[videoIndex].unshift(pinnedComment);
+            setComments(newComments);
+            return newComments[videoIndex];
+        };
         
 
     const toggleTheme = () => {
