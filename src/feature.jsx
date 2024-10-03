@@ -271,6 +271,19 @@ const playRandomVideoWithLimit = () => {
     videoPlayCounts[randomVideo.id] = (videoPlayCounts[randomVideo.id] || 0) + 1;
     console.log(`Playing: ${randomVideo.title}`);
 };
+const rateVideo = (videoId, rating) => {
+    let ratings = JSON.parse(localStorage.getItem('ratings')) || {};
+    ratings[videoId] = rating;
+    localStorage.setItem('ratings', JSON.stringify(ratings));
+};
+
+const playRandomVideoWithRating = () => {
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    console.log(`Playing: ${randomVideo.title}`);
+    
+    // Allow user to rate the video
+    rateVideo(randomVideo.id, 5); // Example rating
+};
 
 
 
