@@ -145,6 +145,20 @@ return (
         <option value="Entertainment">Entertainment</option>
     </select>
 );
+const [searchQuery, setSearchQuery] = useState('');
+
+const searchedVideos = videos.filter(video => 
+    video.title.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
+return (
+    <input
+        type="text"
+        placeholder="Search Videos"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+    />
+);
 
 
 // On mount, load the saved font size
