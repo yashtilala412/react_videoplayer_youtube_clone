@@ -233,6 +233,15 @@ const playRandomVideo = () => {
     localStorage.setItem('lastPlayedVideo', randomVideo.id);
     console.log(`Playing: ${randomVideo.title}`);
 };
+const resumeLastPlayedVideo = () => {
+    const lastPlayedId = localStorage.getItem('lastPlayedVideo');
+    if (lastPlayedId) {
+        const lastPlayedVideo = videos.find(video => video.id === lastPlayedId);
+        console.log(`Resuming: ${lastPlayedVideo.title}`);
+    } else {
+        playRandomVideo();
+    }
+};
 
 
 <button onClick={playRandomVideo}>Play Random Video</button>
