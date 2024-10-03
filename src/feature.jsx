@@ -133,7 +133,13 @@ const VideoList = () => {
             <span>{theme === 'light' ? '🌞 Light Theme' : '🌙 Dark Theme'}</span>
         </div>
     );
-        
+    const resetTheme = () => {
+        setTheme('light');
+        localStorage.setItem('theme', 'light');
+    };
+    
+    <button onClick={resetTheme}>Reset to Default Theme</button>
+            
     const sortedVideos = [...videos].sort((a, b) => {
         if (sortType === "title") {
             return a.title.localeCompare(b.title);
