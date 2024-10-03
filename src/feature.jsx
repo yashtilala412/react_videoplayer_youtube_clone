@@ -139,6 +139,16 @@ useEffect(() => {
     setFontSize(savedFontSize);
     document.documentElement.style.fontSize = savedFontSize;
 }, []);
+const videoStyles = {
+    light: { backgroundColor: '#fff', color: '#000' },
+    dark: { backgroundColor: '#000', color: '#fff' }
+};
+
+return (
+    <div style={theme === 'light' ? videoStyles.light : videoStyles.dark}>
+        {/* Video content */}
+    </div>
+);
 
     const sortedVideos = [...videos].sort((a, b) => {
         if (sortType === "title") {
