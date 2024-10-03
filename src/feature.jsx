@@ -89,7 +89,12 @@ const VideoList = () => {
         const formatTimestamp = (timestamp) => {
             return new Date(timestamp).toLocaleString();
         };
-                
+        const undoPinComment = (videoIndex, commentIndex) => {
+            const previousComments = JSON.parse(localStorage.getItem('comments'));
+            setComments(previousComments);
+            return previousComments[videoIndex];
+        };
+                        
 
     const toggleTheme = () => {
         const newTheme = theme === "light" ? "dark" : "light";
