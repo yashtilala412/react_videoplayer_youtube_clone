@@ -139,27 +139,16 @@ useEffect(() => {
     setFontSize(savedFontSize);
     document.documentElement.style.fontSize = savedFontSize;
 }, []);
-const videoStyles = {
-    light: { backgroundColor: '#fff', color: '#000' },
-    dark: { backgroundColor: '#000', color: '#fff' }
-};
 
-return (
-    <div style={theme === 'light' ? videoStyles.light : videoStyles.dark}>
-        {/* Video content */}
-    </div>
-);
+useEffect(() => {
+    localStorage.setItem('sortType', sortType);
+}, [sortType]);
 
-    const sortedVideos = [...videos].sort((a, b) => {
-        if (sortType === "title") {
-            return a.title.localeCompare(b.title);
-        } else if (sortType === "date") {
-            return new Date(b.date) - new Date(a.date);
-        } else if (sortType === "popularity") {
-            return b.views - a.views;
-        }
-        return 0;
-    });
+useEffect(() => {
+    const savedSortType = localStorage.getItem('sortType') || 'date';
+    setSortType(savedSortType);
+}, []);
+
 
     return (
         <div className={`video-list ${theme}`}>
