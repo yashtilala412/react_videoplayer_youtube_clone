@@ -86,7 +86,10 @@ const VideoList = () => {
             saveToLocalStorage(comments);
             return sortedComments;
         };
-        
+        const formatTimestamp = (timestamp) => {
+            return new Date(timestamp).toLocaleString();
+        };
+                
 
     const toggleTheme = () => {
         const newTheme = theme === "light" ? "dark" : "light";
