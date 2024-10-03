@@ -170,15 +170,13 @@ useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(savedFavorites);
 }, []);
-const formatUploadDate = (date) => {
-    return new Date(date).toLocaleDateString();
+const playRandomVideo = () => {
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    // Logic to play the video
+    console.log(`Playing: ${randomVideo.title}`);
 };
 
-return (
-    <div>
-        <p>Uploaded on: {formatUploadDate(video.date)}</p>
-    </div>
-);
+<button onClick={playRandomVideo}>Play Random Video</button>
 
 // On mount, load the saved font size
 useEffect(() => {
