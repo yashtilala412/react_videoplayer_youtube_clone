@@ -149,6 +149,17 @@ useEffect(() => {
         console.log(`You last watched video ID: ${lastWatched}`);
     }
 }, []);
+const [volume, setVolume] = useState(1); // default full volume
+
+useEffect(() => {
+    const savedVolume = localStorage.getItem('volume') || 1;
+    setVolume(Number(savedVolume));
+}, []);
+
+const handleVolumeChange = (newVolume) => {
+    setVolume(newVolume);
+    localStorage.setItem('volume', newVolume);
+};
 
 // On mount, load the saved font size
 useEffect(() => {
