@@ -178,6 +178,13 @@ const toggleFavorite = (videoId) => {
     setFavorites(newFavorites);
     localStorage.setItem('favorites', JSON.stringify(newFavorites));
 };
+const sortedVideos1 = [...videos].sort((a, b) => {
+    if (sortType === "likes") {
+        return b.likes - a.likes;
+    }
+    // existing sort logic...
+});
+
 
 useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
