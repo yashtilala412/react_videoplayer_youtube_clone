@@ -107,39 +107,39 @@ const VideoList = () => {
         const savedTheme = localStorage.getItem('theme') || 'light';
         setTheme(savedTheme);
     }, []);
-    const [customTheme, setCustomTheme] = useState({
+const [customTheme, setCustomTheme] = useState({
+    backgroundColor: '#fff',
+    fontColor: '#000'
+});
+
+const handleCustomThemeChange = (newSettings) => {
+    setCustomTheme(newSettings);
+    localStorage.setItem('customTheme', JSON.stringify(newSettings));
+};
+
+// On mount, load the custom theme
+useEffect(() => {
+    const savedCustomTheme = JSON.parse(localStorage.getItem('customTheme')) || {
         backgroundColor: '#fff',
         fontColor: '#000'
-    });
-    
-    const handleCustomThemeChange = (newSettings) => {
-        setCustomTheme(newSettings);
-        localStorage.setItem('customTheme', JSON.stringify(newSettings));
     };
-    
-    // On mount, load the custom theme
-    useEffect(() => {
-        const savedCustomTheme = JSON.parse(localStorage.getItem('customTheme')) || {
-            backgroundColor: '#fff',
-            fontColor: '#000'
-        };
-        setCustomTheme(savedCustomTheme);
-    }, []);
-    return (
-        <div>
-            <button onClick={toggleTheme}>
-                Toggle Theme
-            </button>
-            <span>{theme === 'light' ? '🌞 Light Theme' : '🌙 Dark Theme'}</span>
-        </div>
-    );
-    const resetTheme = () => {
-        setTheme('light');
-        localStorage.setItem('theme', 'light');
-    };
-    
-    <button onClick={resetTheme}>Reset to Default Theme</button>
-            
+    setCustomTheme(savedCustomTheme);
+}, []);
+const [fontSize, setFontSize] = useState('16px');
+
+const handleFontSizeChange = (newSize) => {
+    setFontSize(newSize);
+    document.documentElement.style.fontSize = newSize;
+    localStorage.setItem('fontSize', newSize);
+};
+
+// On mount, load the saved font size
+useEffect(() => {
+    const savedFontSize = localStorage.getItem('fontSize') || '16px';
+    setFontSize(savedFontSize);
+    document.documentElement.style.fontSize = savedFontSize;
+}, []);
+
     const sortedVideos = [...videos].sort((a, b) => {
         if (sortType === "title") {
             return a.title.localeCompare(b.title);
