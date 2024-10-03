@@ -125,7 +125,15 @@ const VideoList = () => {
         };
         setCustomTheme(savedCustomTheme);
     }, []);
-    
+    return (
+        <div>
+            <button onClick={toggleTheme}>
+                Toggle Theme
+            </button>
+            <span>{theme === 'light' ? '🌞 Light Theme' : '🌙 Dark Theme'}</span>
+        </div>
+    );
+        
     const sortedVideos = [...videos].sort((a, b) => {
         if (sortType === "title") {
             return a.title.localeCompare(b.title);
