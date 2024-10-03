@@ -93,7 +93,12 @@ const VideoList = () => {
             saveToLocalStorage(newComments);
             return newComments[videoIndex];
         };
-        
+        const filterComments = (videoIndex, keyword) => {
+            return comments[videoIndex].filter(comment =>
+                comment.text.toLowerCase().includes(keyword.toLowerCase())
+            );
+        };
+                
         
 
     const toggleTheme = () => {
