@@ -107,6 +107,10 @@ const VideoList = () => {
         const savedTheme = localStorage.getItem('theme') || 'light';
         setTheme(savedTheme);
     }, []);
+    useEffect(() => {
+        document.body.style.transition = "background-color 0.5s ease";
+    }, []);
+    
     
     const sortedVideos = [...videos].sort((a, b) => {
         if (sortType === "title") {
