@@ -170,6 +170,15 @@ useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(savedFavorites);
 }, []);
+const formatUploadDate = (date) => {
+    return new Date(date).toLocaleDateString();
+};
+
+return (
+    <div>
+        <p>Uploaded on: {formatUploadDate(video.date)}</p>
+    </div>
+);
 
 // On mount, load the saved font size
 useEffect(() => {
