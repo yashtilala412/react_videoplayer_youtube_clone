@@ -155,6 +155,19 @@ useEffect(() => {
     const savedVolume = localStorage.getItem('volume') || 1;
     setVolume(Number(savedVolume));
 }, []);
+const [recentVideos, setRecentVideos] = useState([]);
+
+const markAsWatched = (videoId) => {
+    const newRecentVideos = [...recentVideos, videoId].slice(-5); // keep last 5 videos
+    setRecentVideos(newRecentVideos);
+    localStorage.setItem('recentVideos', JSON.stringify(newRecentVideos));
+};
+
+// Load recent videos on mount
+useEffect(() => {
+    const savedRecentVideos = JSON.parse(localStorage.getItem('recentVideos')) || [];
+    setRecentVideos(savedRecentVideos);
+}, []);
 
 const [favorites, setFavorites] = useState([]);
 
