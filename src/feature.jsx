@@ -287,6 +287,21 @@ const playRandomVideoExcludingLowRated = () => {
     const randomVideo = filteredVideos[Math.floor(Math.random() * filteredVideos.length)];
     console.log(`Playing: ${randomVideo.title}`);
 };
+const shareVideo = (videoId) => {
+    const videoUrl = `https://example.com/videos/${videoId}`;
+    navigator.share({
+        title: 'Check out this video!',
+        url: videoUrl,
+    });
+};
+
+const playRandomVideoWithShare = () => {
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    console.log(`Playing: ${randomVideo.title}`);
+    
+    // Share video
+    shareVideo(randomVideo.id);
+};
 
 
 
