@@ -80,17 +80,28 @@ const VideoList = () => {
             setComments(newComments);
             return newComments[videoIndex];
         };
-        const unpinComment = (videoIndex, commentIndex) => {
-            if (!comments[videoIndex] || comments[videoIndex].length === 0) {
-                console.warn('No comments to unpin');
-                return;
-            }
-            const newComments = { ...comments };
-            newComments[videoIndex][commentIndex].pinned = false; // Unmark as pinned
-            setComments(newComments);
+        const saveToLocalStorage = (comments) => {
+            localStorage.setItem('comments', JSON.stringify(comments));
+        };
+        
+        const sortComments = (videoIndex) => {
+            // existing sort code...
+            saveToLocalStorage(comments);
+            return sortedComments;
+        };
+        
+        const pinComment = (videoIndex, commentIndex) => {
+            // existing pin code...
+            saveToLocalStorage(comments);
             return newComments[videoIndex];
         };
-                
+        
+        const unpinComment = (videoIndex, commentIndex) => {
+            // existing unpin code...
+            saveToLocalStorage(comments);
+            return newComments[videoIndex];
+        };
+        
         
 
     const toggleTheme = () => {
