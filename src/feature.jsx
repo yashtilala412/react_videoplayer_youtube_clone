@@ -80,15 +80,12 @@ const VideoList = () => {
             setComments(newComments);
             return newComments[videoIndex];
         };
-        const pinComment = (videoIndex, commentIndex) => {
-            const pinnedCount = comments[videoIndex].filter(comment => comment.pinned).length;
-            if (pinnedCount >= 3) {
-                console.warn('Maximum 3 pinned comments allowed');
-                return;
-            }
-            // existing pin logic...
+        const sortCommentsByLength = (videoIndex) => {
+            const sortedComments = [...comments[videoIndex]].sort((a, b) => b.text.length - a.text.length);
+            setComments({ ...comments, [videoIndex]: sortedComments });
+            saveToLocalStorage(comments);
+            return sortedComments;
         };
-        
         
 
     const toggleTheme = () => {
