@@ -259,10 +259,17 @@ const playRandomVideoInPiP = async () => {
         }
     }
 };
-const playRandomVideoWithSpeed = () => {
-    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-    const playbackSpeed = Math.random() * (2 - 0.5) + 0.5; // Random speed between 0.5x and 2x
-    console.log(`Playing: ${randomVideo.title} at ${playbackSpeed.toFixed(1)}x speed`);
+const playCountLimit = 3;
+const videoPlayCounts = {};
+
+const playRandomVideoWithLimit = () => {
+    let randomVideo;
+    do {
+        randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    } while (videoPlayCounts[randomVideo.id] >= playCountLimit);
+    
+    videoPlayCounts[randomVideo.id] = (videoPlayCounts[randomVideo.id] || 0) + 1;
+    console.log(`Playing: ${randomVideo.title}`);
 };
 
 
