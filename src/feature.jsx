@@ -125,21 +125,19 @@ useEffect(() => {
     };
     setCustomTheme(savedCustomTheme);
 }, []);
-const [searchQuery, setSearchQuery] = useState('');
+const [fontSize, setFontSize] = useState('16px');
 
-const searchedVideos = videos.filter(video => 
-    video.title.toLowerCase().includes(searchQuery.toLowerCase())
-);
-
-return (
-    <input
-        type="text"
-        placeholder="Search Videos"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-    />
-);
-
+const handleFontSizeChange = (newSize) => {
+    setFontSize(newSize);
+    document.documentElement.style.fontSize = newSize;
+    localStorage.setItem('fontSize', newSize);
+};
+const sortedVideos = [...videos].sort((a, b) => {
+    if (sortType === "duration") {
+        return a.duration - b.duration;
+    }
+    // existing sort logic...
+});
 
 // On mount, load the saved font size
 useEffect(() => {
