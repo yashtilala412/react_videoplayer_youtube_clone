@@ -227,6 +227,11 @@ const playNonRepeatingRandomVideo = () => {
 
     playedVideos.push(randomVideo);
     console.log(`Playing: ${randomVideo.title}`);
+    if (videos.length === 0) {
+        console.log("No videos available to play.");
+        return;
+    }
+    
 };
 const playRandomVideo = () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
