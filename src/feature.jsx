@@ -261,7 +261,11 @@ const playNonRepeatingRandomVideo = () => {
     if (reversePlay) {
         videos.reverse();
     }
-                                    
+    let loopVideos = true;
+    if (loopVideos && playedVideos.length === videos.length) {
+        playedVideos = []; // Reset played list
+    }
+                                        
 };
 const playRandomVideo = () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
