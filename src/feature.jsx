@@ -248,6 +248,7 @@ const playNonRepeatingRandomVideo = () => {
     }
     const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5);
     videos = shuffleArray(videos);
+    console.log("Videos shuffled after all were played.");
                         
 };
 const playRandomVideo = () => {
