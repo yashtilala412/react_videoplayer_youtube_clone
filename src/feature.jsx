@@ -246,7 +246,9 @@ const playNonRepeatingRandomVideo = () => {
         console.log(`${randomVideo.title} was played recently.`);
         return;
     }
-                    
+    const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5);
+    videos = shuffleArray(videos);
+                        
 };
 const playRandomVideo = () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
