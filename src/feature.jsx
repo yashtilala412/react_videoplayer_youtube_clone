@@ -241,7 +241,12 @@ const playNonRepeatingRandomVideo = () => {
     const lastPlayed = {};
     lastPlayed[randomVideo.title] = new Date().toLocaleString();
     console.log(`Last played: ${lastPlayed[randomVideo.title]}`);
-                
+    const tenMinutes = 10 * 60 * 1000;
+    if (new Date() - new Date(lastPlayed[randomVideo.title]) < tenMinutes) {
+        console.log(`${randomVideo.title} was played recently.`);
+        return;
+    }
+                    
 };
 const playRandomVideo = () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
