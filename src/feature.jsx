@@ -233,6 +233,7 @@ const playNonRepeatingRandomVideo = () => {
     }
     const playCount = {};
     videos.forEach(video => playCount[video.title] = 0);
+    playCount[randomVideo.title]++;
         
 };
 const playRandomVideo = () => {
