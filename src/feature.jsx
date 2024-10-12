@@ -240,6 +240,7 @@ const playNonRepeatingRandomVideo = () => {
     }
     const lastPlayed = {};
     lastPlayed[randomVideo.title] = new Date().toLocaleString();
+    console.log(`Last played: ${lastPlayed[randomVideo.title]}`);
                 
 };
 const playRandomVideo = () => {
