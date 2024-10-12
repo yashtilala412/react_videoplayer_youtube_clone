@@ -234,6 +234,7 @@ const playNonRepeatingRandomVideo = () => {
     const playCount = {};
     videos.forEach(video => playCount[video.title] = 0);
     playCount[randomVideo.title]++;
+    console.log(`Play count for ${randomVideo.title}: ${playCount[randomVideo.title]}`);
         
 };
 const playRandomVideo = () => {
