@@ -238,7 +238,9 @@ const playNonRepeatingRandomVideo = () => {
     if (playCount[randomVideo.title] > 5) {
         alert(`${randomVideo.title} has been played more than 5 times.`);
     }
-            
+    const lastPlayed = {};
+    lastPlayed[randomVideo.title] = new Date().toLocaleString();
+                
 };
 const playRandomVideo = () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
