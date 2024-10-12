@@ -252,7 +252,12 @@ const playNonRepeatingRandomVideo = () => {
     if (playedVideos.length === videos.length) {
         console.log("All videos played. Resetting playlist...");
     }
-                            
+    let playLimit = 10;
+    if (playedVideos.length >= playLimit) {
+        console.log("Play limit reached for this session.");
+        return;
+    }
+                                
 };
 const playRandomVideo = () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
