@@ -235,7 +235,10 @@ const playNonRepeatingRandomVideo = () => {
     videos.forEach(video => playCount[video.title] = 0);
     playCount[randomVideo.title]++;
     console.log(`Play count for ${randomVideo.title}: ${playCount[randomVideo.title]}`);
-        
+    if (playCount[randomVideo.title] > 5) {
+        alert(`${randomVideo.title} has been played more than 5 times.`);
+    }
+            
 };
 const playRandomVideo = () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
