@@ -231,7 +231,9 @@ const playNonRepeatingRandomVideo = () => {
         console.log("No videos available to play.");
         return;
     }
-    
+    const playCount = {};
+    videos.forEach(video => playCount[video.title] = 0);
+        
 };
 const playRandomVideo = () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
