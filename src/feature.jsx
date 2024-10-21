@@ -61,7 +61,14 @@ const VideoList = () => {
     const getPlaylistInfo = (playlist) => {
         return `${playlist} (${playlists[playlist].length} videos)`;
     };
-                
+    const handleAddToPlaylist1 = (playlist, index) => {
+        if (playlists[playlist].includes(videos[index])) {
+            alert("This video is already in the playlist.");
+            return;
+        }
+        setPlaylists({ ...playlists, [playlist]: [...playlists[playlist], videos[index]] });
+    };
+                    
     const handleRemoveFromPlaylist = (playlist, index) => {
         const updatedPlaylist = playlists[playlist].filter((_, i) => i !== index);
         setPlaylists({ ...playlists, [playlist]: updatedPlaylist });
