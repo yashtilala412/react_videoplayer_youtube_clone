@@ -116,7 +116,11 @@ const VideoList = () => {
         };
         reader.readAsText(file);
     };
-                        
+    const getTotalDuration = (playlist) => {
+        const totalDuration = playlists[playlist].reduce((total, video) => total + video.duration, 0);
+        return `Total duration: ${totalDuration} minutes`;
+    };
+                            
     const handleReorderVideos = (playlist, fromIndex, toIndex) => {
         const updatedPlaylist = [...playlists[playlist]];
         const [movedVideo] = updatedPlaylist.splice(fromIndex, 1);
