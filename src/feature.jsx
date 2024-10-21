@@ -68,7 +68,13 @@ const VideoList = () => {
         }
         setPlaylists({ ...playlists, [playlist]: [...playlists[playlist], videos[index]] });
     };
-                    
+    const handleReorderVideos = (playlist, fromIndex, toIndex) => {
+        const updatedPlaylist = [...playlists[playlist]];
+        const [movedVideo] = updatedPlaylist.splice(fromIndex, 1);
+        updatedPlaylist.splice(toIndex, 0, movedVideo);
+        setPlaylists({ ...playlists, [playlist]: updatedPlaylist });
+    };
+                  
     const handleRemoveFromPlaylist = (playlist, index) => {
         const updatedPlaylist = playlists[playlist].filter((_, i) => i !== index);
         setPlaylists({ ...playlists, [playlist]: updatedPlaylist });
