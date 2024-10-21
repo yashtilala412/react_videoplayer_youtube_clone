@@ -31,21 +31,20 @@ const VideoList = () => {
     const handleFavorite = (index) => {
         setFavorites([...favorites, videos[index]]);
     };
-
-    const handleCreatePlaylist = () => {
-        if (Object.keys(playlists).length >= 10) {
-            alert("You have reached the maximum number of playlists (10).");
+    const handleRenamePlaylist = (oldName, newName) => {
+        if (!newName.trim()) {
+            alert("Playlist name cannot be empty.");
             return;
         }
-        if (!newPlaylist.trim()) {
-            alert("Playlist name cannot be empty or spaces only.");
+        if (playlists.hasOwnProperty(newName)) {
+            alert("A playlist with this name already exists.");
             return;
         }
-        if (window.confirm(`Are you sure you want to create a new playlist named "${newPlaylist}"?`)) {
-            setPlaylists({ ...playlists, [newPlaylist]: [] });
-            setNewPlaylist("");
-        }
+        const updatedPlaylists = { ...playlists, [newName]: playlists[oldName] };
+        delete updatedPlaylists[oldName];
+        setPlaylists(updatedPlaylists);
     };
+    
     const handleRemoveFromPlaylist = (playlist, index) => {
         const updatedPlaylist = playlists[playlist].filter((_, i) => i !== index);
         setPlaylists({ ...playlists, [playlist]: updatedPlaylist });
