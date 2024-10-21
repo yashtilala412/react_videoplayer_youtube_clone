@@ -44,7 +44,14 @@ const VideoList = () => {
         delete updatedPlaylists[oldName];
         setPlaylists(updatedPlaylists);
     };
-    
+    const handleDeletePlaylist = (playlist) => {
+        if (window.confirm(`Are you sure you want to delete the playlist "${playlist}"?`)) {
+            const updatedPlaylists = { ...playlists };
+            delete updatedPlaylists[playlist];
+            setPlaylists(updatedPlaylists);
+        }
+    };
+        
     const handleRemoveFromPlaylist = (playlist, index) => {
         const updatedPlaylist = playlists[playlist].filter((_, i) => i !== index);
         setPlaylists({ ...playlists, [playlist]: updatedPlaylist });
