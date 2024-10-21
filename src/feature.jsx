@@ -107,7 +107,16 @@ const VideoList = () => {
         downloadAnchorNode.click();
         downloadAnchorNode.remove();
     };
-                    
+    const handleImportPlaylist = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const importedPlaylist = JSON.parse(e.target.result);
+            setPlaylists({ ...playlists, ...importedPlaylist });
+        };
+        reader.readAsText(file);
+    };
+                        
     const handleReorderVideos = (playlist, fromIndex, toIndex) => {
         const updatedPlaylist = [...playlists[playlist]];
         const [movedVideo] = updatedPlaylist.splice(fromIndex, 1);
