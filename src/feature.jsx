@@ -46,7 +46,25 @@ const VideoList = () => {
             setNewPlaylist("");
         }
     };
-    
+    const handleCreatePlaylist = () => {
+        if (Object.keys(playlists).length >= 10) {
+            alert("You have reached the maximum number of playlists (10).");
+            return;
+        }
+        if (!newPlaylist.trim()) {
+            alert("Playlist name cannot be empty or spaces only.");
+            return;
+        }
+        if (playlists.hasOwnProperty(newPlaylist)) {
+            alert("A playlist with this name already exists.");
+            return;
+        }
+        if (window.confirm(`Are you sure you want to create a new playlist named "${newPlaylist}"?`)) {
+            setPlaylists({ ...playlists, [newPlaylist]: [] });
+            setNewPlaylist("");
+        }
+    };
+        
     const handleAddToPlaylist = (playlist, index) => {
         setPlaylists({ ...playlists, [playlist]: [...playlists[playlist], videos[index]] });
     };
