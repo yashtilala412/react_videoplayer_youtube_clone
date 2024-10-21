@@ -74,7 +74,13 @@ const VideoList = () => {
     useEffect(() => {
         localStorage.setItem("playlists", JSON.stringify(playlists));
     }, [playlists]);
-        
+    useEffect(() => {
+        const savedPlaylists = JSON.parse(localStorage.getItem("playlists"));
+        if (savedPlaylists) {
+            setPlaylists(savedPlaylists);
+        }
+    }, []);
+            
     const handleReorderVideos = (playlist, fromIndex, toIndex) => {
         const updatedPlaylist = [...playlists[playlist]];
         const [movedVideo] = updatedPlaylist.splice(fromIndex, 1);
