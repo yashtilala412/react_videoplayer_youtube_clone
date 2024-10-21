@@ -58,7 +58,10 @@ const VideoList = () => {
         });
         setPlaylists(updatedPlaylists);
     };
-            
+    const getPlaylistInfo = (playlist) => {
+        return `${playlist} (${playlists[playlist].length} videos)`;
+    };
+                
     const handleRemoveFromPlaylist = (playlist, index) => {
         const updatedPlaylist = playlists[playlist].filter((_, i) => i !== index);
         setPlaylists({ ...playlists, [playlist]: updatedPlaylist });
