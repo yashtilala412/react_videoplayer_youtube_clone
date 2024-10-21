@@ -68,6 +68,10 @@ const VideoList = () => {
         }
         setPlaylists({ ...playlists, [playlist]: [...playlists[playlist], videos[index]] });
     };
+    const searchVideosInPlaylist = (playlist, searchTerm) => {
+        return playlists[playlist].filter(video => video.title.toLowerCase().includes(searchTerm.toLowerCase()));
+    };
+    
     const handleReorderVideos = (playlist, fromIndex, toIndex) => {
         const updatedPlaylist = [...playlists[playlist]];
         const [movedVideo] = updatedPlaylist.splice(fromIndex, 1);
