@@ -80,7 +80,10 @@ const VideoList = () => {
             setPlaylists(savedPlaylists);
         }
     }, []);
-            
+    const getVideoInfo = (video) => {
+        return `${video.title} (${video.duration})`;
+    };
+                
     const handleReorderVideos = (playlist, fromIndex, toIndex) => {
         const updatedPlaylist = [...playlists[playlist]];
         const [movedVideo] = updatedPlaylist.splice(fromIndex, 1);
