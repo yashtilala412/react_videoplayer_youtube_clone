@@ -44,6 +44,13 @@ const VideoList = () => {
         setPlaylists({ ...playlists, [newPlaylist]: [] });
         setNewPlaylist("");
     };
+    const handleCreatePlaylist = () => {
+        if (window.confirm(`Are you sure you want to create a new playlist named "${newPlaylist}"?`)) {
+            setPlaylists({ ...playlists, [newPlaylist]: [] });
+            setNewPlaylist("");
+        }
+    };
+    
 
     const handleAddToPlaylist = (playlist, index) => {
         setPlaylists({ ...playlists, [playlist]: [...playlists[playlist], videos[index]] });
