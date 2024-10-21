@@ -99,7 +99,15 @@ const VideoList = () => {
         navigator.clipboard.writeText(playlistURL);
         alert("Playlist URL copied to clipboard!");
     };
-                
+    const handleExportPlaylist = (playlist) => {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(playlists[playlist]));
+        const downloadAnchorNode = document.createElement("a");
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", `${playlist}.json`);
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+    };
+                    
     const handleReorderVideos = (playlist, fromIndex, toIndex) => {
         const updatedPlaylist = [...playlists[playlist]];
         const [movedVideo] = updatedPlaylist.splice(fromIndex, 1);
