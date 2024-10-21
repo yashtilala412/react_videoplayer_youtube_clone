@@ -32,15 +32,11 @@ const VideoList = () => {
         setFavorites([...favorites, videos[index]]);
     };
 
-    const handleWatchLater = (index) => {
-        setWatchLater([...watchLater, videos[index]]);
-    };
-
-    const handleRating = (index, rating) => {
-        setRatings({ ...ratings, [index]: rating });
-    };
-
     const handleCreatePlaylist = () => {
+        if (Object.keys(playlists).length >= 10) {
+            alert("You have reached the maximum number of playlists (10).");
+            return;
+        }
         if (!newPlaylist.trim()) {
             alert("Playlist name cannot be empty or spaces only.");
             return;
