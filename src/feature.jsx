@@ -71,7 +71,10 @@ const VideoList = () => {
     const searchVideosInPlaylist = (playlist, searchTerm) => {
         return playlists[playlist].filter(video => video.title.toLowerCase().includes(searchTerm.toLowerCase()));
     };
-    
+    useEffect(() => {
+        localStorage.setItem("playlists", JSON.stringify(playlists));
+    }, [playlists]);
+        
     const handleReorderVideos = (playlist, fromIndex, toIndex) => {
         const updatedPlaylist = [...playlists[playlist]];
         const [movedVideo] = updatedPlaylist.splice(fromIndex, 1);
