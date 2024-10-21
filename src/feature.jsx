@@ -83,7 +83,18 @@ const VideoList = () => {
     const getVideoInfo = (video) => {
         return `${video.title} (${video.duration})`;
     };
-                
+    const handleAddToPlaylist12 = (playlist, index) => {
+        if (playlists[playlist].length >= 50) {
+            alert("This playlist has reached the maximum number of videos (50).");
+            return;
+        }
+        if (playlists[playlist].includes(videos[index])) {
+            alert("This video is already in the playlist.");
+            return;
+        }
+        setPlaylists({ ...playlists, [playlist]: [...playlists[playlist], videos[index]] });
+    };
+                    
     const handleReorderVideos = (playlist, fromIndex, toIndex) => {
         const updatedPlaylist = [...playlists[playlist]];
         const [movedVideo] = updatedPlaylist.splice(fromIndex, 1);
