@@ -94,7 +94,12 @@ const VideoList = () => {
         }
         setPlaylists({ ...playlists, [playlist]: [...playlists[playlist], videos[index]] });
     };
-                    
+    const handleSharePlaylist = (playlist) => {
+        const playlistURL = `${window.location.origin}/playlist/${encodeURIComponent(playlist)}`;
+        navigator.clipboard.writeText(playlistURL);
+        alert("Playlist URL copied to clipboard!");
+    };
+                
     const handleReorderVideos = (playlist, fromIndex, toIndex) => {
         const updatedPlaylist = [...playlists[playlist]];
         const [movedVideo] = updatedPlaylist.splice(fromIndex, 1);
