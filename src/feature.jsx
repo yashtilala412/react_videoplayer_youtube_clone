@@ -51,7 +51,14 @@ const VideoList = () => {
             setPlaylists(updatedPlaylists);
         }
     };
-        
+    const handleAddToMultiplePlaylists = (selectedPlaylists, index) => {
+        const updatedPlaylists = { ...playlists };
+        selectedPlaylists.forEach(playlist => {
+            updatedPlaylists[playlist] = [...updatedPlaylists[playlist], videos[index]];
+        });
+        setPlaylists(updatedPlaylists);
+    };
+            
     const handleRemoveFromPlaylist = (playlist, index) => {
         const updatedPlaylist = playlists[playlist].filter((_, i) => i !== index);
         setPlaylists({ ...playlists, [playlist]: updatedPlaylist });
