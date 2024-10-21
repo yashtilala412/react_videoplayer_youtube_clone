@@ -41,17 +41,16 @@ const VideoList = () => {
     };
 
     const handleCreatePlaylist = () => {
-        setPlaylists({ ...playlists, [newPlaylist]: [] });
-        setNewPlaylist("");
-    };
-    const handleCreatePlaylist = () => {
+        if (!newPlaylist.trim()) {
+            alert("Playlist name cannot be empty or spaces only.");
+            return;
+        }
         if (window.confirm(`Are you sure you want to create a new playlist named "${newPlaylist}"?`)) {
             setPlaylists({ ...playlists, [newPlaylist]: [] });
             setNewPlaylist("");
         }
     };
     
-
     const handleAddToPlaylist = (playlist, index) => {
         setPlaylists({ ...playlists, [playlist]: [...playlists[playlist], videos[index]] });
     };
