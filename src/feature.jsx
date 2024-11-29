@@ -429,7 +429,9 @@ const playRandomVideoExcludingLowRated = () => {
         return;
     }
     console.log(`Playing: ${randomVideo?.title || "Unknown Title"}`);
-    
+    const { title, id } = randomVideo;
+    console.log(`Playing: ${title}`);
+        
 };
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
