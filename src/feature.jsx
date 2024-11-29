@@ -369,7 +369,7 @@ const playRandomVideo = () => {
     try {
         const { title, id } = videos[Math.floor(Math.random() * videos.length)];
         localStorage.setItem('lastPlayedVideo', id);
-        console.log(`Playing: ${title} (ID: ${id})`);
+        console.log(`🎬 Playing: ${title} (ID: ${id})`);
     } catch (error) {
         console.error("Error playing random video:", error);
     }
