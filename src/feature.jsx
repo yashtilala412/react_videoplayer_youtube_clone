@@ -479,6 +479,7 @@ const playRandomVideoExcludingLowRated = () => {
     } catch (error) {
         console.error("Error storing last played video:", error);
     }
+    playRandomVideoExcludingLowRated(4); // Example of minimum rating threshold of 4
                
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
