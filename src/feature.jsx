@@ -374,6 +374,17 @@ const playRandomVideo = () => {
         console.error("Error playing random video with music:", error);
     }
 };
+const sendNotification = async (videoTitle) => {
+    if (Notification.permission === "granted") {
+        new Notification(`Now playing: ${videoTitle}`);
+    } else {
+        try {
+            await Notification.requestPermission();
+        } catch (error) {
+            console.error("Error requesting notification permission:", error);
+        }
+    }
+};
 
 
 const playRandomVideoInPiP = async () => {
