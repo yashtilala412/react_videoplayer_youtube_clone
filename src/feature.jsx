@@ -463,7 +463,10 @@ const playRandomVideoExcludingLowRated = () => {
     let playCount = JSON.parse(localStorage.getItem('playCount')) || {};
     playCount[randomVideo.id] = (playCount[randomVideo.id] || 0) + 1;
     localStorage.setItem('playCount', JSON.stringify(playCount));
-                        
+    if (filteredVideos.length < 3) {
+        console.warn("Only a few videos are available after filtering.");
+    }
+                            
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
     navigator.share({
