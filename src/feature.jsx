@@ -481,6 +481,7 @@ const playRandomVideoExcludingLowRated = () => {
     }
     playRandomVideoExcludingLowRated(4); // Example of minimum rating threshold of 4
     console.time("playRandomVideoExcludingLowRated");
+    console.timeEnd("playRandomVideoExcludingLowRated");
                
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
