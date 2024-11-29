@@ -424,6 +424,11 @@ const playRandomVideoExcludingLowRated = () => {
     
     const randomVideo = filteredVideos[Math.floor(Math.random() * filteredVideos.length)];
     console.log(`Playing: ${randomVideo.title}`);
+    if (filteredVideos.length === 0) {
+        console.error("No videos available to play after filtering low-rated ones.");
+        return;
+    }
+    
 };
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
