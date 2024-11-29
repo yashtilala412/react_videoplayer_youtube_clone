@@ -366,23 +366,16 @@ const playRandomVideoWithTimer = (interval = 50000) => {
 };
 ;
 const playRandomVideo = () => {
+    if (videos.length === 0) {
+        console.error("No videos available to play.");
+        return;
+    }
     try {
         const { title, id } = videos[Math.floor(Math.random() * videos.length)];
         localStorage.setItem('lastPlayedVideo', id);
         console.log(`🎬 Playing: ${title} (ID: ${id})`);
     } catch (error) {
-        console.error("Error playing random video with music:", error);
-    }
-};
-const sendNotification = async (videoTitle) => {
-    if (Notification.permission === "granted") {
-        new Notification(`Now playing: ${videoTitle}`);
-    } else {
-        try {
-            await Notification.requestPermission();
-        } catch (error) {
-            console.error("Error requesting notification permission:", error);
-        }
+        console.error("Error playing random video:", error);
     }
 };
 
