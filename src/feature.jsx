@@ -466,10 +466,14 @@ const playRandomVideoExcludingLowRated = () => {
     if (filteredVideos.length < 3) {
         console.warn("Only a few videos are available after filtering.");
     }
-    const randomVideo = filteredVideos.length 
+    const randomVideo1 = filteredVideos.length 
     ? filteredVideos[Math.floor(Math.random() * filteredVideos.length)] 
     : videos[0]; // Default to first video
-                            
+    if (!randomVideo) {
+        console.error("Failed to select a random video.");
+        return;
+    }
+                 
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
     navigator.share({
