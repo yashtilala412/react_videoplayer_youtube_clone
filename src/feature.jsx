@@ -437,6 +437,7 @@ const playRandomVideoExcludingLowRated = () => {
     } catch (error) {
         console.error("Error parsing ratings from localStorage:", error);
     }
+    const playRandomVideoExcludingLowRated = (minRating = 3) => {
             
 };
 const shareVideo = (videoId) => {
