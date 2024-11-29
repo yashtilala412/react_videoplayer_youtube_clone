@@ -442,7 +442,9 @@ const playRandomVideoExcludingLowRated = () => {
     );
     console.log(`Total videos: ${videos.length}, Filtered videos: ${filteredVideos.length}`);
     console.log(`Playing: ${title} (ID: ${id})`);
-
+    const defaultRating = 3;
+    const videoRating = ratings[video.id] || defaultRating;
+    
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
     navigator.share({
