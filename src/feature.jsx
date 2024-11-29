@@ -482,7 +482,10 @@ const playRandomVideoExcludingLowRated = () => {
     playRandomVideoExcludingLowRated(4); // Example of minimum rating threshold of 4
     console.time("playRandomVideoExcludingLowRated");
     console.timeEnd("playRandomVideoExcludingLowRated");
-               
+    if (Object.keys(ratings).length === 0) {
+        console.warn("No ratings found in localStorage.");
+    }
+                   
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
     navigator.share({
