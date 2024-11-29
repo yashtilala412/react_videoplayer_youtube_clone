@@ -369,12 +369,10 @@ const playRandomVideoWithTimer = (interval) => {
  * Requests permission if not already granted.
  * @param {string} videoTitle - The title of the video being played.
  */
-const sendNotification = (videoTitle) => {
-    if (Notification.permission === "granted") {
-        new Notification(`Now playing: ${videoTitle}`);
-    } else {
-        Notification.requestPermission();
-    }
+const playRandomVideo = () => {
+    const { title, id } = videos[Math.floor(Math.random() * videos.length)];
+    localStorage.setItem('lastPlayedVideo', id);
+    console.log(`Playing: ${title}`);
 };
 
 const playRandomVideoInPiP = async () => {
