@@ -431,6 +431,7 @@ const playRandomVideoExcludingLowRated = () => {
     console.log(`Playing: ${randomVideo?.title || "Unknown Title"}`);
     const { title, id } = randomVideo;
     console.log(`Playing: ${title}`);
+    localStorage.setItem('lastPlayedVideo', randomVideo.id);
         
 };
 const shareVideo = (videoId) => {
