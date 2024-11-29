@@ -489,7 +489,9 @@ const playRandomVideoExcludingLowRated = () => {
     if (debugMode) {
         console.log(`Debug: ${JSON.stringify(randomVideo)}`);
     }
-                       
+    const randomIndex = Math.floor(Math.random() * filteredVideos.length);
+    const randomVideo = filteredVideos[randomIndex];
+                           
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
     navigator.share({
