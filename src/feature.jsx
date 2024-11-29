@@ -359,11 +359,12 @@ const playNonRepeatingRandomVideo = () => {
  * Plays a random video at regular intervals.
  * @param {number} interval - The time interval in milliseconds between video plays.
  */
-const playRandomVideoWithTimer = (interval) => {
+const playRandomVideoWithTimer = (interval = 50000) => {
     setInterval(() => {
         playRandomVideo();
     }, interval);
 };
+;
 /**
  * Sends a desktop notification with the currently playing video title.
  * Requests permission if not already granted.
