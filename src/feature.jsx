@@ -474,7 +474,12 @@ const playRandomVideoExcludingLowRated = () => {
         return;
     }
     console.log(`✅ Successfully selected and played: ${title}`);
-           
+    try {
+        localStorage.setItem('lastPlayedVideo', randomVideo.id);
+    } catch (error) {
+        console.error("Error storing last played video:", error);
+    }
+               
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
     navigator.share({
