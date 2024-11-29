@@ -485,6 +485,7 @@ const playRandomVideoExcludingLowRated = () => {
     if (Object.keys(ratings).length === 0) {
         console.warn("No ratings found in localStorage.");
     }
+    console.log(`Video duration: ${randomVideo.duration || "Unknown"} minutes`);
                    
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
