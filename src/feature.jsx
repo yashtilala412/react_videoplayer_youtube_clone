@@ -355,31 +355,14 @@ const playNonRepeatingRandomVideo = () => {
     }
                                         
 };
-const playRandomVideo = () => {
-    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-    localStorage.setItem('lastPlayedVideo', randomVideo.id);
-    console.log(`Playing: ${randomVideo.title}`);
-};
+/**
+ * Plays a random video at regular intervals.
+ * @param {number} interval - The time interval in milliseconds between video plays.
+ */
 const playRandomVideoWithTimer = (interval) => {
     setInterval(() => {
         playRandomVideo();
     }, interval);
-};
-const sendNotification = (videoTitle) => {
-    if (Notification.permission === "granted") {
-        new Notification(`Now playing: ${videoTitle}`);
-    } else {
-        Notification.requestPermission();
-    }
-};
-/**
- * Selects a random video from the videos array and plays it.
- * Stores the last played video in localStorage.
- */
-const playRandomVideo = () => {
-    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-    localStorage.setItem('lastPlayedVideo', randomVideo.id);
-    console.log(`Playing: ${randomVideo.title}`);
 };
 
 const playRandomVideoInPiP = async () => {
