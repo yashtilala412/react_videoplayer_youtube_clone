@@ -371,9 +371,10 @@ const playRandomVideo = () => {
         localStorage.setItem('lastPlayedVideo', id);
         console.log(`🎬 Playing: ${title} (ID: ${id})`);
     } catch (error) {
-        console.error("Error playing random video:", error);
+        console.error("Error playing random video with music:", error);
     }
 };
+
 
 const playRandomVideoInPiP = async () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
