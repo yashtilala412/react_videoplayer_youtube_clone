@@ -457,7 +457,10 @@ const playRandomVideoExcludingLowRated = () => {
         return;
     }
     console.log(`Selected video rating: ${ratings[randomVideo.id] || "Not Rated"}`);
-                
+    if (typeof onVideoSelected === 'function') {
+        onVideoSelected(randomVideo);
+    }
+                    
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
     navigator.share({
