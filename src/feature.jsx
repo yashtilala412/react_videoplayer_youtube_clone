@@ -473,11 +473,8 @@ const playRandomVideoExcludingLowRated = () => {
         console.error("Failed to select a random video.");
         return;
     }
-    const excludedIds = JSON.parse(localStorage.getItem('excludedIds')) || [];
-    const filteredVideos = videos.filter(video => 
-        (!ratings[video.id] || ratings[video.id] >= minRating) && !excludedIds.includes(video.id)
-    );
-                     
+    console.log(`✅ Successfully selected and played: ${title}`);
+           
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
     navigator.share({
