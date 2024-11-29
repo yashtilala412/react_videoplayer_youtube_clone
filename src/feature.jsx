@@ -432,7 +432,12 @@ const playRandomVideoExcludingLowRated = () => {
     const { title, id } = randomVideo;
     console.log(`Playing: ${title}`);
     localStorage.setItem('lastPlayedVideo', randomVideo.id);
-        
+    try {
+        ratings = JSON.parse(localStorage.getItem('ratings')) || {};
+    } catch (error) {
+        console.error("Error parsing ratings from localStorage:", error);
+    }
+            
 };
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
