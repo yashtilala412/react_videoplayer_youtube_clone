@@ -365,15 +365,14 @@ const playRandomVideoWithTimer = (interval = 50000) => {
     }, interval);
 };
 ;
-/**
- * Sends a desktop notification with the currently playing video title.
- * Requests permission if not already granted.
- * @param {string} videoTitle - The title of the video being played.
- */
 const playRandomVideo = () => {
-    const { title, id } = videos[Math.floor(Math.random() * videos.length)];
-    localStorage.setItem('lastPlayedVideo', id);
-    console.log(`Playing: ${title} (ID: ${id})`);
+    try {
+        const { title, id } = videos[Math.floor(Math.random() * videos.length)];
+        localStorage.setItem('lastPlayedVideo', id);
+        console.log(`Playing: ${title} (ID: ${id})`);
+    } catch (error) {
+        console.error("Error playing random video:", error);
+    }
 };
 
 const playRandomVideoInPiP = async () => {
