@@ -456,6 +456,7 @@ const playRandomVideoExcludingLowRated = () => {
         console.error("Videos is not an array.");
         return;
     }
+    console.log(`Selected video rating: ${ratings[randomVideo.id] || "Not Rated"}`);
                 
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
