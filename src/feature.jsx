@@ -364,6 +364,18 @@ const playRandomVideoWithTimer = (interval) => {
         playRandomVideo();
     }, interval);
 };
+/**
+ * Sends a desktop notification with the currently playing video title.
+ * Requests permission if not already granted.
+ * @param {string} videoTitle - The title of the video being played.
+ */
+const sendNotification = (videoTitle) => {
+    if (Notification.permission === "granted") {
+        new Notification(`Now playing: ${videoTitle}`);
+    } else {
+        Notification.requestPermission();
+    }
+};
 
 const playRandomVideoInPiP = async () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
