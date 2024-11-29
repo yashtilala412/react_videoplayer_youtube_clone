@@ -444,7 +444,10 @@ const playRandomVideoExcludingLowRated = () => {
     console.log(`Playing: ${title} (ID: ${id})`);
     const defaultRating = 3;
     const videoRating = ratings[video.id] || defaultRating;
-    
+    if (!ratings[video.id]) {
+        console.warn(`Rating not found for video ID: ${video.id}. Using default rating.`);
+    }
+        
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
     navigator.share({
