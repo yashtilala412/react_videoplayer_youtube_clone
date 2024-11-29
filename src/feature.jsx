@@ -452,7 +452,11 @@ const playRandomVideoExcludingLowRated = () => {
     } catch (error) {
         console.error("Error playing video:", error);
     }
-            
+    if (!Array.isArray(videos)) {
+        console.error("Videos is not an array.");
+        return;
+    }
+                
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
     navigator.share({
