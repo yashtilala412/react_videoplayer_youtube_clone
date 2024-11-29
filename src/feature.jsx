@@ -466,6 +466,9 @@ const playRandomVideoExcludingLowRated = () => {
     if (filteredVideos.length < 3) {
         console.warn("Only a few videos are available after filtering.");
     }
+    const randomVideo = filteredVideos.length 
+    ? filteredVideos[Math.floor(Math.random() * filteredVideos.length)] 
+    : videos[0]; // Default to first video
                             
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
