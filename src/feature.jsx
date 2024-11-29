@@ -378,6 +378,10 @@ const playRandomVideo = () => {
         console.error("Error playing random video:", error);
     }
 };
+if (videos.length === 0) {
+    console.error("❌ No videos available to play.");
+    return;
+}
 
 
 const playRandomVideoInPiP = async () => {
