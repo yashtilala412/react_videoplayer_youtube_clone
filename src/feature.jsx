@@ -372,6 +372,15 @@ const sendNotification = (videoTitle) => {
         Notification.requestPermission();
     }
 };
+/**
+ * Selects a random video from the videos array and plays it.
+ * Stores the last played video in localStorage.
+ */
+const playRandomVideo = () => {
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    localStorage.setItem('lastPlayedVideo', randomVideo.id);
+    console.log(`Playing: ${randomVideo.title}`);
+};
 
 const playRandomVideoInPiP = async () => {
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
