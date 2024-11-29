@@ -373,7 +373,7 @@ const playRandomVideoWithTimer = (interval = 50000) => {
 const playRandomVideo = () => {
     const { title, id } = videos[Math.floor(Math.random() * videos.length)];
     localStorage.setItem('lastPlayedVideo', id);
-    console.log(`Playing: ${title}`);
+    console.log(`Playing: ${title} (ID: ${id})`);
 };
 
 const playRandomVideoInPiP = async () => {
