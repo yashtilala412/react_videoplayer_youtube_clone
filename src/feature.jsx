@@ -51,7 +51,7 @@ const VideoList = () => {
             setPlaylists(updatedPlaylists);
         }
     };
-    const handleAddToMultiplePlaylists = (selectedPlaylists, index) => {
+    const handleAddToMultiplePlaylists = async (selectedPlaylists, index) => {
         try {
             if (!Array.isArray(selectedPlaylists) || selectedPlaylists.length === 0) {
                 throw new Error("No playlists selected or invalid input.");
@@ -59,6 +59,7 @@ const VideoList = () => {
             if (index < 0 || index >= videos.length) {
                 throw new Error("Invalid video index.");
             }
+    
             const updatedPlaylists = { ...playlists };
             selectedPlaylists.forEach(playlist => {
                 if (typeof updatedPlaylists[playlist] === "object" && Array.isArray(updatedPlaylists[playlist].videos)) {
@@ -69,7 +70,11 @@ const VideoList = () => {
                     updatedPlaylists[playlist] = [...updatedPlaylists[playlist], videos[index]];
                 }
             });
+    
+            // Simulate an asynchronous API call
+            await new Promise(resolve => setTimeout(resolve, 500)); // Simulated delay
             setPlaylists(updatedPlaylists);
+    
             console.log(`Video successfully added to playlists: ${selectedPlaylists.join(", ")}`);
         } catch (error) {
             console.error("Error adding video to playlists:", error.message);
