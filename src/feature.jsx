@@ -52,18 +52,24 @@ const VideoList = () => {
         }
     };
     const handleAddToMultiplePlaylists = (selectedPlaylists, index) => {
-        if (!Array.isArray(selectedPlaylists) || selectedPlaylists.length === 0) {
-            console.warn("No playlists selected. Please select at least one playlist.");
-            return;
-        }
-        const updatedPlaylists = { ...playlists };
-        selectedPlaylists.forEach(playlist => {
-            if (!updatedPlaylists[playlist].includes(videos[index])) {
-                updatedPlaylists[playlist] = [...updatedPlaylists[playlist], videos[index]];
+        try {
+            if (!Array.isArray(selectedPlaylists) || selectedPlaylists.length === 0) {
+                throw new Error("No playlists selected or invalid input.");
             }
-        });
-        setPlaylists(updatedPlaylists);
-        console.log(`Video successfully added to playlists: ${selectedPlaylists.join(", ")}`);
+            if (index < 0 || index >= videos.length) {
+                throw new Error("Invalid video index.");
+            }
+            const updatedPlaylists = { ...playlists };
+            selectedPlaylists.forEach(playlist => {
+                if (!updatedPlaylists[playlist].includes(videos[index])) {
+                    updatedPlaylists[playlist] = [...updatedPlaylists[playlist], videos[index]];
+                }
+            });
+            setPlaylists(updatedPlaylists);
+            console.log(`Video successfully added to playlists: ${selectedPlaylists.join(", ")}`);
+        } catch (error) {
+            console.error("Error adding video to playlists:", error.message);
+        }
     };
     
     const getPlaylistInfo = (playlist) => {
