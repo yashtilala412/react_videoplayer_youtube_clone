@@ -53,7 +53,7 @@ const VideoList = () => {
     };
     const handleAddToMultiplePlaylists = (selectedPlaylists, index) => {
         if (!Array.isArray(selectedPlaylists) || selectedPlaylists.length === 0) {
-            console.error("Invalid or empty selectedPlaylists.");
+            console.warn("No playlists selected. Please select at least one playlist.");
             return;
         }
         const updatedPlaylists = { ...playlists };
