@@ -52,12 +52,17 @@ const VideoList = () => {
         }
     };
     const handleAddToMultiplePlaylists = (selectedPlaylists, index) => {
+        if (!Array.isArray(selectedPlaylists) || selectedPlaylists.length === 0) {
+            console.error("Invalid or empty selectedPlaylists.");
+            return;
+        }
         const updatedPlaylists = { ...playlists };
         selectedPlaylists.forEach(playlist => {
             updatedPlaylists[playlist] = [...updatedPlaylists[playlist], videos[index]];
         });
         setPlaylists(updatedPlaylists);
     };
+    
     const getPlaylistInfo = (playlist) => {
         return `${playlist} (${playlists[playlist].length} videos)`;
     };
@@ -490,7 +495,7 @@ const playRandomVideoExcludingLowRated = () => {
         console.log(`Debug: ${JSON.stringify(randomVideo)}`);
     }
     const randomIndex = Math.floor(Math.random() * filteredVideos.length);
-    const randomVideo = filteredVideos[randomIndex];
+    const randomVideo2 = filteredVideos[randomIndex];
                            
 const shareVideo = (videoId) => {
     const videoUrl = `https://example.com/videos/${videoId}`;
