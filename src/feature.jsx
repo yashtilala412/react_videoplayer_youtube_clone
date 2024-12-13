@@ -58,7 +58,9 @@ const VideoList = () => {
         }
         const updatedPlaylists = { ...playlists };
         selectedPlaylists.forEach(playlist => {
-            updatedPlaylists[playlist] = [...updatedPlaylists[playlist], videos[index]];
+            if (!updatedPlaylists[playlist].includes(videos[index])) {
+                updatedPlaylists[playlist] = [...updatedPlaylists[playlist], videos[index]];
+            }
         });
         setPlaylists(updatedPlaylists);
     };
