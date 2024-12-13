@@ -63,6 +63,7 @@ const VideoList = () => {
             }
         });
         setPlaylists(updatedPlaylists);
+        console.log(`Video successfully added to playlists: ${selectedPlaylists.join(", ")}`);
     };
     
     const getPlaylistInfo = (playlist) => {
