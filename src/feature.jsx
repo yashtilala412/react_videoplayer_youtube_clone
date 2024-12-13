@@ -61,7 +61,11 @@ const VideoList = () => {
             }
             const updatedPlaylists = { ...playlists };
             selectedPlaylists.forEach(playlist => {
-                if (!updatedPlaylists[playlist].includes(videos[index])) {
+                if (typeof updatedPlaylists[playlist] === "object" && Array.isArray(updatedPlaylists[playlist].videos)) {
+                    if (!updatedPlaylists[playlist].videos.includes(videos[index])) {
+                        updatedPlaylists[playlist].videos.push(videos[index]);
+                    }
+                } else if (!updatedPlaylists[playlist].includes(videos[index])) {
                     updatedPlaylists[playlist] = [...updatedPlaylists[playlist], videos[index]];
                 }
             });
