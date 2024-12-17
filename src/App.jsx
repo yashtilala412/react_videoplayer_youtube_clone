@@ -153,14 +153,19 @@ const App = () => {
     // Send report to server or handle it locally
     console.log(`Video ${videoId} reported for: ${reason}`);
   };
-  const enablePictureInPicture = () => {
+  const enablePictureInPicture = async () => {
     const videoElement = document.getElementById('video-player');
-    if (document.pictureInPictureElement) {
-      document.exitPictureInPicture();
-    } else {
-      videoElement.requestPictureInPicture();
+    try {
+        if (document.pictureInPictureElement) {
+            await document.exitPictureInPicture();
+        } else {
+            await videoElement.requestPictureInPicture();
+        }
+    } catch (error) {
+        console.error('Error toggling Picture-in-Picture mode:', error);
     }
-  };
+};
+
   const toggleSubtitles = () => {
     const videoElement = document.getElementById('video-player');
     const track = videoElement.textTracks[0]; // Assuming the first track is the subtitles track
