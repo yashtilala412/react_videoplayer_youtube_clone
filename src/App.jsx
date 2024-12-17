@@ -195,27 +195,19 @@ videoElement.addEventListener('leavepictureinpicture', () => {
     videoElement.muted = false; // Unmute video
     videoElement.pause();
 });
-if (document.pictureInPictureElement) {
-  await document.exitPictureInPicture();
-  button.textContent = 'Enable Picture-in-Picture';
-  button.setAttribute('aria-pressed', 'false');
-} else {
-  videoElement.focus();
-  await videoElement.requestPictureInPicture();
-  button.textContent = 'Disable Picture-in-Picture';
-  button.setAttribute('aria-pressed', 'true');
-  if (document.pictureInPictureElement) {
-    await document.exitPictureInPicture();
-    button.textContent = 'Enable Picture-in-Picture';
-    button.setAttribute('aria-pressed', 'false');
-    localStorage.setItem('pipEnabled', 'false'); // Save state
-} else {
-    videoElement.focus();
-    await videoElement.requestPictureInPicture();
-    button.textContent = 'Disable Picture-in-Picture';
-    button.setAttribute('aria-pressed', 'true');
-    localStorage.setItem('pipEnabled', 'true'); // Save state
-}
+window.addEventListener('load', async () => {
+  const pipEnabled = localStorage.getItem('pipEnabled') === 'true';
+  const videoElement = document.getElementById('video-player');
+  if (pipEnabled && videoElement) {
+      try {
+          await videoElement.requestPictureInPicture();
+          console.log('Automatically entered Picture-in-Picture mode');
+      } catch (error) {
+          console.error('Error auto-enabling Picture-in-Picture:', error);
+      }
+  }
+});
+
 
   
 }
