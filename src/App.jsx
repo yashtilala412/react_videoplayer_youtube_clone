@@ -195,7 +195,17 @@ videoElement.addEventListener('leavepictureinpicture', () => {
     videoElement.muted = false; // Unmute video
     videoElement.pause();
 });
-  
+if (document.pictureInPictureElement) {
+  await document.exitPictureInPicture();
+  button.textContent = 'Enable Picture-in-Picture';
+  button.setAttribute('aria-pressed', 'false');
+} else {
+  videoElement.focus();
+  await videoElement.requestPictureInPicture();
+  button.textContent = 'Disable Picture-in-Picture';
+  button.setAttribute('aria-pressed', 'true');
+}
+
     videoElement.addEventListener('leavepictureinpicture', () => {
         console.log('Exited Picture-in-Picture mode');
         videoElement.pause(); // Pause video when exiting
