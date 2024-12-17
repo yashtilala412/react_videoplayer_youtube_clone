@@ -159,6 +159,10 @@ const App = () => {
         console.error('Video element not found!');
         return;
     }
+    if (!document.pictureInPictureEnabled) {
+        console.error('Picture-in-Picture is not supported in this browser.');
+        return;
+    }
     try {
         if (document.pictureInPictureElement) {
             await document.exitPictureInPicture();
@@ -169,6 +173,7 @@ const App = () => {
         console.error('Error toggling Picture-in-Picture mode:', error);
     }
 };
+
 
   const toggleSubtitles = () => {
     const videoElement = document.getElementById('video-player');
