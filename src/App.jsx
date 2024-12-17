@@ -204,6 +204,8 @@ if (document.pictureInPictureElement) {
   await videoElement.requestPictureInPicture();
   button.textContent = 'Disable Picture-in-Picture';
   button.setAttribute('aria-pressed', 'true');
+  
+  
 }
 
 
