@@ -204,7 +204,19 @@ if (document.pictureInPictureElement) {
   await videoElement.requestPictureInPicture();
   button.textContent = 'Disable Picture-in-Picture';
   button.setAttribute('aria-pressed', 'true');
-  
+  if (document.pictureInPictureElement) {
+    await document.exitPictureInPicture();
+    button.textContent = 'Enable Picture-in-Picture';
+    button.setAttribute('aria-pressed', 'false');
+    localStorage.setItem('pipEnabled', 'false'); // Save state
+} else {
+    videoElement.focus();
+    await videoElement.requestPictureInPicture();
+    button.textContent = 'Disable Picture-in-Picture';
+    button.setAttribute('aria-pressed', 'true');
+    localStorage.setItem('pipEnabled', 'true'); // Save state
+}
+
   
 }
 
