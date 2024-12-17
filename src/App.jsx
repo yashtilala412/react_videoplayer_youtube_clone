@@ -211,6 +211,11 @@ window.addEventListener('load', async () => {
         await enablePictureInPicture();
     }
 });
+if (document.fullscreenElement) {
+  await document.exitFullscreen();
+} else {
+  await videoElement.requestFullscreen();
+}
 
 });
 
