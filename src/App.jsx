@@ -68,7 +68,7 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-  const toggleTheme = () => {
+  const toggleTheme1 = () => {
     if (window.confirm("Are you sure you want to change the theme?")) {
       setTheme(theme === 'light' ? 'dark' : 'light');
     }
@@ -156,68 +156,86 @@ const App = () => {
   const enablePictureInPicture = async () => {
     const videoElement = document.getElementById('video-player');
     const button = document.getElementById('pip-button');
+
+    // Check if the video element exists
     if (!videoElement) {
         console.error('Video element not found!');
         return;
     }
+
+    // Check if Picture-in-Picture is supported
     if (!document.pictureInPictureEnabled) {
         console.error('Picture-in-Picture is not supported in this browser.');
         return;
     }
+
     try {
+        // Toggle Picture-in-Picture mode
         if (document.pictureInPictureElement) {
             await document.exitPictureInPicture();
             button.textContent = 'Enable Picture-in-Picture';
+            button.setAttribute('aria-pressed', 'false');
+            localStorage.setItem('pipEnabled', 'false'); // Save state
         } else {
             videoElement.focus();
             await videoElement.requestPictureInPicture();
             button.textContent = 'Disable Picture-in-Picture';
+            button.setAttribute('aria-pressed', 'true');
+            localStorage.setItem('pipEnabled', 'true'); // Save state
         }
     } catch (error) {
         console.error('Error toggling Picture-in-Picture mode:', error);
+        sendToMonitoringService(error); // Replace with your monitoring service
     }
 
+    // Listen for Picture-in-Picture events
     videoElement.addEventListener('enterpictureinpicture', () => {
         console.log('Entered Picture-in-Picture mode');
+        videoElement.play(); // Resume playback
+        videoElement.muted = true; // Mute video in Picture-in-Picture
     });
-    videoElement.addEventListener('enterpictureinpicture', () => {
-      console.log('Entered Picture-in-Picture mode');
-      videoElement.play(); // Resume playback when entering
-  });
-  videoElement.addEventListener('enterpictureinpicture', () => {
-    console.log('Entered Picture-in-Picture mode');
-    videoElement.muted = true; // Mute video
-    videoElement.play();
+
+    videoElement.addEventListener('leavepictureinpicture', () => {
+        console.log('Exited Picture-in-Picture mode');
+        videoElement.muted = false; // Unmute video
+        videoElement.pause(); // Pause playback
+    });
+};
+
+// Automatically enable Picture-in-Picture if previously enabled
+window.addEventListener('load', async () => {
+    const pipEnabled = localStorage.getItem('pipEnabled') === 'true';
+    const videoElement = document.getElementById('video-player');
+    if (pipEnabled && videoElement) {
+        try {
+            await videoElement.requestPictureInPicture();
+            console.log('Automatically entered Picture-in-Picture mode');
+        } catch (error) {
+            console.error('Error auto-enabling Picture-in-Picture:', error);
+        }
+    }
 });
 
-videoElement.addEventListener('leavepictureinpicture', () => {
-    console.log('Exited Picture-in-Picture mode');
-    videoElement.muted = false; // Unmute video
-    videoElement.pause();
-});
-window.addEventListener('load', async () => {
-  const pipEnabled = localStorage.getItem('pipEnabled') === 'true';
-  const videoElement = document.getElementById('video-player');
-  if (pipEnabled && videoElement) {
-      try {
-          await videoElement.requestPictureInPicture();
-          console.log('Automatically entered Picture-in-Picture mode');
-      } catch (error) {
-          console.error('Error auto-enabling Picture-in-Picture:', error);
-      }
-  }
-  document.addEventListener('keydown', async (event) => {
+// Add a keyboard shortcut for toggling Picture-in-Picture
+document.addEventListener('keydown', async (event) => {
     if (event.ctrlKey && event.key === 'p') {
         await enablePictureInPicture();
     }
 });
-if (document.fullscreenElement) {
-  await document.exitFullscreen();
-} else {
-  await videoElement.requestFullscreen();
-}
 
-});
+// Add a fullscreen toggle in Picture-in-Picture mode
+const toggleFullscreen1 = async () => {
+    const videoElement = document.getElementById('video-player');
+    if (document.fullscreenElement) {
+        await document.exitFullscreen();
+    } else {
+        await videoElement.requestFullscreen();
+    }
+};
+
+// Add event listener for fullscreen toggle
+document.getElementById('fullscreen-button').addEventListener('click', toggleFullscreen);
+
 
 
   
