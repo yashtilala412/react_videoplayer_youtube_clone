@@ -169,6 +169,7 @@ const App = () => {
             await document.exitPictureInPicture();
             button.textContent = 'Enable Picture-in-Picture';
         } else {
+            videoElement.focus(); // Focus the video player
             await videoElement.requestPictureInPicture();
             button.textContent = 'Disable Picture-in-Picture';
         }
@@ -184,6 +185,7 @@ const App = () => {
         console.log('Exited Picture-in-Picture mode');
     });
 };
+
 
 
 
