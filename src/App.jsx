@@ -155,6 +155,10 @@ const App = () => {
   };
   const enablePictureInPicture = async () => {
     const videoElement = document.getElementById('video-player');
+    if (!videoElement) {
+        console.error('Video element not found!');
+        return;
+    }
     try {
         if (document.pictureInPictureElement) {
             await document.exitPictureInPicture();
