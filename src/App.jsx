@@ -175,7 +175,16 @@ const App = () => {
     } catch (error) {
         console.error('Error toggling Picture-in-Picture mode:', error);
     }
+
+    videoElement.addEventListener('enterpictureinpicture', () => {
+        console.log('Entered Picture-in-Picture mode');
+    });
+
+    videoElement.addEventListener('leavepictureinpicture', () => {
+        console.log('Exited Picture-in-Picture mode');
+    });
 };
+
 
 
   const toggleSubtitles = () => {
