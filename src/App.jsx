@@ -184,6 +184,17 @@ const App = () => {
       console.log('Entered Picture-in-Picture mode');
       videoElement.play(); // Resume playback when entering
   });
+  videoElement.addEventListener('enterpictureinpicture', () => {
+    console.log('Entered Picture-in-Picture mode');
+    videoElement.muted = true; // Mute video
+    videoElement.play();
+});
+
+videoElement.addEventListener('leavepictureinpicture', () => {
+    console.log('Exited Picture-in-Picture mode');
+    videoElement.muted = false; // Unmute video
+    videoElement.pause();
+});
   
     videoElement.addEventListener('leavepictureinpicture', () => {
         console.log('Exited Picture-in-Picture mode');
