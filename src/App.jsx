@@ -206,6 +206,12 @@ window.addEventListener('load', async () => {
           console.error('Error auto-enabling Picture-in-Picture:', error);
       }
   }
+  document.addEventListener('keydown', async (event) => {
+    if (event.ctrlKey && event.key === 'p') {
+        await enablePictureInPicture();
+    }
+});
+
 });
 
 
