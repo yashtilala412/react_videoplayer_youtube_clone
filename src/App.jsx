@@ -155,6 +155,7 @@ const App = () => {
   };
   const enablePictureInPicture = async () => {
     const videoElement = document.getElementById('video-player');
+    const button = document.getElementById('pip-button');
     if (!videoElement) {
         console.error('Video element not found!');
         return;
@@ -166,8 +167,10 @@ const App = () => {
     try {
         if (document.pictureInPictureElement) {
             await document.exitPictureInPicture();
+            button.textContent = 'Enable Picture-in-Picture';
         } else {
             await videoElement.requestPictureInPicture();
+            button.textContent = 'Disable Picture-in-Picture';
         }
     } catch (error) {
         console.error('Error toggling Picture-in-Picture mode:', error);
