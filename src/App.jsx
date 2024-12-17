@@ -180,7 +180,11 @@ const App = () => {
     videoElement.addEventListener('enterpictureinpicture', () => {
         console.log('Entered Picture-in-Picture mode');
     });
-
+    videoElement.addEventListener('enterpictureinpicture', () => {
+      console.log('Entered Picture-in-Picture mode');
+      videoElement.play(); // Resume playback when entering
+  });
+  
     videoElement.addEventListener('leavepictureinpicture', () => {
         console.log('Exited Picture-in-Picture mode');
         videoElement.pause(); // Pause video when exiting
