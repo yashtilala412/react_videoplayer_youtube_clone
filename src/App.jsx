@@ -206,6 +206,7 @@ if (document.pictureInPictureElement) {
   button.setAttribute('aria-pressed', 'true');
 }
 
+
     videoElement.addEventListener('leavepictureinpicture', () => {
         console.log('Exited Picture-in-Picture mode');
         videoElement.pause(); // Pause video when exiting
