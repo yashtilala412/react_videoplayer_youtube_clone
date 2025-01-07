@@ -52,7 +52,11 @@ const VideoList = () => {
             // Feature 2: Display total number of songs in the confirmation message
             const totalSongs = playlists[playlist]?.length || 0;
             const confirmationMessage = `The playlist "${playlist}" (${totalSongs} songs) will be deleted. Confirm again?`;
-
+            if (!playlists[playlist]) {
+                alert(`Error: The playlist "${playlist}" does not exist.`);
+                console.error(`Deletion failed. Playlist "${playlist}" not found.`);
+                return;
+            }
         if (window.confirm(`Are you sure you want to delete the playlist "${playlist}"?`)) {
             const updatedPlaylists = { ...playlists };
             const undoTimeout = setTimeout(() => {
