@@ -67,7 +67,10 @@ const VideoList = () => {
             };
             console.log(`Playlist "${playlist}" scheduled for deletion. Undo timeout set.`);
             console.log(`Animation: Playlist "${playlist}" fading out...`);
-
+            const reason = prompt("Why are you deleting this playlist? (Optional)");
+            if (reason) {
+                console.log(`User provided reason for deletion: ${reason}`);
+            }
             delete updatedPlaylists[playlist];
             setPlaylists(updatedPlaylists);
         }
