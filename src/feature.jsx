@@ -71,6 +71,7 @@ const VideoList = () => {
             if (reason) {
                 console.log(`User provided reason for deletion: ${reason}`);
             }
+            console.log("Info: Deleting a playlist is permanent unless undone within 5 seconds.");
             delete updatedPlaylists[playlist];
             setPlaylists(updatedPlaylists);
         }
