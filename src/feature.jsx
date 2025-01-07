@@ -48,6 +48,9 @@ const VideoList = () => {
         const modalConfirmed = window.confirm(
             `Are you sure you want to delete the playlist "${playlist}"? This action cannot be undone.`
         );
+        if (modalConfirmed) {
+            // Feature 2: Display total number of songs in the confirmation message
+            const totalSongs = playlists[playlist]?.length || 0;
         if (window.confirm(`Are you sure you want to delete the playlist "${playlist}"?`)) {
             const updatedPlaylists = { ...playlists };
             delete updatedPlaylists[playlist];
