@@ -66,6 +66,7 @@ const VideoList = () => {
                 alert(`Deletion of playlist "${playlist}" has been canceled.`);
             };
             console.log(`Playlist "${playlist}" scheduled for deletion. Undo timeout set.`);
+            console.log(`Animation: Playlist "${playlist}" fading out...`);
 
             delete updatedPlaylists[playlist];
             setPlaylists(updatedPlaylists);
