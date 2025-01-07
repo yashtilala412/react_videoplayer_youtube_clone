@@ -45,6 +45,9 @@ const VideoList = () => {
         setPlaylists(updatedPlaylists);
     };
     const handleDeletePlaylist = (playlist) => {
+        const modalConfirmed = window.confirm(
+            `Are you sure you want to delete the playlist "${playlist}"? This action cannot be undone.`
+        );
         if (window.confirm(`Are you sure you want to delete the playlist "${playlist}"?`)) {
             const updatedPlaylists = { ...playlists };
             delete updatedPlaylists[playlist];
