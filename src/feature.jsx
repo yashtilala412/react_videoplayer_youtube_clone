@@ -59,6 +59,8 @@ const VideoList = () => {
                 const updatedPlaylists = { ...playlists };
                 delete updatedPlaylists[playlist];
                 setPlaylists(updatedPlaylists);
+                alert(`Playlist "${playlist}" has been successfully deleted.`);
+            }, 5000);
             delete updatedPlaylists[playlist];
             setPlaylists(updatedPlaylists);
         }
