@@ -61,6 +61,10 @@ const VideoList = () => {
                 setPlaylists(updatedPlaylists);
                 alert(`Playlist "${playlist}" has been successfully deleted.`);
             }, 5000);
+            const undoDelete = () => {
+                clearTimeout(undoTimeout);
+                alert(`Deletion of playlist "${playlist}" has been canceled.`);
+            };
             delete updatedPlaylists[playlist];
             setPlaylists(updatedPlaylists);
         }
