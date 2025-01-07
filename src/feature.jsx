@@ -51,6 +51,8 @@ const VideoList = () => {
         if (modalConfirmed) {
             // Feature 2: Display total number of songs in the confirmation message
             const totalSongs = playlists[playlist]?.length || 0;
+            const confirmationMessage = `The playlist "${playlist}" (${totalSongs} songs) will be deleted. Confirm again?`;
+
         if (window.confirm(`Are you sure you want to delete the playlist "${playlist}"?`)) {
             const updatedPlaylists = { ...playlists };
             delete updatedPlaylists[playlist];
