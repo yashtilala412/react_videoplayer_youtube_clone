@@ -55,6 +55,10 @@ const VideoList = () => {
 
         if (window.confirm(`Are you sure you want to delete the playlist "${playlist}"?`)) {
             const updatedPlaylists = { ...playlists };
+            const undoTimeout = setTimeout(() => {
+                const updatedPlaylists = { ...playlists };
+                delete updatedPlaylists[playlist];
+                setPlaylists(updatedPlaylists);
             delete updatedPlaylists[playlist];
             setPlaylists(updatedPlaylists);
         }
