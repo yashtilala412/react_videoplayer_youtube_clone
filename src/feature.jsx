@@ -27,7 +27,7 @@ const VideoList = () => {
         const newVideo = URL.createObjectURL(event.target.files[0]);
         setVideos([...videos, { url: newVideo, title: 'New Video', description: 'New Description' }]);
     };
-
+}
     const handleFavorite = (index) => {
         setFavorites([...favorites, videos[index]]);
     };
@@ -74,7 +74,7 @@ const VideoList = () => {
             console.log("Info: Deleting a playlist is permanent unless undone within 5 seconds.");
             delete updatedPlaylists[playlist];
             setPlaylists(updatedPlaylists);
-        }
+        }}
     };
     const handleAddToMultiplePlaylists = async (selectedPlaylists, index) => {
         try {
