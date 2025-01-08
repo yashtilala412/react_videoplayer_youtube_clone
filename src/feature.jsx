@@ -91,7 +91,11 @@ const VideoList = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ oldName, newName })
         });
-                                                                         
+        setIsRenaming(true);
+        setTimeout(() => {
+            setIsRenaming(false);
+        }, 1000);
+                                                                                 
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
