@@ -44,7 +44,11 @@ const VideoList = () => {
         delete updatedPlaylists[oldName];
         setPlaylists(updatedPlaylists);
         oldName = oldName.trim();
-
+        if (!playlists.hasOwnProperty(oldName)) {
+            alert("The playlist you are trying to rename does not exist.");
+            return;
+        }
+        
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
