@@ -78,6 +78,7 @@ const VideoList = () => {
         if (typeof onPlaylistRename === "function") {
             onPlaylistRename(oldName, newName);
         }
+        console.log(`Playlist renamed: ${oldName} -> ${newName}`);
                                                          
     };
     const handleDeletePlaylist = (playlist) => {
