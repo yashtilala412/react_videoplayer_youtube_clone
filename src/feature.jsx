@@ -60,7 +60,9 @@ const VideoList = () => {
             alert("A playlist with this name already exists (case-insensitive).");
             return;
         }
-                                
+        const backupPlaylists = { ...playlists };
+        localStorage.setItem("playlistsBackup", JSON.stringify(backupPlaylists));
+                                        
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
