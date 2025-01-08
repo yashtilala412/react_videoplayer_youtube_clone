@@ -86,7 +86,12 @@ const VideoList = () => {
         setTimeout(() => {
             if (window.confirm("Undo rename?")) undoRename();
         }, 5000);
-                                                                 
+        fetch('/api/renamePlaylist', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ oldName, newName })
+        });
+                                                                         
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
