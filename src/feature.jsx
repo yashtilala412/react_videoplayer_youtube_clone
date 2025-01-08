@@ -56,7 +56,11 @@ const VideoList = () => {
             alert("Playlist name can only contain letters, numbers, and spaces.");
             return;
         }
-                        
+        if (Object.keys(playlists).some(name => name.toLowerCase() === newName.toLowerCase())) {
+            alert("A playlist with this name already exists (case-insensitive).");
+            return;
+        }
+                                
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
