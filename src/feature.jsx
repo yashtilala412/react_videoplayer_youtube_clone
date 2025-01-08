@@ -65,7 +65,11 @@ const VideoList = () => {
         if (!window.confirm(`Are you sure you want to rename "${oldName}" to "${newName}"?`)) {
             return;
         }
-                                                
+        if (oldName === newName) {
+            alert("The new playlist name must be different from the old name.");
+            return;
+        }
+                                                        
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
