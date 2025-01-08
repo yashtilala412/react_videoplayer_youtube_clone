@@ -79,7 +79,14 @@ const VideoList = () => {
             onPlaylistRename(oldName, newName);
         }
         console.log(`Playlist renamed: ${oldName} -> ${newName}`);
-                                                         
+        const undoRename = () => {
+            setPlaylists({ ...playlists, [oldName]: playlists[newName] });
+            delete updatedPlaylists[newName];
+        };
+        setTimeout(() => {
+            if (window.confirm("Undo rename?")) undoRename();
+        }, 5000);
+                                                                 
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
