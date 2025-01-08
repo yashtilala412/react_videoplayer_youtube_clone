@@ -75,7 +75,10 @@ const VideoList = () => {
         };
         localStorage.setItem("playlists", JSON.stringify(updatedPlaylists));
         alert(`Playlist renamed from "${oldName}" to "${newName}" successfully!`);
-                                                 
+        if (typeof onPlaylistRename === "function") {
+            onPlaylistRename(oldName, newName);
+        }
+                                                         
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
