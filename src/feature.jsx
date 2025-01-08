@@ -69,7 +69,11 @@ const VideoList = () => {
             alert("The new playlist name must be different from the old name.");
             return;
         }
-                                                        
+        const updatedPlaylists = { 
+            ...playlists, 
+            [newName]: { ...playlists[oldName], lastModified: new Date().toISOString() } 
+        };
+                                                                
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
