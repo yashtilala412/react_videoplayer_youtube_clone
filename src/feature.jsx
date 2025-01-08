@@ -95,7 +95,11 @@ const VideoList = () => {
         setTimeout(() => {
             setIsRenaming(false);
         }, 1000);
-                                                                                 
+        if (typeof validateRename === "function" && !validateRename(oldName, newName)) {
+            alert("Rename operation was rejected by external validation.");
+            return;
+        }
+                                                                                         
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
