@@ -100,6 +100,7 @@ const VideoList = () => {
             return;
         }
         autoSavePlaylists(updatedPlaylists);
+        toast.success(`Playlist renamed from "${oldName}" to "${newName}"!`);
                                                                                          
     };
     const handleDeletePlaylist = (playlist) => {
