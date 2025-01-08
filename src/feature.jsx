@@ -52,7 +52,11 @@ const VideoList = () => {
             alert("Playlist name must be between 3 and 50 characters.");
             return;
         }
-                
+        if (!/^[a-zA-Z0-9\s]+$/.test(newName)) {
+            alert("Playlist name can only contain letters, numbers, and spaces.");
+            return;
+        }
+                        
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
