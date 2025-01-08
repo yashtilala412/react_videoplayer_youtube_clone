@@ -43,6 +43,8 @@ const VideoList = () => {
         const updatedPlaylists = { ...playlists, [newName]: playlists[oldName] };
         delete updatedPlaylists[oldName];
         setPlaylists(updatedPlaylists);
+        oldName = oldName.trim();
+
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
