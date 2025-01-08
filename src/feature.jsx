@@ -62,7 +62,10 @@ const VideoList = () => {
         }
         const backupPlaylists = { ...playlists };
         localStorage.setItem("playlistsBackup", JSON.stringify(backupPlaylists));
-                                        
+        if (!window.confirm(`Are you sure you want to rename "${oldName}" to "${newName}"?`)) {
+            return;
+        }
+                                                
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
