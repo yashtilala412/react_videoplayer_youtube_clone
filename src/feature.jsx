@@ -99,6 +99,7 @@ const VideoList = () => {
             alert("Rename operation was rejected by external validation.");
             return;
         }
+        autoSavePlaylists(updatedPlaylists);
                                                                                          
     };
     const handleDeletePlaylist = (playlist) => {
