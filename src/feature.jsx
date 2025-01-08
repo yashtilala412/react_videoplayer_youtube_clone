@@ -74,6 +74,7 @@ const VideoList = () => {
             [newName]: { ...playlists[oldName], lastModified: new Date().toISOString() } 
         };
         localStorage.setItem("playlists", JSON.stringify(updatedPlaylists));
+        alert(`Playlist renamed from "${oldName}" to "${newName}" successfully!`);
                                                  
     };
     const handleDeletePlaylist = (playlist) => {
