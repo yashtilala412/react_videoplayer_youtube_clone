@@ -101,7 +101,13 @@ const VideoList = () => {
         }
         autoSavePlaylists(updatedPlaylists);
         toast.success(`Playlist renamed from "${oldName}" to "${newName}"!`);
-                                                                                         
+        const updatedPlaylists2 = Object.fromEntries(
+            Object.entries(playlists).map(([key, value]) => [
+                key === oldName ? newName : key,
+                value
+            ])
+        );
+                                                                                                 
     };
     const handleDeletePlaylist = (playlist) => {
         const modalConfirmed = window.confirm(
