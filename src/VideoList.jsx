@@ -47,6 +47,10 @@ const VideoList = () => {
             alert('Comment cannot be empty!');
             return;
         }
+        if (trimmedComment.length > 250) {
+            alert('Comment is too long! Maximum 250 characters allowed.');
+            return;
+        }
         if (comment.trim()) {
             
             selectedVideo.comments.push(comment);
