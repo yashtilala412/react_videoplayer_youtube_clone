@@ -155,7 +155,13 @@ const VideoList = () => {
         alert('Your comment was flagged as spam!');
         return;
     }
+    newComment.text = parseMarkdown(trimmedComment);
 
+    // 48. Add comment filtering based on user preferences (e.g., hide negative comments)
+    const userPreferences = getUserPreferences();
+    if (userPreferences.hideNegativeComments && newComment.sentimentScore < 0) {
+        alert('Your comment will be hidden due to negative sentiment.');
+    }
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
