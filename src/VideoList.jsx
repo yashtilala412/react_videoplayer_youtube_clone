@@ -123,6 +123,8 @@ const VideoList = () => {
     setHighlightedCommentId(newComment.id);
     saveCommentToDatabase(newComment);
     newComment.likes = 0;
+    sendPushNotification(videoOwnerId, `${currentUser} commented: ${trimmedComment}`);
+
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
