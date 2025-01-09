@@ -51,6 +51,11 @@ const VideoList = () => {
             alert('Comment is too long! Maximum 250 characters allowed.');
             return;
         }
+        const isDuplicate = selectedVideo.comments.some(existingComment => existingComment === trimmedComment);
+        if (isDuplicate) {
+            alert('Duplicate comment! Please write something different.');
+            return;
+        }
         if (comment.trim()) {
             
             selectedVideo.comments.push(comment);
