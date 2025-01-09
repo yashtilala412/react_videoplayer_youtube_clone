@@ -122,6 +122,7 @@ const VideoList = () => {
 
     setHighlightedCommentId(newComment.id);
     saveCommentToDatabase(newComment);
+    newComment.likes = 0;
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
