@@ -76,6 +76,14 @@ const VideoList = () => {
         return;
     }
     setLoading(true);
+    setTimeout(() => {
+        // 11. Save the comment with additional metadata (e.g., user, timestamp)
+        const newComment = {
+            id: Date.now(), // Unique ID
+            text: trimmedComment,
+            user: currentUser, // Assume currentUser is available in scope
+            timestamp,
+        };
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
             
