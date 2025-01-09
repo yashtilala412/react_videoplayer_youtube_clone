@@ -111,6 +111,15 @@ const VideoList = () => {
         alert('Your username contains inappropriate content!');
         return;
     }
+    scrollToComment(newComment.id);
+
+    // 29. Sort comments by timestamp (newest first)
+    selectedVideo.comments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+    // 30. Add a feature to upvote/downvote comments
+    newComment.upvotes = 0;
+    newComment.downvotes = 0;
+
 
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
