@@ -56,6 +56,15 @@ const VideoList = () => {
             alert('Duplicate comment! Please write something different.');
             return;
         }
+        
+        
+        const bannedWords = ['badword1', 'badword2', 'badword3'];
+        const containsBannedWord = bannedWords.some(word => trimmedComment.toLowerCase().includes(word));
+        if (containsBannedWord) {
+            alert('Inappropriate language is not allowed!');
+            return;
+        }
+    
         if (comment.trim()) {
             
             selectedVideo.comments.push(comment);
