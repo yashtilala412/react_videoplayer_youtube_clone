@@ -136,6 +136,8 @@ const VideoList = () => {
         notifyMentionedUsers(mentionedUsers, newComment);
     }
     newComment.sentimentScore = analyzeSentiment(trimmedComment);
+    newComment.hashtags = extractHashtags(trimmedComment);
+
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
