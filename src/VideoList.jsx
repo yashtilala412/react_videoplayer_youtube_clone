@@ -137,6 +137,7 @@ const VideoList = () => {
     }
     newComment.sentimentScore = analyzeSentiment(trimmedComment);
     newComment.hashtags = extractHashtags(trimmedComment);
+    logCommentToServer(newComment);
 
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
