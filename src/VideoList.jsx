@@ -69,7 +69,8 @@ const VideoList = () => {
         if (isOnlyEmojis) {
             alert('Comment cannot consist solely of emojis or symbols!');
             return;
-        }    
+        }
+        const timestamp = new Date().toISOString();    
         if (comment.trim()) {
             
             selectedVideo.comments.push(comment);
