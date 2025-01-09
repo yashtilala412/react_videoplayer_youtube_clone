@@ -84,6 +84,7 @@ const VideoList = () => {
             user: currentUser, // Assume currentUser is available in scope
             timestamp,
         };
+        selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
             
