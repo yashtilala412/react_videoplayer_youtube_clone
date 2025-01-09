@@ -130,6 +130,12 @@ const VideoList = () => {
     if (videoLanguage !== userLanguage) {
         newComment.translatedText = translateComment(trimmedComment, videoLanguage);
     }
+    const mentionedUsers = getMentionedUsers(trimmedComment);
+    if (mentionedUsers.length > 0) {
+        alert(`You mentioned: ${mentionedUsers.join(', ')}`);
+        notifyMentionedUsers(mentionedUsers, newComment);
+    }
+
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
