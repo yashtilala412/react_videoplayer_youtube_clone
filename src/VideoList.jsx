@@ -91,6 +91,8 @@ const VideoList = () => {
     }, 1000);
     console.log('Comment submitted:', trimmedComment);
     sendCommentToServer(newComment);
+    setCommentCount(selectedVideo.comments.length);
+
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
