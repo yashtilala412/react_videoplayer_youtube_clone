@@ -94,7 +94,11 @@ const VideoList = () => {
     setCommentCount(selectedVideo.comments.length);
     localStorage.setItem('latestComment', JSON.stringify(newComment));
     setPreviewComment(newComment);
-
+    if (Date.now() - lastCommentTime < 5000) {
+        alert('Please wait 5 seconds before posting another comment.');
+        return;
+    }
+    setLastCommentTime(Date.now());
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
