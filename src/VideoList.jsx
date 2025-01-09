@@ -93,6 +93,7 @@ const VideoList = () => {
     sendCommentToServer(newComment);
     setCommentCount(selectedVideo.comments.length);
     localStorage.setItem('latestComment', JSON.stringify(newComment));
+    setPreviewComment(newComment);
 
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
