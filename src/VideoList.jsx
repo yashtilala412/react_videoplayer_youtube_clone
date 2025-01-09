@@ -99,6 +99,12 @@ const VideoList = () => {
         return;
     }
     setLastCommentTime(Date.now());
+    const isSuspicious = trimmedComment.includes('http') || trimmedComment.includes('www');
+    if (isSuspicious) {
+        alert('Comments containing links will be reviewed by a moderator.');
+        newComment.isPending = true;
+    }
+
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
