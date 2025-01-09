@@ -107,6 +107,11 @@ const VideoList = () => {
     newComment.text = newComment.text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     sendEmailNotification(videoOwnerEmail, `New comment: ${trimmedComment}`);
     trackEvent('commentSubmitted', { videoId: selectedVideo.id, user: currentUser });
+    if (bannedWords.some(word => currentUser.toLowerCase().includes(word))) {
+        alert('Your username contains inappropriate content!');
+        return;
+    }
+
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
