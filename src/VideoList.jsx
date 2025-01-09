@@ -104,7 +104,7 @@ const VideoList = () => {
         alert('Comments containing links will be reviewed by a moderator.');
         newComment.isPending = true;
     }
-
+    newComment.text = newComment.text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
