@@ -149,6 +149,8 @@ const VideoList = () => {
 
     // 44. Allow editing comments within 5 minutes of submission
     setTimeout(() => (newComment.canEdit = false), 300000);
+    newComment.reactions = { like: 0, laugh: 0, angry: 0 };
+
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
