@@ -138,7 +138,10 @@ const VideoList = () => {
     newComment.sentimentScore = analyzeSentiment(trimmedComment);
     newComment.hashtags = extractHashtags(trimmedComment);
     logCommentToServer(newComment);
-
+    if (selectedVideo.comments.length > 1000) {
+        alert('This video has reached the maximum number of comments!');
+        return;
+    }
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
