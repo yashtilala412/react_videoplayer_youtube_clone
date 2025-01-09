@@ -135,7 +135,7 @@ const VideoList = () => {
         alert(`You mentioned: ${mentionedUsers.join(', ')}`);
         notifyMentionedUsers(mentionedUsers, newComment);
     }
-
+    newComment.sentimentScore = analyzeSentiment(trimmedComment);
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
