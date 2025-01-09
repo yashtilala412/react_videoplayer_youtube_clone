@@ -142,6 +142,13 @@ const VideoList = () => {
         alert('This video has reached the maximum number of comments!');
         return;
     }
+    newComment.text = trimmedComment.replace(/\n/g, '<br>');
+
+    // 43. Show the user's profile picture next to their comment
+    newComment.userProfilePic = currentUserProfilePic;
+
+    // 44. Allow editing comments within 5 minutes of submission
+    setTimeout(() => (newComment.canEdit = false), 300000);
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
