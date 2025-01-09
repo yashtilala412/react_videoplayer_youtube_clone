@@ -43,6 +43,10 @@ const VideoList = () => {
 
     const handleCommentSubmit = () => {
         const trimmedComment = comment.trim();
+        if (!trimmedComment) {
+            alert('Comment cannot be empty!');
+            return;
+        }
         if (comment.trim()) {
             
             selectedVideo.comments.push(comment);
