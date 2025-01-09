@@ -120,7 +120,7 @@ const VideoList = () => {
     newComment.upvotes = 0;
     newComment.downvotes = 0;
 
-
+    setHighlightedCommentId(newComment.id);
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
