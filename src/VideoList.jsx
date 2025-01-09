@@ -85,6 +85,7 @@ const VideoList = () => {
             timestamp,
         };
         setComment('');
+        setSelectedVideo({ ...selectedVideo });
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
