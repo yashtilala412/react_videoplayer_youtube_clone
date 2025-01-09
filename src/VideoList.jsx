@@ -162,6 +162,13 @@ const VideoList = () => {
     if (userPreferences.hideNegativeComments && newComment.sentimentScore < 0) {
         alert('Your comment will be hidden due to negative sentiment.');
     }
+    saveCommentToDatabase(newComment)
+        .then(() => alert('Comment saved successfully!'))
+        .catch(() => alert('Failed to save comment. Please try again later.'));
+
+    // 50. Refresh the comment section to show the new comment
+    refreshCommentSection();
+};
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
