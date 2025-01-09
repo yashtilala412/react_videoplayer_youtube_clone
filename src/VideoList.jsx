@@ -75,7 +75,7 @@ const VideoList = () => {
         alert('You can only post up to 5 comments per video!');
         return;
     }
-
+    setLoading(true);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
             
