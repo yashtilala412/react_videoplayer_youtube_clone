@@ -124,7 +124,12 @@ const VideoList = () => {
     saveCommentToDatabase(newComment);
     newComment.likes = 0;
     sendPushNotification(videoOwnerId, `${currentUser} commented: ${trimmedComment}`);
+    alert('Thank you for your comment!');
 
+    // 36. Automatically translate the comment to the video's language
+    if (videoLanguage !== userLanguage) {
+        newComment.translatedText = translateComment(trimmedComment, videoLanguage);
+    }
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
