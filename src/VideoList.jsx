@@ -42,7 +42,9 @@ const VideoList = () => {
     };
 
     const handleCommentSubmit = () => {
+        const trimmedComment = comment.trim();
         if (comment.trim()) {
+            
             selectedVideo.comments.push(comment);
             setComment('');
             setSelectedVideo({ ...selectedVideo });
