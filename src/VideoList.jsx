@@ -105,6 +105,7 @@ const VideoList = () => {
         newComment.isPending = true;
     }
     newComment.text = newComment.text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    sendEmailNotification(videoOwnerEmail, `New comment: ${trimmedComment}`);
         selectedVideo.comments.push(newComment);
         const timestamp = new Date().toISOString();    
         if (comment.trim()) {
