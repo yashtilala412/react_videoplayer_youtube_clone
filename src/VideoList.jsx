@@ -64,7 +64,12 @@ const VideoList = () => {
             alert('Inappropriate language is not allowed!');
             return;
         }
-    
+        const emojiRegex = /[\p{Emoji}]/u;
+        const isOnlyEmojis = emojiRegex.test(trimmedComment) && trimmedComment.replace(emojiRegex, '').trim() === '';
+        if (isOnlyEmojis) {
+            alert('Comment cannot consist solely of emojis or symbols!');
+            return;
+        }    
         if (comment.trim()) {
             
             selectedVideo.comments.push(comment);
