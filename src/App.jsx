@@ -30,9 +30,7 @@ const App = () => {
     setVideos([newVideo, ...videos]);
   };
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
+  
   const filterByDuration = (maxDuration) => {
     const filteredVideos = videos.filter((video) => video.duration <= maxDuration);
     setVideos(filteredVideos);
