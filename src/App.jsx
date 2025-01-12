@@ -61,11 +61,7 @@ const App = () => {
     setVideos(updatedVideos);
   };
  
-  const toggleTheme1 = () => {
-    if (window.confirm("Are you sure you want to change the theme?")) {
-      setTheme(theme === 'light' ? 'dark' : 'light');
-    }
-  };
+ 
   const addComment = (videoId, comment) => {
     const updatedVideos = videos.map((video) =>
       video.id === videoId ? { ...video, comments: [...video.comments, comment] } : video
