@@ -60,12 +60,7 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-  const handleBookmark = (videoId) => {
-    const updatedVideos = videos.map((video) =>
-      video.id === videoId ? { ...video, bookmarked: !video.bookmarked } : video
-    );
-    setVideos(updatedVideos);
-  };
+ 
   const toggleTheme1 = () => {
     if (window.confirm("Are you sure you want to change the theme?")) {
       setTheme(theme === 'light' ? 'dark' : 'light');
