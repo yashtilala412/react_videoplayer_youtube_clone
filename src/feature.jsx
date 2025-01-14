@@ -64,7 +64,12 @@ const VideoList = () => {
             alert("Playlist name cannot start or end with spaces.");
             return;
         }
-                
+        const existingPlaylists = ["My Playlist 1", "Chill Vibes", "Workout Mix"]; // Example array
+        if (existingPlaylists.includes(newName)) {
+            alert("A playlist with this name already exists. Please choose a different name.");
+            return;
+        }
+                        
         if (Object.keys(playlists).some(name => name.toLowerCase() === newName.toLowerCase())) {
             alert("A playlist with this name already exists (case-insensitive).");
             return;
