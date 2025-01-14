@@ -60,7 +60,11 @@ const VideoList = () => {
             alert("Playlist name cannot exceed 30 characters.");
             return;
         }
-        
+        if (newName.trim() !== newName) {
+            alert("Playlist name cannot start or end with spaces.");
+            return;
+        }
+                
         if (Object.keys(playlists).some(name => name.toLowerCase() === newName.toLowerCase())) {
             alert("A playlist with this name already exists (case-insensitive).");
             return;
