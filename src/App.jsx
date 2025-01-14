@@ -30,9 +30,7 @@ const App = () => {
     setVideos([newVideo, ...videos]);
   };
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
+  
   const filterByDuration = (maxDuration) => {
     const filteredVideos = videos.filter((video) => video.duration <= maxDuration);
     setVideos(filteredVideos);
@@ -62,12 +60,7 @@ const App = () => {
     );
     setVideos(updatedVideos);
   };
-  const handleBookmark = (videoId) => {
-    const updatedVideos = videos.map((video) =>
-      video.id === videoId ? { ...video, bookmarked: !video.bookmarked } : video
-    );
-    setVideos(updatedVideos);
-  };
+ 
   const toggleTheme1 = () => {
     if (window.confirm("Are you sure you want to change the theme?")) {
       setTheme(theme === 'light' ? 'dark' : 'light');
