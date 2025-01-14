@@ -60,15 +60,7 @@ const VideoList = () => {
             alert("A playlist with this name already exists (case-insensitive).");
             return;
         }
-        const backupPlaylists = { ...playlists };
-        localStorage.setItem("playlistsBackup", JSON.stringify(backupPlaylists));
-        if (!window.confirm(`Are you sure you want to rename "${oldName}" to "${newName}"?`)) {
-            return;
-        }
-        if (oldName === newName) {
-            alert("The new playlist name must be different from the old name.");
-            return;
-        }
+       
         const updatedPlaylists1 = { 
             ...playlists, 
             [newName]: { ...playlists[oldName], lastModified: new Date().toISOString() } 
