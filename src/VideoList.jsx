@@ -52,11 +52,10 @@ const VideoList = () => {
             return;
         }
         if (isDuplicate) {
-            alert('Duplicate comment! Please write something different.');
-            const duplicateIndex = selectedVideo.comments.findIndex(
+            const similarComment = selectedVideo.comments.find(
               existingComment => existingComment.toLowerCase() === trimmedComment.toLowerCase()
             );
-            document.getElementById(`comment-${duplicateIndex}`).classList.add('highlight');
+            alert(`Duplicate comment! Did you mean: "${similarComment}"?`);
             return;
           }
           
