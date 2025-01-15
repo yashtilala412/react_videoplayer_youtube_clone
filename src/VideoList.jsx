@@ -51,11 +51,12 @@ const VideoList = () => {
             alert('Comment is too long! Maximum 250 characters allowed.');
             return;
         }
-        const isDuplicate = selectedVideo.comments.some(
-            existingComment => existingComment.toLowerCase() === trimmedComment.toLowerCase()
-          );
-          if (isDuplicate) {
+        if (isDuplicate) {
             alert('Duplicate comment! Please write something different.');
+            const duplicateIndex = selectedVideo.comments.findIndex(
+              existingComment => existingComment.toLowerCase() === trimmedComment.toLowerCase()
+            );
+            document.getElementById(`comment-${duplicateIndex}`).classList.add('highlight');
             return;
           }
           
