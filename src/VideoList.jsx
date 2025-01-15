@@ -52,10 +52,8 @@ const VideoList = () => {
             return;
         }
         if (isDuplicate) {
-            const similarComment = selectedVideo.comments.find(
-              existingComment => existingComment.toLowerCase() === trimmedComment.toLowerCase()
-            );
-            alert(`Duplicate comment! Did you mean: "${similarComment}"?`);
+            console.warn(`Duplicate comment attempt: "${trimmedComment}"`);
+            alert('Duplicate comment! Please write something different.');
             return;
           }
           
