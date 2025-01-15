@@ -51,11 +51,14 @@ const VideoList = () => {
             alert('Comment is too long! Maximum 250 characters allowed.');
             return;
         }
-        const isDuplicate = selectedVideo.comments.some(existingComment => existingComment === trimmedComment);
-        if (isDuplicate) {
+        const isDuplicate = selectedVideo.comments.some(
+            existingComment => existingComment.toLowerCase() === trimmedComment.toLowerCase()
+          );
+          if (isDuplicate) {
             alert('Duplicate comment! Please write something different.');
             return;
-        }
+          }
+          
         
         
         const bannedWords = ['badword1', 'badword2', 'badword3'];
