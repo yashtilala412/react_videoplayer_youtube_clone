@@ -56,6 +56,10 @@ const VideoList = () => {
             alert("Playlist name can only contain letters, numbers, and spaces.");
             return;
         }
+        if (newName.length > 50) {
+            alert("Playlist name cannot exceed 50 characters.");
+            return;
+        }
         if (newName.length > 30) {
             alert("Playlist name cannot exceed 30 characters.");
             return;
