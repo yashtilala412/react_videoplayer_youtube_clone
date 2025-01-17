@@ -43,10 +43,17 @@ const App = () => {
         ? new Date(a.uploadDate) - new Date(b.uploadDate)
         : new Date(b.uploadDate) - new Date(a.uploadDate);
     });
-    setVideos(sortedVideos);
-    setIsAscending(!isAscending); // Toggle the sorting order for the next click
+  
+    const highlightedVideos = sortedVideos.map((video) => ({
+      ...video,
+      isRecent: (new Date() - new Date(video.uploadDate)) / (1000 * 60 * 60 * 24) <= 7, // Check if uploaded within 7 days
+    }));
+  
+    setVideos(highlightedVideos);
+    setIsAscending(!isAscending);
   };
   
+    
   const handleLike = (videoId) => {
     const updatedVideos = videos.map((video) =>
       video.id === videoId ? { ...video, likes: video.likes + 1 } : video
