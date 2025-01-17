@@ -44,14 +44,17 @@ const App = () => {
         : new Date(b.uploadDate) - new Date(a.uploadDate);
     });
   
-    const highlightedVideos = sortedVideos.map((video) => ({
-      ...video,
-      isRecent: (new Date() - new Date(video.uploadDate)) / (1000 * 60 * 60 * 24) <= 7, // Check if uploaded within 7 days
-    }));
+    const groupedVideos = sortedVideos.reduce((acc, video) => {
+      const year = new Date(video.uploadDate).getFullYear();
+      if (!acc[year]) acc[year] = [];
+      acc[year].push(video);
+      return acc;
+    }, {});
   
-    setVideos(highlightedVideos);
+    setVideos(groupedVideos);
     setIsAscending(!isAscending);
   };
+  
   
     
   const handleLike = (videoId) => {
