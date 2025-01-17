@@ -35,10 +35,18 @@ const App = () => {
     const filteredVideos = videos.filter((video) => video.duration <= maxDuration);
     setVideos(filteredVideos);
   };
+  const [isAscending, setIsAscending] = useState(false);
+
   const sortByUploadDate = () => {
-    const sortedVideos = [...videos].sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate));
+    const sortedVideos = [...videos].sort((a, b) => {
+      return isAscending
+        ? new Date(a.uploadDate) - new Date(b.uploadDate)
+        : new Date(b.uploadDate) - new Date(a.uploadDate);
+    });
     setVideos(sortedVideos);
+    setIsAscending(!isAscending); // Toggle the sorting order for the next click
   };
+  
   const handleLike = (videoId) => {
     const updatedVideos = videos.map((video) =>
       video.id === videoId ? { ...video, likes: video.likes + 1 } : video
