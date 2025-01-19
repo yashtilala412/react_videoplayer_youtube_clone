@@ -35,14 +35,16 @@ const App = () => {
     const filteredVideos = videos.filter((video) => video.duration <= maxDuration);
     setVideos(filteredVideos);
   };
-  const [isAscending, setIsAscending] = useState(false);
-
   const sortByUploadDate = () => {
     const sortedVideos = [...videos].sort((a, b) => {
       return isAscending
         ? new Date(a.uploadDate) - new Date(b.uploadDate)
         : new Date(b.uploadDate) - new Date(a.uploadDate);
     });
+    setVideos(sortedVideos);
+    setIsAscending(!isAscending); // Toggle sorting order
+  };
+  
   
     const groupedVideos = sortedVideos.reduce((acc, video) => {
       const year = new Date(video.uploadDate).getFullYear();
