@@ -35,15 +35,22 @@ const App = () => {
     const filteredVideos = videos.filter((video) => video.duration <= maxDuration);
     setVideos(filteredVideos);
   };
+  const [originalVideos] = useState([...videos]); // Keep a copy of the original videos
+
   const sortByUploadDate = () => {
-    const sortedVideos = [...videos].sort((a, b) => {
-      return isAscending
-        ? new Date(a.uploadDate) - new Date(b.uploadDate)
-        : new Date(b.uploadDate) - new Date(a.uploadDate);
-    });
+    let sortedVideos;
+    if (isAscending === null) {
+      // Reset to original order
+      sortedVideos = [...originalVideos];
+    } else {
+      sortedVideos = [...videos].sort((a, b) => {
+        return isAscending
+          ? new Date(a.uploadDate) - new Date(b.uploadDate)
+          : new Date(b.uploadDate) - new Date(a.uploadDate);
+      });
+    }
     setVideos(sortedVideos);
-    setIsAscending(!isAscending);
-    console.log(isAscending ? "Sorting by oldest first" : "Sorting by newest first"); // Display sorting order
+    setIsAscending(isAscending === null ? false : !isAscending); // Toggle sorting or reset
   };
   
   
