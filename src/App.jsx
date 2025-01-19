@@ -42,8 +42,10 @@ const App = () => {
         : new Date(b.uploadDate) - new Date(a.uploadDate);
     });
     setVideos(sortedVideos);
-    setIsAscending(!isAscending); // Toggle sorting order
+    setIsAscending(!isAscending);
+    console.log(isAscending ? "Sorting by oldest first" : "Sorting by newest first"); // Display sorting order
   };
+  
   
   
     const groupedVideos = sortedVideos.reduce((acc, video) => {
