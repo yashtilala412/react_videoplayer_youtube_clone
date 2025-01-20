@@ -63,7 +63,12 @@ const App = () => {
     if (!acc[year]) acc[year] = {};
     if (!acc[year][month]) acc[year][month] = [];
     acc[year][month].push(video);
-  
+    Object.keys(groupedVideos).forEach(year => {
+      Object.keys(groupedVideos[year]).forEach(month => {
+        console.log(`Year: ${year}, Month: ${month}, Videos: ${groupedVideos[year][month].length}`);
+      });
+    });
+    
     return acc;
   }, {});
   
