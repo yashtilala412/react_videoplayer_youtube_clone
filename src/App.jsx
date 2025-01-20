@@ -59,18 +59,19 @@ const App = () => {
     const date = new Date(video.uploadDate);
     const year = date.getFullYear();
     const month = date.toLocaleString('default', { month: 'long' }); // Get month name
+    const category = video.category || "Uncategorized"; // Default category if none exists
   
     if (!acc[year]) acc[year] = {};
-    if (!acc[year][month]) acc[year][month] = [];
-    acc[year][month].push(video);
-    Object.keys(groupedVideos).forEach(year => {
-      Object.keys(groupedVideos[year]).forEach(month => {
-        console.log(`Year: ${year}, Month: ${month}, Videos: ${groupedVideos[year][month].length}`);
-      });
-    });
+    if (!acc[year][month]) acc[year][month] = {};
+    if (!acc[year][month][category]) acc[year][month][category] = [];
     
+    acc[year][month][category].push(video);
+  
     return acc;
   }, {});
+  
+  console.log(groupedVideos);
+  
   
   console.log(groupedVideos);
   
