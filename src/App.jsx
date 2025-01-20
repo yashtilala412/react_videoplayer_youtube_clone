@@ -55,12 +55,19 @@ const App = () => {
   
   
   
-    const groupedVideos = sortedVideos.reduce((acc, video) => {
-      const year = new Date(video.uploadDate).getFullYear();
-      if (!acc[year]) acc[year] = [];
-      acc[year].push(video);
-      return acc;
-    }, {});
+  const groupedVideos = sortedVideos.reduce((acc, video) => {
+    const date = new Date(video.uploadDate);
+    const year = date.getFullYear();
+    const month = date.toLocaleString('default', { month: 'long' }); // Get month name
+  
+    if (!acc[year]) acc[year] = {};
+    if (!acc[year][month]) acc[year][month] = [];
+    acc[year][month].push(video);
+  
+    return acc;
+  }, {});
+  
+  console.log(groupedVideos);
   
     setVideos(groupedVideos);
     setIsAscending(!isAscending);
