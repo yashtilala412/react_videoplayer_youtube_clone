@@ -32,11 +32,17 @@ const App = () => {
 
   
   const filterByDuration = (maxDuration, minDuration = 0) => {
+    if (maxDuration == null) {
+      setVideos(originalVideos); // Assuming `originalVideos` stores the full list of videos.
+      return;
+    }
+  
     const filteredVideos = videos.filter(
       (video) => video.duration <= maxDuration && video.duration >= minDuration
     );
     setVideos(filteredVideos);
   };
+  
   
   const [originalVideos] = useState([...videos]); // Keep a copy of the original videos
 
