@@ -90,12 +90,29 @@ const App = () => {
   
   
     
-  const handleLike = (videoId) => {
-    const updatedVideos = videos.map((video) =>
-      video.id === videoId ? { ...video, likes: video.likes + 1 } : video
-    );
+  const handleLike = (videoId, userId) => {
+    const updatedVideos = videos.map((video) => {
+      if (video.id === videoId) {
+        // Check if the user has already liked the video
+        if (video.likedBy && video.likedBy.includes(userId)) {
+          alert("You have already liked this video!");
+          return video; // No changes made if already liked
+        }
+  
+        // Increment likes and add the user to likedBy array
+        return {
+          ...video,
+          likes: video.likes + 1,
+          likedBy: [...(video.likedBy || []), userId], // Initialize likedBy if undefined
+        };
+      }
+      return video;
+    });
+  
+    // Update the state with the modified videos
     setVideos(updatedVideos);
   };
+  
   const handleDislike = (videoId) => {
     const updatedVideos = videos.map((video) =>
       video.id === videoId ? { ...video, dislikes: video.dislikes + 1 } : video
