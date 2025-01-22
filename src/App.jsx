@@ -93,17 +93,15 @@ const App = () => {
   const handleLike = (videoId, userId) => {
     const updatedVideos = videos.map((video) => {
       if (video.id === videoId) {
-        // Check if the user has already liked the video
         if (video.likedBy && video.likedBy.includes(userId)) {
           alert("You have already liked this video!");
-          return video; // No changes made if already liked
+          return video;
         }
   
-        // Increment likes and add the user to likedBy array
         return {
           ...video,
           likes: video.likes + 1,
-          likedBy: [...(video.likedBy || []), userId], // Initialize likedBy if undefined
+          likedBy: [...(video.likedBy || []), userId],
         };
       }
       return video;
@@ -111,7 +109,12 @@ const App = () => {
   
     // Update the state with the modified videos
     setVideos(updatedVideos);
+  
+    // Calculate the total number of likes
+    const totalLikes = updatedVideos.reduce((sum, video) => sum + video.likes, 0);
+    console.log(`Total Likes Across All Videos: ${totalLikes}`);
   };
+  
   
   const handleDislike = (videoId) => {
     const updatedVideos = videos.map((video) =>
