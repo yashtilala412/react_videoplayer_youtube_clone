@@ -39,6 +39,7 @@ const App = () => {
   ) => {
     if (reset) {
       setVideos(originalVideos);
+      localStorage.removeItem("filterCriteria");
       return;
     }
   
@@ -53,8 +54,14 @@ const App = () => {
         video.duration >= minDuration &&
         video.rating >= minRating
     );
+  
+    // Save filter criteria to localStorage
+    const filterCriteria = { maxDuration, minDuration, minRating };
+    localStorage.setItem("filterCriteria", JSON.stringify(filterCriteria));
+  
     setVideos(filteredVideos);
   };
+  
   
   
   
