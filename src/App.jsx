@@ -31,9 +31,14 @@ const App = () => {
   };
 
   
-  const filterByDuration = (maxDuration, minDuration = 0, reset = false) => {
+  const filterByDuration = (
+    maxDuration,
+    minDuration = 0,
+    reset = false,
+    minRating = 0
+  ) => {
     if (reset) {
-      setVideos(originalVideos); // Reset to the original full list of videos.
+      setVideos(originalVideos);
       return;
     }
   
@@ -43,7 +48,10 @@ const App = () => {
     }
   
     const filteredVideos = videos.filter(
-      (video) => video.duration <= maxDuration && video.duration >= minDuration
+      (video) =>
+        video.duration <= maxDuration &&
+        video.duration >= minDuration &&
+        video.rating >= minRating
     );
     setVideos(filteredVideos);
   };
