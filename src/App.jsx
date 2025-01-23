@@ -31,9 +31,14 @@ const App = () => {
   };
 
   
-  const filterByDuration = (maxDuration, minDuration = 0) => {
+  const filterByDuration = (maxDuration, minDuration = 0, reset = false) => {
+    if (reset) {
+      setVideos(originalVideos); // Reset to the original full list of videos.
+      return;
+    }
+  
     if (maxDuration == null) {
-      setVideos(originalVideos); // Assuming `originalVideos` stores the full list of videos.
+      setVideos(originalVideos);
       return;
     }
   
@@ -42,6 +47,7 @@ const App = () => {
     );
     setVideos(filteredVideos);
   };
+  
   
   
   const [originalVideos] = useState([...videos]); // Keep a copy of the original videos
