@@ -138,11 +138,18 @@ const App = () => {
   
   
   const handleDislike = (videoId) => {
-    const updatedVideos = videos.map((video) =>
-      video.id === videoId ? { ...video, dislikes: video.dislikes + 1 } : video
-    );
+    const updatedVideos = videos.map((video) => {
+      if (video.id === videoId) {
+        const updatedDislikes = Math.max(video.dislikes + 1, 0); // Prevent negative dislikes
+        console.log(`Video ${videoId} disliked. Total dislikes: ${updatedDislikes}`); // Log feedback
+        return { ...video, dislikes: updatedDislikes };
+      }
+      return video;
+    });
+  
     setVideos(updatedVideos);
   };
+  
   const setPlaybackSpeed = (speed) => {
     setVideoPlaybackSpeed(speed); // Assuming setVideoPlaybackSpeed is a state setter
   };
