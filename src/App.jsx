@@ -141,8 +141,9 @@ const App = () => {
     const updatedVideos = videos.map((video) => {
       if (video.id === videoId) {
         const updatedDislikes = Math.max(video.dislikes + 1, 0); // Prevent negative dislikes
+        const lastInteracted = new Date().toISOString(); // Update the timestamp
         console.log(`Video ${videoId} disliked. Total dislikes: ${updatedDislikes}`); // Log feedback
-        return { ...video, dislikes: updatedDislikes };
+        return { ...video, dislikes: updatedDislikes, lastInteracted };
       }
       return video;
     });
