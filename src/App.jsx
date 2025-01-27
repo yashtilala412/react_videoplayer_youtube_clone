@@ -58,7 +58,12 @@ const App = () => {
     // Save filter criteria to localStorage
     const filterCriteria = { maxDuration, minDuration, minRating };
     localStorage.setItem("filterCriteria", JSON.stringify(filterCriteria));
-  
+    const filteredVideos1 = videos.filter(
+      (video) =>
+        video.duration <= maxDuration &&
+        video.duration >= minDuration &&
+        video.rating >= minRating
+    );
     setVideos(filteredVideos);
   };
   
