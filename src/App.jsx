@@ -56,16 +56,41 @@ const App = () => {
     );
   
     // Save filter criteria to localStorage
-    const filterCriteria = { maxDuration, minDuration, minRating };
-    localStorage.setItem("filterCriteria", JSON.stringify(filterCriteria));
-    const filteredVideos1 = videos.filter(
-      (video) =>
-        video.duration <= maxDuration &&
-        video.duration >= minDuration &&
-        video.rating >= minRating
-    );
-    setVideos(filteredVideos);
-  };
+    const filterVideos = (maxDuration, minDuration = 0, minRating = 0) => {
+      // Filter videos based on criteria
+      const filteredVideos = videos.filter(
+        (video) =>
+          video.duration <= maxDuration &&
+          video.duration >= minDuration &&
+          video.rating >= minRating
+      );
+    
+      // Save filter criteria in localStorage
+      const filterCriteria = { maxDuration, minDuration, minRating };
+      localStorage.setItem("filterCriteria", JSON.stringify(filterCriteria));
+    
+      // Update videos state
+      setVideos(filteredVideos);
+    };
+    
+    // Restore filters from localStorage on page load
+    useEffect(() => {
+      const savedFilters = JSON.parse(localStorage.getItem("filterCriteria"));
+      if (savedFilters) {
+        filterVideos(
+          savedFilters.maxDuration,
+          savedFilters.minDuration,
+          savedFilters.minRating
+        );
+      }
+    }, []);
+    
+    // Clear filters and reset video list
+    const clearFilters = () => {
+      localStorage.removeItem("filterCriteria");
+      setVideos(originalVideos); // Reset videos to the original list
+    };
+    
   
   
   
