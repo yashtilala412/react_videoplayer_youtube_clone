@@ -77,11 +77,10 @@ const VideoList = () => {
             return;
         }
         const existingPlaylists = ["My Playlist 1", "Chill Vibes", "Workout Mix"]; // Example array
-        if (existingPlaylists.includes(newName)) {
-            alert("A playlist with this name already exists. Please choose a different name.");
-            return;
-        }
-                        
+
+// Normalize existing playlists to lowercase for case-insensitive comparison
+const normalizedPlaylists = existingPlaylists.map((playlist) => playlist.toLowerCase());
+           
         if (Object.keys(playlists).some(name => name.toLowerCase() === newName.toLowerCase())) {
             alert("A playlist with this name already exists (case-insensitive).");
             return;
