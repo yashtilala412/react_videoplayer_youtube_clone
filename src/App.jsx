@@ -94,6 +94,10 @@ const App = () => {
       setSearchQuery("");  // Reset search input field
       setSelectedCategory(null);  // Reset category selection
       setSortOrder("default"); // Reset sorting order if applicable
+      setNotification("Filters have been cleared!");  
+
+  // Optionally hide the message after a few seconds
+  setTimeout(() => setNotification(""), 3000);
     };
     
     
