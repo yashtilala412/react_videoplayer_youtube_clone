@@ -89,7 +89,13 @@ const App = () => {
     const clearFilters = () => {
       localStorage.removeItem("filterCriteria");
       setVideos(originalVideos); // Reset videos to the original list
+    
+      // Reset other UI states (Example: search input, selected category)
+      setSearchQuery("");  // Reset search input field
+      setSelectedCategory(null);  // Reset category selection
+      setSortOrder("default"); // Reset sorting order if applicable
     };
+    
     
   
   
