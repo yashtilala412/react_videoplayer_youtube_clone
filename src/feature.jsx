@@ -81,21 +81,29 @@ const VideoList = () => {
 const existingPlaylists = ["My Playlist 1", "Chill Vibes", "Workout Mix"]; // Example array
 
 // Normalize existing playlists to lowercase for case-insensitive comparison
-const normalizedPlaylists = existingPlaylists.map((playlist) => playlist.toLowerCase());
-const trimmedNewName = newName.trim().toLowerCase();
+const trimmedNewName = newName.trim();
 
-if (normalizedPlaylists.includes(trimmedNewName)) {
+if (trimmedNewName === "") {
+    alert("Playlist name cannot be empty. Please enter a valid name.");
+    return;
+}
+
+const normalizedPlaylists = existingPlaylists.map((playlist) => playlist.toLowerCase());
+const lowerCaseNewName = trimmedNewName.toLowerCase();
+
+if (normalizedPlaylists.includes(lowerCaseNewName)) {
     let counter = 1;
-    let suggestedName = `${newName.trim()} (${counter})`;
+    let suggestedName = `${trimmedNewName} (${counter})`;
 
     while (normalizedPlaylists.includes(suggestedName.toLowerCase())) {
         counter++;
-        suggestedName = `${newName.trim()} (${counter})`;
+        suggestedName = `${trimmedNewName} (${counter})`;
     }
 
     alert(`A playlist with this name already exists. Suggested name: "${suggestedName}"`);
     return;
 }
+
 
 
 // Additional logic can go here if needed
