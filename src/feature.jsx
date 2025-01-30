@@ -82,11 +82,21 @@ const existingPlaylists = ["My Playlist 1", "Chill Vibes", "Workout Mix"]; // Ex
 
 // Normalize existing playlists to lowercase for case-insensitive comparison
 const normalizedPlaylists = existingPlaylists.map((playlist) => playlist.toLowerCase());
+const trimmedNewName = newName.trim().toLowerCase();
 
-if (normalizedPlaylists.includes(newName.trim().toLowerCase())) {
-    alert("A playlist with this name already exists. Please choose a different name.");
+if (normalizedPlaylists.includes(trimmedNewName)) {
+    let counter = 1;
+    let suggestedName = `${newName.trim()} (${counter})`;
+
+    while (normalizedPlaylists.includes(suggestedName.toLowerCase())) {
+        counter++;
+        suggestedName = `${newName.trim()} (${counter})`;
+    }
+
+    alert(`A playlist with this name already exists. Suggested name: "${suggestedName}"`);
     return;
 }
+
 
 // Additional logic can go here if needed
 
