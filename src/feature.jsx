@@ -618,17 +618,23 @@ const playRandomVideoExcludingLowRated = () => {
         onVideoSelected(randomVideo);
     }
     let playCount = JSON.parse(localStorage.getItem('playCount')) || {};
-playCount[randomVideo.id] = (playCount[randomVideo.id] || 0) + 1;
-
-if (playCount[randomVideo.id] > 3) {
-    console.warn(`Video ${randomVideo.id} has been played too many times.`);
-} else {
+    playCount[randomVideo.id] = (playCount[randomVideo.id] || 0) + 1;
     localStorage.setItem('playCount', JSON.stringify(playCount));
-}
-
-if (filteredVideos.length < 3) {
-    console.warn("Only a few videos are available after filtering.");
-}
+    
+    if (playCount[randomVideo.id] > 3) {
+        console.warn(`Video ${randomVideo.id} has been played too many times.`);
+    }
+    
+    // Find the most played video
+    let mostPlayedVideoId = Object.keys(playCount).reduce((a, b) => 
+        playCount[a] > playCount[b] ? a : b, Object.keys(playCount)[0]);
+    
+    console.log(`Most played video: ${mostPlayedVideoId} (Played ${playCount[mostPlayedVideoId]} times)`);
+    
+    if (filteredVideos.length < 3) {
+        console.warn("Only a few videos are available after filtering.");
+    }
+    
 
     const randomVideo1 = filteredVideos.length 
     ? filteredVideos[Math.floor(Math.random() * filteredVideos.length)] 
