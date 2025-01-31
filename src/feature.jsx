@@ -618,11 +618,18 @@ const playRandomVideoExcludingLowRated = () => {
         onVideoSelected(randomVideo);
     }
     let playCount = JSON.parse(localStorage.getItem('playCount')) || {};
-    playCount[randomVideo.id] = (playCount[randomVideo.id] || 0) + 1;
+playCount[randomVideo.id] = (playCount[randomVideo.id] || 0) + 1;
+
+if (playCount[randomVideo.id] > 3) {
+    console.warn(`Video ${randomVideo.id} has been played too many times.`);
+} else {
     localStorage.setItem('playCount', JSON.stringify(playCount));
-    if (filteredVideos.length < 3) {
-        console.warn("Only a few videos are available after filtering.");
-    }
+}
+
+if (filteredVideos.length < 3) {
+    console.warn("Only a few videos are available after filtering.");
+}
+
     const randomVideo1 = filteredVideos.length 
     ? filteredVideos[Math.floor(Math.random() * filteredVideos.length)] 
     : videos[0]; // Default to first video
