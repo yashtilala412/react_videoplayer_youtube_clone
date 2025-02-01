@@ -52,6 +52,7 @@ const App = () => {
       (video) =>
         video.duration <= maxDuration &&
         video.duration >= minDuration &&
+        videoData.duration==maxDuration&&
         video.rating >= minRating &&
         video.category === selectedCategory &&
         !video.tags.includes(excludedTag) // Exclude videos with a specific tag
