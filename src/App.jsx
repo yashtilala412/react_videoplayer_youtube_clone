@@ -52,9 +52,10 @@ const App = () => {
       (video) =>
         video.duration <= maxDuration &&
         video.duration >= minDuration &&
-        video.rating >= minRating
+        video.rating >= minRating &&
+        video.category === selectedCategory // Added category filter
     );
-  
+    
     // Save filter criteria to localStorage
     const filterVideos = (maxDuration, minDuration = 0, minRating = 0) => {
       // Filter videos based on criteria
