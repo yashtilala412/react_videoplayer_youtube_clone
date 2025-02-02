@@ -140,6 +140,9 @@ const App = () => {
 
     acc[year][month][category].videos.push(video);
     acc[year][month][category].count++; // Increment count for each category
+    // Sort videos by upload date (newest first)
+    acc[year][month][category].videos.sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate));
+
   
     return acc;
   }, {});
