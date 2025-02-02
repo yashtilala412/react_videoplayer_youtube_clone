@@ -133,12 +133,13 @@ const App = () => {
     const year = date.getFullYear();
     const month = date.toLocaleString('default', { month: 'long' }); // Get month name
     const category = video.category || "Uncategorized"; // Default category if none exists
-  
+
     if (!acc[year]) acc[year] = {};
     if (!acc[year][month]) acc[year][month] = {};
-    if (!acc[year][month][category]) acc[year][month][category] = [];
-    
-    acc[year][month][category].push(video);
+    if (!acc[year][month][category]) acc[year][month][category] = { videos: [], count: 0 };
+
+    acc[year][month][category].videos.push(video);
+    acc[year][month][category].count++; // Increment count for each category
   
     return acc;
   }, {});
