@@ -162,15 +162,11 @@ const App = () => {
     const updatedVideos = videos.map((video) => {
       if (video.id === videoId) {
         if (video.likedBy && video.likedBy.includes(userId)) {
-          // Unlike the video
-          return {
-            ...video,
-            likedBy: video.likedBy.filter((id) => id !== userId),
-            likeCount: Math.max((video.likeCount || 0) - 1, 0),
-          };
+          alert("You have already liked this video!");
+          return video;
         }
   
-        // Like the video
+        // Increment like count
         return {
           ...video,
           likedBy: [...(video.likedBy || []), userId],
@@ -183,15 +179,6 @@ const App = () => {
     setVideos(updatedVideos);
   };
   
-  
-        return {
-          ...video,
-          likes: video.likes + 1,
-          likedBy: [...(video.likedBy || []), userId],
-        };
-      }
-      return video;
-    });
   
     // Update the state with the modified videos
     setVideos(updatedVideos);
