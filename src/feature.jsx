@@ -224,7 +224,9 @@ if (normalizedPlaylists.includes(lowerCaseNewName)) {
             return;
         }
         setPlaylists({ ...playlists, [playlist]: [...playlists[playlist], videos[index]] });
+        alert(`Video added to ${playlist} successfully!`);
     };
+    
     const searchVideosInPlaylist = (playlist, searchTerm) => {
         return playlists[playlist].filter(video => video.title.toLowerCase().includes(searchTerm.toLowerCase()));
     };
