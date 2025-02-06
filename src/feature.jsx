@@ -223,6 +223,10 @@ if (normalizedPlaylists.includes(lowerCaseNewName)) {
             alert("This video is already in the playlist.");
             return;
         }
+        if (playlists[playlist].length >= 10) {
+            alert("This playlist has reached the maximum limit of 10 videos.");
+            return;
+        }
         setPlaylists({ ...playlists, [playlist]: [...playlists[playlist], videos[index]] });
         alert(`Video added to ${playlist} successfully!`);
     };
