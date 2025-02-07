@@ -192,16 +192,26 @@ const App = () => {
   const handleDislike = (videoId) => {
     const updatedVideos = videos.map((video) => {
       if (video.id === videoId) {
+        const now = new Date();
+        const lastDislikeTime = video.lastDislikeTime ? new Date(video.lastDislikeTime) : null;
+  
+        if (lastDislikeTime && now - lastDislikeTime < 10000) { // Prevent disliking within 10 seconds
+          console.log(`You recently disliked video ${videoId}. Please wait before disliking again.`);
+          return video;
+        }
+  
         const updatedDislikes = Math.max(video.dislikes + 1, 0); // Prevent negative dislikes
-        const lastInteracted = new Date().toISOString(); // Update the timestamp
+        const lastInteracted = now.toISOString(); // Update the timestamp
         console.log(`Video ${videoId} disliked. Total dislikes: ${updatedDislikes}`); // Log feedback
-        return { ...video, dislikes: updatedDislikes, lastInteracted };
+  
+        return { ...video, dislikes: updatedDislikes, lastInteracted, lastDislikeTime: lastInteracted };
       }
       return video;
     });
   
     setVideos(updatedVideos);
   };
+  
   
   const setPlaybackSpeed = (speed) => {
     setVideoPlaybackSpeed(speed); // Assuming setVideoPlaybackSpeed is a state setter
