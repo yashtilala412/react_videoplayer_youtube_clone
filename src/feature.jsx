@@ -101,8 +101,13 @@ if (normalizedPlaylists.includes(lowerCaseNewName)) {
     }
 
     alert(`A playlist with this name already exists. Suggested name: "${suggestedName}"`);
+
+    // Automatically pre-fill the input field with the suggested name
+    document.getElementById("playlistNameInput").value = suggestedName;
+
     return;
 }
+
 
 
 
