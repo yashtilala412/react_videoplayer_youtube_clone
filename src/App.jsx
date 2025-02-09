@@ -214,8 +214,16 @@ const App = () => {
   
   
   const setPlaybackSpeed = (speed) => {
+    const validSpeeds = [0.5, 1, 1.25, 1.5, 2]; // Define allowed speeds
+  
+    if (!validSpeeds.includes(speed)) {
+      console.warn(`Invalid playback speed: ${speed}. Allowed speeds are: ${validSpeeds.join(", ")}`);
+      return;
+    }
+  
     setVideoPlaybackSpeed(speed); // Assuming setVideoPlaybackSpeed is a state setter
   };
+  
   const handleRating = (videoId, rating) => {
     const updatedVideos = videos.map((video) =>
       video.id === videoId ? { ...video, rating } : video
