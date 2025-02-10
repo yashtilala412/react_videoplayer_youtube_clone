@@ -43,11 +43,11 @@ const App = () => {
       return;
     }
   
-    if (maxDuration == null) {
+    if (maxDuration == null || isNaN(maxDuration) || maxDuration <= 0) {
       setVideos(originalVideos);
       return;
     }
-  
+    
     const filteredVideos = videos.filter(
       (video) =>
         video.duration <= maxDuration &&
