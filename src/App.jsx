@@ -52,10 +52,11 @@ const App = () => {
       (video) =>
         video.duration <= maxDuration &&
         video.duration >= minDuration &&
-        videoData.duration==maxDuration&&
+        videoData.duration == maxDuration &&
         video.rating >= minRating &&
         video.category === selectedCategory &&
-        !video.tags.includes(excludedTag) // Exclude videos with a specific tag
+        !video.tags.includes(excludedTag) && // Exclude videos with a specific tag
+        video.title.toLowerCase().includes(keyword.toLowerCase()) // Filter by keyword in title
     );
     
     // Save filter criteria to localStorage
