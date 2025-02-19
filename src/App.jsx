@@ -112,20 +112,32 @@ const App = () => {
   const [originalVideos] = useState([...videos]); // Keep a copy of the original videos
 
   const sortByUploadDate = () => {
+    if (!videos || videos.length === 0) return; // Avoid sorting if there are no videos
+  
     let sortedVideos;
+  
     if (isAscending === null) {
       // Reset to original order
       sortedVideos = [...originalVideos];
     } else {
       sortedVideos = [...videos].sort((a, b) => {
+        const dateA = a.uploadDate ? new Date(a.uploadDate) : new Date(0); // Handle missing dates
+        const dateB = b.uploadDate ? new Date(b.uploadDate) : new Date(0);
+  
         return isAscending
-          ? new Date(a.uploadDate) - new Date(b.uploadDate)
-          : new Date(b.uploadDate) - new Date(a.uploadDate);
+          ? dateA - dateB
+          : dateB - dateA;
       });
     }
-    setVideos(sortedVideos);
+  
+    if (JSON.stringify(sortedVideos) !== JSON.stringify(videos)) {
+      setVideos(sortedVideos);
+      alert(`Videos sorted by upload date: ${isAscending ? "Oldest First" : "Newest First"}`);
+    }
+  
     setIsAscending(isAscending === null ? false : !isAscending); // Toggle sorting or reset
   };
+  
   
   
   
