@@ -36,10 +36,7 @@ const VideoList = () => {
             alert("Playlist name cannot be empty.");
             return;
         }
-        if (playlists.hasOwnProperty(newName)) {
-            alert("A playlist with this name already exists.");
-            return;
-        }
+       
         const updatedPlaylists = { ...playlists, [newName]: playlists[oldName] };
         delete updatedPlaylists[oldName];
         setPlaylists(updatedPlaylists);
