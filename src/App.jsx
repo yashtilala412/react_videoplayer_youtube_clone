@@ -160,10 +160,7 @@ const App = () => {
     return acc;
   }, {});
   
-  console.log(groupedVideos);
   
-  
-  console.log(groupedVideos);
   
     setVideos(groupedVideos);
     setIsAscending(!isAscending);
