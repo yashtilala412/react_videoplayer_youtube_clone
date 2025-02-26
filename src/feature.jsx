@@ -46,7 +46,7 @@ const VideoList = () => {
             return;
         }
         
-        if (newName.length > 50) {
+        if (newName.length > 100) {
             alert("Playlist name cannot exceed 50 characters.");
             return;
         }
