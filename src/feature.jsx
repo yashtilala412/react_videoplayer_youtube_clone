@@ -45,14 +45,7 @@ const VideoList = () => {
             alert("The playlist you are trying to rename does not exist.");
             return;
         }
-        if (newName.length < 3 || newName.length > 50) {
-            alert("Playlist name must be between 3 and 50 characters.");
-            return;
-        }
-        if (!/^[a-zA-Z0-9\s]+$/.test(newName)) {
-            alert("Playlist name can only contain letters, numbers, and spaces.");
-            return;
-        }
+        
         if (newName.length > 50) {
             alert("Playlist name cannot exceed 50 characters.");
             return;
